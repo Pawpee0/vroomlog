@@ -40,3 +40,20 @@ async function initializeDatabase () {
 initializeDatabase();
 
 
+const database = {};
+
+database.getVehiclesList = function (){
+  return new Promise(function(fulfill, reject){
+    connection.execute(`SELECT * from Vehicles`, function(err, results, fields){
+      if (err) {
+        reject(err);
+      } else {
+        fulfill(results);
+      }
+    });
+  });
+
+
+};
+
+module.exports = database;
