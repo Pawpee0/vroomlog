@@ -1,11 +1,12 @@
 const path = require('path');
 
 module.exports = {
+  watch: true,
   mode: 'development',
   module: {
     rules: [
       {
-        test: /\.(?:js|mjs|cjs)$/,
+        test: /\.(?:js|mjs|cjs|jsx)$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
