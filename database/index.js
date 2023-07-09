@@ -45,6 +45,7 @@ const database = {};
 database.getVehiclesList = function (){
   return new Promise(function(fulfill, reject){
     connection.execute(`SELECT * from Vehicles`, function(err, results, fields){
+
       if (err) {
         reject(err);
       } else {
@@ -52,8 +53,20 @@ database.getVehiclesList = function (){
       }
     });
   });
-
-
 };
+
+database.addVehicle = function (body) {
+  return new Promise(function(fulfill, reject){
+    connection.execute(`INSERT INTO Vehicles (year, make, model)
+    VALUES (${body.year}, "${body.make}", "${body.model}")`, function(err, results, fields){
+
+      if (err) {
+        reject(err);
+      } else {
+        fulfill('success');
+      }
+    });
+  });
+}
 
 module.exports = database;

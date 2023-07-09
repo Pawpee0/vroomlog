@@ -1,8 +1,10 @@
 const express = require('express');
 const app = express();
 const port = 3000;
+const bodyParser = require('body-parser');
 
 app.use(express.static('client/dist'));
+app.use(bodyParser.json())
 
 const database = require('../database/index.js');
 
@@ -23,5 +25,8 @@ app.get('/vehicleList', (req, res)=>{
 });
 
 app.post('/vehicleList', (req, res)=>{
-  res.send('hello');
+  database.addVehicle(req.body)
+  .then(()=>{
+    res.send('success');
+  });
 });
