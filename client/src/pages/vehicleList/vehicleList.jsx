@@ -5,7 +5,7 @@ import {Container, Box, Paper, Stack, Typography, Button} from '@mui/material';
 
 import axios from 'axios';
 
-export default function VehicleHistory (){
+export default function VehicleList (){
 
   var [vehicles, setVehicles] = useState([]);
   useEffect(()=>{
@@ -21,23 +21,36 @@ export default function VehicleHistory (){
     <Container maxWidth="md">
 
       {/* list base */}
-      <Paper sx={{'border-radius': '25px', 'max-width': '100%', height:'50vh', padding:'15px'}} elevation='1'>
+      <Paper sx={{'border-radius': '25px', 'max-width': '100%'}} elevation='1'>
 
-      <Stack direction='column'>
+        <Header/>
+        <List vehicles={vehicles}/>
+
+      </Paper>
+    </Container>
+  );
+};
+
+function Header () {
+  return (
+    <Stack direction='row' justifyContent='flex-start' sx={{'border-radius':'25px 25px 0px 0px','background-color': '#212121', 'width': '100%', 'height': '70px'}}>
+
+      <Typography variant='h3' sx={{}}>Vehicles</Typography>
+
+    </Stack>
+  );
+}
+function List ({vehicles}) {
+  return (
+    <Stack direction='column' sx={{'margin': '15px'}}>
         {vehicles.map((vehicleData)=>{
           return (
             <VehicleUnit vehicleData={vehicleData}/>
           );
         })}
       </Stack>
-
-
-
-    </Paper>
-    </Container>
   );
-};
-
+}
 
 function VehicleUnit ({vehicleData}){
 
