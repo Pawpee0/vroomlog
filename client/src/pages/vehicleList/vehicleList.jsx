@@ -1,13 +1,17 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 
-import {Container, Box, Paper, Stack, Typography, Button} from '@mui/material';
+import {Container, Box, Paper, Stack, Typography, Button, Modal} from '@mui/material';
 
 import axios from 'axios';
+
+import AddVehicle from './addVehicle.jsx';
 
 export default function VehicleList (){
 
   var [vehicles, setVehicles] = useState([]);
+  var [open, setOpen] = useState(false);
+
   useEffect(()=>{
     async function fetchData(){
       var response = await axios.get('/vehicleList');
@@ -21,21 +25,24 @@ export default function VehicleList (){
     <Container maxWidth="md">
 
       {/* list base */}
-      <Paper sx={{'border-radius': '25px', 'max-width': '100%'}} elevation='1'>
+      <Paper sx={{'borderRadius': '25px', 'maxWidth': '100%'}} elevation={1}>
 
-        <Header/>
+        <Header setOpen={setOpen}/>
         <List vehicles={vehicles}/>
 
+        <AddVehicle open={open} onClose={()=>{setOpen(false)}}/>
       </Paper>
     </Container>
   );
 };
 
-function Header () {
+function Header ({setOpen}) {
   return (
-    <Stack direction='row' justifyContent='flex-start' sx={{'border-radius':'25px 25px 0px 0px','background-color': '#212121', 'width': '100%', 'height': '70px'}}>
+    <Stack direction='row' justifyContent='space-between' sx={{'borderRadius':'25px 25px 0px 0px','backgroundColor': '#212121', 'maxWidth': '100%', 'padding': '20px'}}>
 
-      <Typography variant='h3' sx={{}}>Vehicles</Typography>
+      <Typography variant='h4' sx={{}}>Vehicles</Typography>
+
+      <Button variant='contained' onClick={()=>{setOpen(true)}}>Add Vehicle</Button>
 
     </Stack>
   );
