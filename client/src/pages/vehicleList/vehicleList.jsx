@@ -1,7 +1,7 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 
-import {Container, Box, Paper, Stack, Typography, Button, Modal} from '@mui/material';
+import {Container, Box, Paper, Stack, Typography, Button, Divider } from '@mui/material';
 
 import axios from 'axios';
 
@@ -66,7 +66,12 @@ function VehicleUnit ({vehicleData}){
     <Button variant='contained' color='paperButton' sx={{'margin': '10px', 'padding': '10px'}}>
 
     <Stack direction='row' alignItems='center' justifyContent='space-between' sx={{'width': "100%"}}>
-      <Typography align='left' variant={'h6'}>{vehicleData.make} {vehicleData.model}</Typography>
+
+      <Stack direction='row' alignItems='center' spacing={1} divider={<Divider orientation='vertical' flexItem/>}>
+        <Typography align='left' variant={'h6'}>{vehicleData.make}</Typography>
+        <Typography align='left' variant={'subtitle1'}>{vehicleData.model}</Typography>
+      </Stack>
+
       <Typography align='right' sx={{'opacity':'0.7'}}>{vehicleData.year}</Typography>
     </Stack>
 
