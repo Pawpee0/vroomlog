@@ -27,7 +27,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'VroomLog',
-      filename: 'vehicleHistory/index.html',
+      filename: 'vehicles/vehicleHistory.html',
       chunks:['vehicleHistory'],
       template:'./client/src/index.html',
     }),
@@ -40,7 +40,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name]/[name].js',
+    filename: 'vehicles/[name].js',
     path: path.resolve(__dirname, 'client/dist'),
     clean: true
   },
