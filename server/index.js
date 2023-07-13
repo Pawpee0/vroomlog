@@ -19,6 +19,14 @@ app.get('/vehicles/:vehicleId', (req, res)=>{
   res.sendFile(path.join(__dirname, '../client/dist/vehicles/vehicleHistory.html'));
 });
 
+app.get('/vehicles/:vehicleId/data', (req, res)=>{
+
+  database.getVehicleDataById(req.params.vehicleId)
+  .then((results)=>{
+    res.send(results[0]);
+  });
+});
+
 app.get('/vehicleList', (req, res)=>{
   database.getVehiclesList()
   .then((results)=>{

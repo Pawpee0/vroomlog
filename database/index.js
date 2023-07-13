@@ -69,4 +69,16 @@ database.addVehicle = function (body) {
   });
 }
 
+database.getVehicleDataById = function (id) {
+  return new Promise (function(fulfill, reject){
+    connection.execute(`SELECT * FROM Vehicles WHERE id = ${id}`, function(err, results, fields){
+      if (err) {
+        reject(err);
+      } else {
+        fulfill(results);
+      }
+    });
+  });
+}
+
 module.exports = database;
