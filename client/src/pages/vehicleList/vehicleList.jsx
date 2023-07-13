@@ -62,8 +62,13 @@ function List ({vehicles}) {
 function VehicleUnit ({vehicleData}){
 
 
+
+  var redirect = ()=>{
+    window.location.href = `http://localhost:3000/vehicles/${vehicleData.id}`
+  };
+
   return (
-    <Button variant='contained' color='paperButton' sx={{'margin': '10px', 'padding': '10px'}}>
+    <Button variant='contained' color='paperButton' sx={{'margin': '10px', 'padding': '10px'}} onClick={redirect}>
 
     <Stack direction='row' alignItems='center' justifyContent='space-between' sx={{'width': "100%"}}>
 
