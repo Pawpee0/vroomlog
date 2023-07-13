@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   watch: true,
@@ -19,10 +20,29 @@ module.exports = {
       }
     ]
   },
-  entry: './client/src/index.js',
+  entry: {
+    vehicleHistory: './client/src/pages/vehicleHistory/index.js',
+    vehicles: './client/src/pages/vehicleList/index.js'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'VroomLog',
+      filename: 'vehicleHistory/index.html',
+      chunks:['vehicleHistory'],
+      template:'./client/src/index.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'VroomLog',
+      filename: 'vehicles/index.html',
+      chunks:['vehicles'],
+      template:'./client/src/index.html',
+
+    }),
+  ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name]/[name].js',
     path: path.resolve(__dirname, 'client/dist'),
+    clean: true
   },
 
 };

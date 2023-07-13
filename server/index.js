@@ -3,7 +3,10 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 
-app.use(express.static('client/dist'));
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 app.use(bodyParser.json())
 
 const database = require('../database/index.js');
@@ -11,11 +14,6 @@ const database = require('../database/index.js');
 app.get('/', (req, res)=>{
   res.send('hello');
 });
-
-app.listen(port, ()=>{
-  console.log('server running')
-});
-
 
 app.get('/vehicleList', (req, res)=>{
   database.getVehiclesList()
@@ -29,4 +27,9 @@ app.post('/vehicleList', (req, res)=>{
   .then(()=>{
     res.send('success');
   });
+});
+
+
+app.listen(port, ()=>{
+  console.log('server running')
 });
