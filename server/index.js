@@ -15,6 +15,10 @@ app.get('/', (req, res)=>{
   res.send('hello');
 });
 
+app.get('/vehicles/:vehicleId', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../client/dist/vehicles/vehicleHistory.html'));
+});
+
 app.get('/vehicleList', (req, res)=>{
   database.getVehiclesList()
   .then((results)=>{
