@@ -48,6 +48,17 @@ app.get('/vehicles/:vehicleId/mileData', (req, res)=>{
   });
 });
 
+app.post('/vehicles/:vehicleId/mileData', (req, res)=>{
+  database.addMileageEntry(req.body)
+  .then(()=>{
+    res.send('success');
+  })
+  .catch((err)=>{
+    res.send(err);
+  });
+
+});
+
 app.listen(port, ()=>{
   console.log('server running')
 });

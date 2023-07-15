@@ -96,7 +96,7 @@ database.getMileageEntriesByCarId = function (carId) {
 database.addMileageEntry = function (inputData){
   return new Promise (function(fulfill, reject){
     connection.execute(`INSERT INTO MileageEntries (carId, mileage, dateAdded, dateOccured)
-    VALUES (${inputData.carId}, ${inputData.mileage}, ${inputData.dateAdded}, ${inputData.dateOccured})`, function(err, results, fields){
+    VALUES (${inputData.carId}, ${inputData.mileage}, "${inputData.dateAdded}", "${inputData.dateOccured}")`, function(err, results, fields){
       if (err) {
         reject(err);
       } else {
