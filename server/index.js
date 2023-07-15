@@ -41,6 +41,12 @@ app.post('/vehicleList', (req, res)=>{
   });
 });
 
+app.get('/vehicles/:vehicleId/mileData', (req, res)=>{
+  database.getMileageEntriesByCarId(req.params.vehicleId)
+  .then((results)=>{
+    res.send(results);
+  });
+});
 
 app.listen(port, ()=>{
   console.log('server running')
