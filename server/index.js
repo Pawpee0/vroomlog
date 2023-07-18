@@ -41,6 +41,13 @@ app.post('/vehicleList', (req, res)=>{
   });
 });
 
+app.delete('/vehicleList', (req, res)=>{
+  database.deleteVehicle(req.body.id)
+  .then(()=>{
+    res.send('success');
+  });
+});
+
 app.get('/vehicles/:vehicleId/mileData', (req, res)=>{
   database.getMileageEntriesByCarId(req.params.vehicleId)
   .then((results)=>{
