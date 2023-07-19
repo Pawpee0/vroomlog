@@ -15,7 +15,8 @@ export default function AddMiles({carId, open, onClose}){
   var [dateOccured, setDateOccured] = useState('');
 
   var submitForm = ()=>{
-    console.log('running');
+    console.log(carId, mileage);
+    console.log(dateOccured);
     axios.post(`/vehicles/${carId}/mileData`,{
       carId: carId,
       mileage: mileage,
@@ -23,7 +24,10 @@ export default function AddMiles({carId, open, onClose}){
       dateOccured: dateOccured
     })
     .then((response)=>{
-      location.reload();
+      //location.reload();
+    })
+    .catch((err)=>{
+      console.log(err);
     });
   };
 
@@ -58,7 +62,7 @@ function Form ({setMileage, setDateOccured, submitForm}){
         <TextField label="Miles" type='number' onChange={(e)=>{setMileage(e.target.value)}}></TextField>
 
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker label="Date Traveled"/>
+          <DatePicker label="Date Traveled" onChange={(value)=>{setDateOccured(new Date(value.$d).toISOString())}}/>
 
         </LocalizationProvider>
 
