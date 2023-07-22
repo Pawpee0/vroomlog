@@ -8,6 +8,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 
 
 import axios from 'axios';
+import {formatDateTime} from '../helperFunctions.js';
 
 export default function AddMiles({carId, open, onClose}){
 
@@ -20,7 +21,7 @@ export default function AddMiles({carId, open, onClose}){
     axios.post(`/vehicles/${carId}/mileData`,{
       carId: carId,
       mileage: mileage,
-      dateAdded: new Date().toISOString(),
+      dateAdded: formatDateTime(new Date().toISOString()),
       dateOccured: dateOccured
     })
     .then((response)=>{
@@ -62,7 +63,7 @@ function Form ({setMileage, setDateOccured, submitForm}){
         <TextField label="Miles" type='number' onChange={(e)=>{setMileage(e.target.value)}}></TextField>
 
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker label="Date Traveled" onChange={(value)=>{setDateOccured(new Date(value.$d).toISOString())}}/>
+          <DatePicker label="Date Traveled" onChange={(value)=>{setDateOccured(formatDateTime(new Date(value.$d).toISOString()))}}/>
 
         </LocalizationProvider>
 
