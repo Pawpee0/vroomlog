@@ -9,6 +9,8 @@ app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.use(bodyParser.json())
 
+app.use((req, res, next)=>{console.log(req.originalUrl); next()})
+
 const database = require('../database/index.js');
 
 app.get('/', (req, res)=>{
@@ -27,6 +29,13 @@ app.get('/vehicles/:vehicleId/data', (req, res)=>{
   });
 });
 
+app.delete('/vehicles/:vehicleId/delete', (req, res)=>{
+  database.deleteVehicle(req.params.vehicleId)
+  .then(()=>{
+    res.send('success');
+  });
+});
+
 app.get('/vehicleList', (req, res)=>{
   database.getVehiclesList()
   .then((results)=>{
@@ -41,12 +50,7 @@ app.post('/vehicleList', (req, res)=>{
   });
 });
 
-app.delete('/vehicleList', (req, res)=>{
-  database.deleteVehicle(req.body.id)
-  .then(()=>{
-    res.send('success');
-  });
-});
+
 
 app.get('/vehicles/:vehicleId/mileData', (req, res)=>{
   database.getMileageEntriesByCarId(req.params.vehicleId)
@@ -56,6 +60,7 @@ app.get('/vehicles/:vehicleId/mileData', (req, res)=>{
 });
 
 app.post('/vehicles/:vehicleId/mileData', (req, res)=>{
+  console.log('running');
   database.addMileageEntry(req.body)
   .then(()=>{
     res.send('success');
