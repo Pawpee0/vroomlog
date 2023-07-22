@@ -25,7 +25,7 @@ export default function AddMiles({carId, open, onClose}){
       dateOccured: dateOccured
     })
     .then((response)=>{
-      //location.reload();
+      location.reload();
     })
     .catch((err)=>{
       console.log(err);
