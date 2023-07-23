@@ -71,11 +71,23 @@ database.addVehicle = function (body) {
 
 database.deleteVehicle = function (id) {
   return new Promise(function(fulfill, reject){
-    connection.execute(`DELETE FROM Vehicles WHERE id =${id}`,function(err, results, fields){
+    connection.execute(`DELETE FROM ServiceEntries WHERE carId = ${id}`, function (err, results, fields){
       if (err) {
         reject(err);
       } else {
-        fulfill('success');
+        connection.execute(`DELETE FROM MileageEntries WHERE carId =${id}`,function(err, results, fields){
+          if (err) {
+            reject(err);
+          } else {
+            connection.execute(`DELETE FROM Vehicles WHERE id =${id}`,function(err, results, fields){
+              if (err) {
+                reject(err);
+              } else {
+                fulfill('success');
+              }
+            });
+          }
+        });
       }
     });
   });
