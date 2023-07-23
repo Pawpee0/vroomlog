@@ -110,7 +110,9 @@ database.addMileageEntry = function (inputData){
     connection.execute(`INSERT INTO MileageEntries (carId, mileage, dateAdded, dateOccured)
     VALUES (${inputData.carId}, ${inputData.mileage}, "${inputData.dateAdded}", "${inputData.dateOccured}")`, function(err, results, fields){
       if (err) {
+        console.log(err);
         reject(err);
+
       } else {
         fulfill('success');
       }
