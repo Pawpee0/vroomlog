@@ -18,7 +18,7 @@ export default function AddMiles({carId, open, onClose}){
   var submitForm = ()=>{
     console.log(carId, mileage);
     console.log(dateOccured);
-    axios.post(`/vehicles/${carId}/mileData`,{
+    axios.post(`/vehicles/${carId}/data/miles`,{
       carId: carId,
       mileage: mileage,
       dateAdded: formatDateTime(new Date().toISOString()),

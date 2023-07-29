@@ -53,14 +53,14 @@ app.delete('/vehicles/:vehicleId/delete', (req, res)=>{
 
 
 
-app.get('/vehicles/:vehicleId/mileData', (req, res)=>{
+app.get('/vehicles/:vehicleId/data/miles', (req, res)=>{
   database.getMileageEntriesByCarId(req.params.vehicleId)
   .then((results)=>{
     res.send(results);
   });
 });
 
-app.post('/vehicles/:vehicleId/mileData', (req, res)=>{
+app.post('/vehicles/:vehicleId/data/miles', (req, res)=>{
   console.log('running');
   database.addMileageEntry(req.body)
   .then(()=>{
