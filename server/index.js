@@ -17,6 +17,20 @@ app.get('/', (req, res)=>{
   res.send('hello');
 });
 
+app.get('/vehicleList', (req, res)=>{
+  database.getVehiclesList()
+  .then((results)=>{
+    res.send(results);
+  });
+});
+
+app.post('/vehicleList', (req, res)=>{
+  database.addVehicle(req.body)
+  .then(()=>{
+    res.send('success');
+  });
+});
+
 app.get('/vehicles/:vehicleId', (req, res)=>{
   res.sendFile(path.join(__dirname, '../client/dist/vehicles/vehicleHistory.html'));
 });
@@ -36,19 +50,6 @@ app.delete('/vehicles/:vehicleId/delete', (req, res)=>{
   });
 });
 
-app.get('/vehicleList', (req, res)=>{
-  database.getVehiclesList()
-  .then((results)=>{
-    res.send(results);
-  });
-});
-
-app.post('/vehicleList', (req, res)=>{
-  database.addVehicle(req.body)
-  .then(()=>{
-    res.send('success');
-  });
-});
 
 
 
