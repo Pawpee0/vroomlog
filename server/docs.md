@@ -3,8 +3,8 @@
 
 - ## Vehicle List
 
-  - GET `/vehicleList`
-
+  - GET `/vehicleList` <br>
+    Gets an array of all the vehicles owned
       - Response:
         ```
         [
@@ -21,8 +21,8 @@
         ]
         ```
 
-  - POST `/vehicleList`
-
+  - POST `/vehicleList`<br>
+    Adds a new vehicle to their account
      - Request:
         ```
         {
@@ -66,12 +66,15 @@
     Response: array of all mileage entries for the vehicle
 
     ```
-    {
-      id: int,
-      description: string
-      dateOccured: date,
-      dateAdded: date
-    }
+    [
+      {
+        id: int,
+        description: string
+        dateOccured: date,
+        dateAdded: date
+      },
+      ...
+    ]
     ```
 
   - POST `/vehicles/:vehicleId/data/miles`
@@ -88,3 +91,4 @@
     ```
 
     Response: success or error
+
