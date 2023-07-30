@@ -24,6 +24,7 @@ helperFunctions.extractSorted = (array, key)=>{
     }
   }
 
+
   return sortedArray;
 };
 
@@ -35,12 +36,12 @@ helperFunctions.extractSortedDates = (array, key)=>{
     for (var i = 0; i < sortedArray.length; i ++) {
       if (Date.parse(array[x][key]) < Date.parse(sortedArray[i])) {
         added = true;
-        sortedArray.splice(i, 0, array[x][key]);
+        sortedArray.splice(i, 0, new Date(array[x][key]));
         break;
       }
     }
     if (!added) {
-      sortedArray.push(array[x][key]);
+      sortedArray.push(new Date(array[x][key]));
     }
   }
 
