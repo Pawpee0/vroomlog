@@ -26,4 +26,24 @@ helperFunctions.extractSorted = (array, key)=>{
 
   return sortedArray;
 };
+
+helperFunctions.extractSortedDates = (array, key)=>{
+  var sortedArray = [];
+
+  for (var x = 0; x < array.length; x++) {
+    var added = false;
+    for (var i = 0; i < sortedArray.length; i ++) {
+      if (Date.parse(array[x][key]) < Date.parse(sortedArray[i])) {
+        added = true;
+        sortedArray.splice(i, 0, array[x][key]);
+        break;
+      }
+    }
+    if (!added) {
+      sortedArray.push(array[x][key]);
+    }
+  }
+
+  return sortedArray;
+};
 module.exports = helperFunctions;
