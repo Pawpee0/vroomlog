@@ -13,9 +13,12 @@ app.use((req, res, next)=>{console.log(req.originalUrl); next()})
 
 const database = require('../database/index.js');
 
-app.get('/', (req, res)=>{
-  res.send('hello');
-});
+const mileRoutes = require('./routes/mileRoutes.js');
+const vehicleData = require('./routes/vehicleData.js');
+
+app.use('/', mileRoutes);
+app.use('/', vehicleData);
+
 
 app.get('/vehicleList', (req, res)=>{
   database.getVehiclesList()
@@ -31,46 +34,6 @@ app.post('/vehicleList', (req, res)=>{
   });
 });
 
-app.get('/vehicles/:vehicleId', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../client/dist/vehicles/vehicleHistory.html'));
-});
-
-app.get('/vehicles/:vehicleId/data', (req, res)=>{
-
-  database.getVehicleDataById(req.params.vehicleId)
-  .then((results)=>{
-    res.send(results[0]);
-  });
-});
-
-app.delete('/vehicles/:vehicleId/delete', (req, res)=>{
-  database.deleteVehicle(req.params.vehicleId)
-  .then(()=>{
-    res.send('success');
-  });
-});
-
-
-
-
-app.get('/vehicles/:vehicleId/data/miles', (req, res)=>{
-  database.getMileageEntriesByCarId(req.params.vehicleId)
-  .then((results)=>{
-    res.send(results);
-  });
-});
-
-app.post('/vehicles/:vehicleId/data/miles', (req, res)=>{
-  console.log('running');
-  database.addMileageEntry(req.body)
-  .then(()=>{
-    res.send('success');
-  })
-  .catch((err)=>{
-    res.send(err);
-  });
-
-});
 
 app.listen(port, ()=>{
   console.log('server running')
