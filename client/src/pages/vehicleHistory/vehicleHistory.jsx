@@ -1,8 +1,8 @@
 import React from 'react';
 import {useEffect, useState} from 'react';
 
-import {Container, Paper, Stack, Typography, Button} from '@mui/material';
-import { LineChart } from '@mui/x-charts/LineChart';
+import {Container, Paper, Stack, Typography, Button, Box} from '@mui/material';
+import { LineChart } from '@mui/x-charts';
 
 import AddMiles from '../../components/addMiles.jsx';
 
@@ -39,9 +39,9 @@ export default function VehicleHistory (){
 
         <Header vehicleData={vehicleData} setOpen={setOpen}/>
         <MileChart miles={miles} dates={dates}/>
+
+
         <AddMiles carId={vehicleData.id} open={open} onClose={()=>{setOpen(false)}}/>
-
-
       </Paper>
     </Container>
   );
@@ -49,10 +49,9 @@ export default function VehicleHistory (){
 
 function Header ({vehicleData, setOpen}) {
   return (
-    <Stack direction='row' spacing={2} alignItems = 'center' justifyContent='flex-start' sx={{'borderRadius':'25px 25px 0px 0px','backgroundColor': '#212121', 'maxWidth': '100%', 'padding': '20px'}}>
+    <Stack direction='row' spacing={2} alignItems = 'center' justifyContent='space-between' sx={{'borderRadius':'25px 25px 0px 0px','backgroundColor': '#212121', 'maxWidth': '100%', 'padding': '20px'}}>
 
-      <Typography variant='h3'>{vehicleData.make}</Typography>
-      <Typography variant='h3'>{vehicleData.model}</Typography>
+      <Typography variant='h3'>{vehicleData.make} {vehicleData.model}</Typography>
       <Button variant='contained' onClick={()=>{setOpen(true)}}>Add Miles</Button>
 
 
@@ -70,12 +69,19 @@ function MileChart ({miles, dates}){
   }
 
   return (
-    <LineChart
-      xAxis={[{data: [...dates], scaleType: 'utc'}]}
-      series={[{data: [...miles]}]}
-      width={500}
-      height={300}
-    />
+    <Stack direction='column' alignItems='center' >
+
+      <Stack direction='column' alignItems='center' sx={{width:'750px', height:'50vh'}}>
+        <LineChart
+        xAxis={[{data: [...dates], scaleType: 'utc'}]}
+        series={[{data: [...miles]}]}
+        />
+        <Typography variant='h5'>Mileage</Typography>
+      </Stack>
+
+
+    </Stack>
+
 
   );
 };
