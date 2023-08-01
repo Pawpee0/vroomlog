@@ -3,6 +3,8 @@ import { createRoot } from 'react-dom/client';
 
 import {Container, Box} from '@mui/material';
 
+
+import MainHeader from '../../components/MainHeader.jsx';
 import VehicleHistory from './vehicleHistory.jsx';
 
 import {createTheme, ThemeProvider} from '@mui/material/styles';
@@ -23,6 +25,7 @@ const root = createRoot(document.getElementById('app'));
 root.render(
 <ThemeProvider theme={theme}>
   <Box sx={{ position:'absolute', left:'0', top:'0', width: '100vw', height: '100vh', backgroundColor:'#161616'}}>
+    <MainHeader/>
     <VehicleHistory/>
   </Box>
 </ThemeProvider>

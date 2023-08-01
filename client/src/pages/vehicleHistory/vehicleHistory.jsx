@@ -71,7 +71,7 @@ function MileChart ({miles, dates}){
   return (
     <Stack direction='column' alignItems='center' >
 
-      <Stack direction='column' alignItems='center' sx={{width:'750px', height:'50vh'}}>
+      <Stack direction='column' alignItems='center' sx={{maxWidth:'750px', height:'50vh'}}>
         <LineChart
         xAxis={[{data: [...dates], scaleType: 'utc'}]}
         series={[{data: [...miles]}]}
