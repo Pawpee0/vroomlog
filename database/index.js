@@ -29,6 +29,7 @@ async function initializeDatabase () {
   await connection.execute(`CREATE TABLE IF NOT EXISTS ServiceEntries (
     id int NOT NULL AUTO_INCREMENT,
     carId int NOT NULL,
+    name text NOT NULL,
     description text,
     dateAdded datetime NOT NULL,
     dateOccured date NOT NULL,
@@ -126,6 +127,20 @@ database.addMileageEntry = function (inputData){
         reject(err);
 
       } else {
+        fulfill('success');
+      }
+    });
+  });
+}
+
+database.addServiceEntry = function (inputData){
+  return new Promise (function (fulfill, reject){
+    connection.execute(`INSERT INTO ServiceEntries (carId, name, description, dateAdded, dateOccured)
+    VALUES (${inputData.carId}, "${inputData.name}", "${inputData.description}", "${inputData.dateAdded}", "${dateOccured}")`, function (err, results, fields){
+      if (err) {
+        reject(err);
+      }
+      else {
         fulfill('success');
       }
     });
