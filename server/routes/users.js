@@ -33,7 +33,7 @@ req.body = {
 */
 router.post('/:userId/vehicles/list', async(req, res)=>{
   try{
-    var response = await addVehicle({req.params.userId, ...req.body});
+    var response = await addVehicle({id_Users: req.params.userId, ...req.body});
     res.send(response);
   }
   catch(err) {
