@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 app.use((req, res, next)=>{console.log(req.originalUrl); next()})
 
-const database = require('../database/index.js');
+const database = require('../database/databaseFunctions.js');
 
 const mileRoutes = require('./routes/mileRoutes.js');
 const vehicleData = require('./routes/vehicleData.js');
@@ -26,6 +26,14 @@ app.get('/vehicleList', (req, res)=>{
     res.send(results);
   });
 });
+
+/*
+{
+  year: int,
+  make: text,
+  model: text
+}
+*/
 
 app.post('/vehicleList', (req, res)=>{
   database.addVehicle(req.body)
