@@ -8,34 +8,81 @@ const connection = mysql.createConnection({
 });
 
 async function initializeDatabase () {
+
+  await connection.execute(`CREATE TABLE IF NOT EXISTS Users (
+    id int NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY (id)
+  )`);
+
   await connection.execute(`CREATE TABLE IF NOT EXISTS Vehicles (
     id int NOT NULL AUTO_INCREMENT,
+    id_Users int NOT NULL,
     year int NOT NULL,
     make text,
     model text,
-    PRIMARY KEY (id)
+    currentMileageId int,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (currentMileageId) REFERENCES MileageEntries(id),
+    FOREIGN KEY (id_Users) REFERENCES Users(id)
   )`);
 
   await connection.execute(`CREATE TABLE IF NOT EXISTS MileageEntries (
     id int NOT NULL AUTO_INCREMENT,
-    carId int NOT NULL,
+    id_Vehicles int NOT NULL,
     mileage int NOT NULL,
     dateAdded datetime NOT NULL,
     dateOccured date NOT NULL,
+
     PRIMARY KEY (id),
-    FOREIGN KEY (carId) REFERENCES Vehicles(id)
+    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
   )`);
 
   await connection.execute(`CREATE TABLE IF NOT EXISTS ServiceEntries (
     id int NOT NULL AUTO_INCREMENT,
-    carId int NOT NULL,
-    name text NOT NULL,
-    description text,
+    id_Vehicles int NOT NULL,
+    mileage int,
     dateAdded datetime NOT NULL,
     dateOccured date NOT NULL,
+
     PRIMARY KEY (id),
-    FOREIGN KEY (carId) REFERENCES Vehicles(id)
+    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id),
+    FOREIGN KEY (id_Reminders) REFERENCES Reminders(id)
   )`);
+
+  await connection.execute(`CREATE TABLE IF NOT EXISTS ServiceToParts (
+    id int NOT NULL AUTO_INCREMENT,
+    id_ServiceEntries int NOT NULL,
+    id_Parts int NOT NULL,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_ServiceEntries) REFERENCES ServiceEntries(id),
+    FOREIGN KEY (id_Parts) REFERENCES Parts(id)
+  )`);
+
+  await connection.execute(`CREATE TABLE IF NOT EXISTS Parts (
+    id int NOT NULL AUTO_INCREMENT,
+    id_Vehicles int NOT NULL,
+    id_Reminders int,
+    name text NOT NULL,
+    descrition date,
+    link text,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
+    FOREIGN KEY (id_Reminders) REFERENCES Reminders(id)
+  )`);
+
+  await connection.execute(`CREATE TABLE IF NOT EXISTS Reminders (
+    id int NOT NULL AUTO_INCREMENT,
+    id_Vehicles int NOT NULL,
+    replaceAtMile int,
+    replaceAtDate date,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
+  )`);
+
 }
 
 initializeDatabase();
