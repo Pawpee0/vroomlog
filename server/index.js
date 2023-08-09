@@ -11,11 +11,11 @@ app.use(bodyParser.json())
 
 app.use((req, res, next)=>{console.log(req.originalUrl); next()})
 
-const database = require('../database/databaseFunctions.js');
-
+const users = require('./routes/users.js');
 const mileRoutes = require('./routes/mileRoutes.js');
 const vehicleData = require('./routes/vehicleData.js');
 
+app.use('/users', users);
 app.use('/', mileRoutes);
 app.use('/', vehicleData);
 
