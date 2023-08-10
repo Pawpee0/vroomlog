@@ -3,7 +3,18 @@ const router = express.Router();
 
 const {formatDateTime} = require('../helperFunctions.js');
 
-router.get('', (req, res)=>{});
+
+/*
+{
+  mileage: int,
+  dateAdded: date,
+  dateOccured: date,
+  partIds: [int]
+}
+*/
+router.post('/vehicles/:vehicleId/data/maintanence', (req, res)=>{
+
+});
 
 
 module.exports = router;
