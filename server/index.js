@@ -12,12 +12,16 @@ app.use(bodyParser.json())
 app.use((req, res, next)=>{console.log(req.originalUrl); next()})
 
 const users = require('./routes/users.js');
-const mileRoutes = require('./routes/mileRoutes.js');
+const miles = require('./routes/mileRoutes.js');
 const vehicleData = require('./routes/vehicleData.js');
+const parts = require('./routes/parts.js');
+const maintanence = require('./routes/maintanence.js');
 
 app.use('/users', users);
-app.use('/', mileRoutes);
+app.use('/', miles);
 app.use('/', vehicleData);
+app.use('/', parts);
+app.use('/', maintanence);
 
 
 app.get('/vehicleList', (req, res)=>{
