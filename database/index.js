@@ -38,7 +38,7 @@ async function initializeDatabase () {
     FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
   )`);
 
-  await connection.execute(`CREATE TABLE IF NOT EXISTS MaintanenceEntries (
+  await connection.execute(`CREATE TABLE IF NOT EXISTS MaintenanceEntries (
     id int NOT NULL AUTO_INCREMENT,
     id_Vehicles int NOT NULL,
     mileage int,
@@ -72,13 +72,13 @@ async function initializeDatabase () {
     FOREIGN KEY (id_Reminders) REFERENCES Reminders(id)
   )`);
 
-  await connection.execute(`CREATE TABLE IF NOT EXISTS MaintanenceToParts (
+  await connection.execute(`CREATE TABLE IF NOT EXISTS MaintenanceToParts (
     id int NOT NULL AUTO_INCREMENT,
-    id_MaintanenceEntries int NOT NULL,
+    id_MaintenanceEntries int NOT NULL,
     id_Parts int NOT NULL,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (id_MaintanenceEntries) REFERENCES MaintanenceEntries(id),
+    FOREIGN KEY (id_MaintenanceEntries) REFERENCES MaintenanceEntries(id),
     FOREIGN KEY (id_Parts) REFERENCES Parts(id)
   )`);
 

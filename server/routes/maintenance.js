@@ -12,7 +12,7 @@ const {formatDateTime} = require('../helperFunctions.js');
   partIds: [int]
 }
 */
-router.post('/vehicles/:vehicleId/data/maintanence', (req, res)=>{
+router.post('/vehicles/:vehicleId/data/maintenance', (req, res)=>{
 
 });
 
