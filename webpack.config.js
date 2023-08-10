@@ -22,7 +22,7 @@ module.exports = {
   },
   entry: {
     vehicleHistory: './client/src/pages/vehicleHistory/index.js',
-    vehicles: './client/src/pages/vehicleList/index.js'
+    vehicles: './client/src/pages/vehicles/index.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
