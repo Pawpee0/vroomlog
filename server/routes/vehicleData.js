@@ -6,6 +6,7 @@ const path = require('path');
 const database = require('../../database/index.js');
 
 
+
 router.get('/vehicles/:vehicleId', (req, res)=>{
   res.sendFile(path.join(__dirname, '../../client/dist/vehicles/vehicleHistory.html'));
 });

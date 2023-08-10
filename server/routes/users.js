@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 const database = require('../../database/functions/users.js');
-const {addVehicle, getUsersVehicles} = require('../..database/functions/vehicles/js');
+const {addVehicle, getUsersVehicles} = require('../../database/functions/vehicles.js');
 
 /*
 {

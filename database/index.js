@@ -22,10 +22,8 @@ async function initializeDatabase () {
     make text NOT NULL,
     model text NOT NULL,
     color text,
-    currentMileageId int,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (currentMileageId) REFERENCES MileageEntries(id),
     FOREIGN KEY (id_Users) REFERENCES Users(id)
   )`);
 
@@ -48,6 +46,28 @@ async function initializeDatabase () {
     dateOccured date NOT NULL,
 
     PRIMARY KEY (id),
+    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
+  )`);
+
+  await connection.execute(`CREATE TABLE IF NOT EXISTS Reminders (
+    id int NOT NULL AUTO_INCREMENT,
+    id_Vehicles int NOT NULL,
+    replaceAtMile int,
+    replaceAtDate date,
+
+    PRIMARY KEY (id),
+    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
+  )`);
+
+  await connection.execute(`CREATE TABLE IF NOT EXISTS Parts (
+    id int NOT NULL AUTO_INCREMENT,
+    id_Vehicles int NOT NULL,
+    id_Reminders int,
+    name text NOT NULL,
+    descrition date,
+    link text,
+
+    PRIMARY KEY (id),
     FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id),
     FOREIGN KEY (id_Reminders) REFERENCES Reminders(id)
   )`);
@@ -62,28 +82,6 @@ async function initializeDatabase () {
     FOREIGN KEY (id_Parts) REFERENCES Parts(id)
   )`);
 
-  await connection.execute(`CREATE TABLE IF NOT EXISTS Parts (
-    id int NOT NULL AUTO_INCREMENT,
-    id_Vehicles int NOT NULL,
-    id_Reminders int,
-    name text NOT NULL,
-    descrition date,
-    link text,
-
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
-    FOREIGN KEY (id_Reminders) REFERENCES Reminders(id)
-  )`);
-
-  await connection.execute(`CREATE TABLE IF NOT EXISTS Reminders (
-    id int NOT NULL AUTO_INCREMENT,
-    id_Vehicles int NOT NULL,
-    replaceAtMile int,
-    replaceAtDate date,
-
-    PRIMARY KEY (id),
-    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
-  )`);
 
 }
 
