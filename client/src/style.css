@@ -1,0 +1,119 @@
+/* https://realtimecolors.com/?colors=f0efef-060818-da071f-0a0e29-de2b40 */
+:root {
+  --text: rgb(240, 239, 239);
+  --background: rgb(6, 8, 24);
+  --primary: rgb(218, 7, 31);
+  --secondary1: rgb(10, 14, 41);
+  --accent: rgb(222, 43, 64);
+
+  --secondary2: rgba(10, 14, 41, 0.6);
+
+  --third: #3e4574;
+
+  --green: #64C489;
+
+  --one: #a581df;
+  --two:#897cde;
+  --three: #9db8e7;
+  --four: #5ca7d6;
+
+  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+p, h2{
+  margin:0;
+}
+
+body{
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 0.77rem;
+}
+
+@media (min-width: 360px) {
+  body{
+    font-size: 1rem;
+  }
+}
+
+#app{
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+  align-items: center;
+}
+
+#mainHeader{
+  width:100vw;
+  background-color: var(--secondary1);
+  text-align: center;
+}
+
+.card{
+  background-color: var(--secondary1);
+  border-radius: 1.5em;
+  max-width: 700px;
+
+}
+.cardHeader{
+  width: calc(100% - 3em);
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  margin: 1em;
+
+  /* font-size: 1.2rem; */
+  font-weight: 400;
+}
+
+
+
+#addVehicleButton {
+  background-color: var(--green);
+  border-radius: 10px;
+  padding: 0.5em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardItem{
+  --padding: 10px;
+
+  background-color: var(--third);
+  border-radius: 0.7em;
+  box-shadow: 0 1px 25px rgba(0,0,0,0.2);
+
+  width: calc(100% - 3em);
+  margin: .5em;
+  padding: var(--padding);
+
+  /* font-size: 1.5rem; */
+  /* font-size: 2vw; */
+
+  font-weight: 400;
+
+  justify-content: space-between;
+}
+
+
+.flexColumn{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.flexItem {
+
+}
