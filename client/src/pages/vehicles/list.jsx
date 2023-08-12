@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {Card, CardHeader} from '../../components/Card.jsx'
-
 export default function List (){
   return (
     <div className='card flexColumn'style={{width: '92vw', position: 'relative', top: '10vh'}}>
