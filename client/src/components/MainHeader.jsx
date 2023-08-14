@@ -4,9 +4,9 @@ export default function MainHeader ({children}){
 
   return (
     <>
-      <div id="mainHeader">
+      <header id="mainHeader">
         <h1>VroomLog</h1>
-      </div>
+      </header>
 
       {children}
     </>
