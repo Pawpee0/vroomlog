@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Reminders(){
   return (
-    <div className='card' style={{'margin': '1rem'}}>
+    <div className='card'>
       <Header/>
     </div>
   );

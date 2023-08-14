@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function Miles (){
   return (
-    <div className='card' style={{'margin': '1rem'}}>
+    <div className='card'>
       <Header/>
     </div>
   )
