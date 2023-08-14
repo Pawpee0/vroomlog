@@ -48,9 +48,7 @@ body{
   }
 }
 
-.center {
-  margin: auto;
-}
+
 #mainHeader{
   background-color: var(--secondary1);
   text-align: center;
@@ -67,6 +65,7 @@ body{
   min-width: 257px;
   min-height: 257px;
   max-width: 700px;
+  margin: 1rem;
 }
 .cardHeader{
   width: calc(100% - 3em);
@@ -126,6 +125,7 @@ body{
 
   flex-wrap: wrap;
 }
-.flexItem {
 
+.center {
+  margin: auto;
 }
