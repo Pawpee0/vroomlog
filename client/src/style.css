@@ -22,8 +22,9 @@
 
 }
 
-p, h1, h2{
+p, h1, h2, h5{
   margin:0;
+  font-weight: inherit;
 }
 
 body{
@@ -40,7 +41,12 @@ body{
   width:100%;
   min-width: 257px;
 
+
+
 }
+
+
+
 
 @media (min-width: 360px) {
   body{
@@ -58,6 +64,18 @@ body{
 
 }
 
+#addVehicleButton {
+  background-color: var(--green);
+  border-radius: 10px;
+  padding: 0.5em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* -----------------------------------CARD-------------------------------------- */
 .card{
   background-color: var(--secondary1);
   border-radius: 1.5em;
@@ -73,23 +91,11 @@ body{
   flex-wrap: wrap;
   justify-content: space-between;
 
-  margin: 1em;
+  margin: 0.6em 1.2em;
 
-  /* font-size: 1.2rem; */
-  font-weight: 400;
+  font-weight: 500;
 }
 
-
-
-#addVehicleButton {
-  background-color: var(--green);
-  border-radius: 10px;
-  padding: 0.5em;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .cardItem{
   --padding: 10px;
@@ -110,6 +116,35 @@ body{
   justify-content: space-between;
 }
 
+/* -----------------------------------Table-------------------------------------- */
+
+.table {
+
+  width: 90%;
+  border-collapse: collapse;
+
+}
+
+.tableLabels {
+  width: 95%;
+
+
+  border-bottom: var(--text) 1px solid;
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.tableEntry {
+  width: 100%;
+
+  font-size: 0.8rem;
+  font-weight: 200;
+  padding: 0.2em;
+
+  border-bottom: rgba(255, 255, 255, 0.12) 1px solid;
+
+}
 
 .flexColumn{
   width: 100%;
@@ -123,7 +158,6 @@ body{
   flex-direction: row;
   align-items: center;
 
-  flex-wrap: wrap;
 }
 
 .center {
