@@ -33,12 +33,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'VroomLog',
-      filename: 'vehicles/vehicleHistory.html',
-      chunks:['vehicleHistory'],
-      template:'./client/src/index.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'VroomLog',
       filename: 'vehicles/index.html',
       chunks:['vehicles'],
       template:'./client/src/index.html',
@@ -51,13 +45,13 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       title: 'VroomLog',
-      filename: 'vehicles/login.html',
+      filename: 'login/index.html',
       chunks:['login'],
       template:'./client/src/index.html',
     }),
   ],
   output: {
-    filename: 'vehicles/[name].js',
+    filename: 'bundles/[name].js',
     path: path.resolve(__dirname, 'client/dist'),
     clean: true
   },
