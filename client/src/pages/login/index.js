@@ -20,7 +20,7 @@ function Form () {
 
 
   return (
-    <div className='center card flexColumn'>
+    <div className='center card flexColumn' style={{"width":"92vw", 'maxWidth': '330px'}}>
       <Header/>
       {logInScreen ? (
         <LoginForm/>
