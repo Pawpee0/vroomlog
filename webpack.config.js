@@ -27,7 +27,8 @@ module.exports = {
   entry: {
     vehicleHistory: './client/src/pages/vehicleHistory/index.js',
     vehicles: './client/src/pages/vehicles/index.js',
-    vehicleStats: './client/src/pages/vehicleStats/index.js'
+    vehicleStats: './client/src/pages/vehicleStats/index.js',
+    login: './client/src/pages/login/index.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -46,6 +47,12 @@ module.exports = {
       title: 'VroomLog',
       filename: 'vehicles/vehicleStats.html',
       chunks:['vehicleStats'],
+      template:'./client/src/index.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'VroomLog',
+      filename: 'vehicles/login.html',
+      chunks:['login'],
       template:'./client/src/index.html',
     }),
   ],
