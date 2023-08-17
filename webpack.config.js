@@ -27,15 +27,10 @@ module.exports = {
   entry: {
     vehicleHistory: './client/src/pages/vehicleHistory/index.js',
     vehicles: './client/src/pages/vehicles/index.js',
-    vehicleStats: './client/src/pages/vehicleStats/index.js'
+    vehicleStats: './client/src/pages/vehicleStats/index.js',
+    login: './client/src/pages/login/index.js'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'VroomLog',
-      filename: 'vehicles/vehicleHistory.html',
-      chunks:['vehicleHistory'],
-      template:'./client/src/index.html',
-    }),
     new HtmlWebpackPlugin({
       title: 'VroomLog',
       filename: 'vehicles/index.html',
@@ -48,9 +43,15 @@ module.exports = {
       chunks:['vehicleStats'],
       template:'./client/src/index.html',
     }),
+    new HtmlWebpackPlugin({
+      title: 'VroomLog',
+      filename: 'login/index.html',
+      chunks:['login'],
+      template:'./client/src/index.html',
+    }),
   ],
   output: {
-    filename: 'vehicles/[name].js',
+    filename: 'bundles/[name].js',
     path: path.resolve(__dirname, 'client/dist'),
     clean: true
   },

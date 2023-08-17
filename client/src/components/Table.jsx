@@ -3,7 +3,7 @@ import React from 'react';
 export default function Table (){
   return (
     <table className='table center'>
-      <Labels/>
+      <Labels />
       <Reminder data={{name: 'Oil'}}/>
       <Reminder data={{name: 'Brake Pads'}}/>
       <Reminder data={{name: 'Tires'}}/>
@@ -12,7 +12,7 @@ export default function Table (){
   )
 }
 
-function Labels (){
+function Labels ({label}){
   return (
     <tr className='tableLabels'>
       <th style={{'width':'50%', 'text-align': 'left'}}>Name</th>

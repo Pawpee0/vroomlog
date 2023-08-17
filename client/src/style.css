@@ -64,14 +64,11 @@ body{
 
 }
 
-#addVehicleButton {
+.button {
   background-color: var(--green);
   border-radius: 10px;
   padding: 0.5em;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 
@@ -84,6 +81,7 @@ body{
   min-height: 257px;
   max-width: 700px;
   margin: 1rem;
+
 }
 .cardHeader{
   width: calc(100% - 3em);
@@ -146,6 +144,7 @@ body{
 
 }
 
+
 .flexColumn{
   width: 100%;
   display: flex;
@@ -158,6 +157,25 @@ body{
   flex-direction: row;
   align-items: center;
 
+}
+
+.form {
+  width: 85%;
+}
+
+input{
+  width: 100%;
+
+  background-color: rgba(62, 69, 116, 0.44);
+  border: var(--third) 1px solid;
+
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  padding: 0.4em;
+
+  color: inherit;
+
+  margin: 0.5em;
 }
 
 .center {
