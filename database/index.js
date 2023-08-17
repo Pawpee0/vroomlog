@@ -15,6 +15,12 @@ async function initializeDatabase () {
     PRIMARY KEY (id)
   )`);
 
+  await connection.execute(`CREATE TABLE IF NOT EXISTS Users (
+    id int NOT NULL AUTO_INCREMENT,
+    name text NOT NULL,
+    PRIMARY KEY (id)
+  )`);
+
   await connection.execute(`CREATE TABLE IF NOT EXISTS Vehicles (
     id int NOT NULL AUTO_INCREMENT,
     id_Users int NOT NULL,
@@ -25,6 +31,7 @@ async function initializeDatabase () {
 
     PRIMARY KEY (id),
     FOREIGN KEY (id_Users) REFERENCES Users(id)
+
   )`);
 
   await connection.execute(`CREATE TABLE IF NOT EXISTS MileageEntries (
