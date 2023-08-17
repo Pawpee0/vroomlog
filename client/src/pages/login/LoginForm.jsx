@@ -4,7 +4,7 @@ import TextInput from '../../components/miniComponents/TextInput.jsx';
 export default function LoginForm (){
   return (
     <div id='LoginForm' className='form'>
-      <form class='flexColumn'>
+      <form className='flexColumn'>
         <TextInput placeholder={'Username'}/>
         <TextInput placeholder={'Password'} type={'password'}/>
         <Footer/>
@@ -15,7 +15,7 @@ export default function LoginForm (){
 
 function Footer (){
   return (
-    <div className='flexRow' style={{'justify-content': 'space-between', 'width': '100%'}}>
+    <div className='flexRow' style={{'justifyContent': 'space-between', 'width': '100%'}}>
       <p>Forgot Password?</p>
       <Submit/>
     </div>
