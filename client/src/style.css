@@ -64,14 +64,11 @@ body{
 
 }
 
-#addVehicleButton {
+.button {
   background-color: var(--green);
   border-radius: 10px;
   padding: 0.5em;
 
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 
@@ -178,7 +175,7 @@ input{
 
   color: inherit;
 
-  margin: 0.3em;
+  margin: 0.5em;
 }
 
 .center {
