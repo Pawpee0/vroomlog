@@ -18,5 +18,28 @@ button {
   background-color: var(--green);
   border-radius: 10px;
   padding: 0.5em;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--text);
+
+  border: 0;
+
+
+
+  box-shadow: 0px 7px var(--green-shadow);
+
+
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:hover {
+  transform: translateY(3px);
+  box-shadow: 0px 4px var(--green-shadow);
+  background-color: rgb(96, 181, 132);
+}
+
+button:active {
+  transform: translateY(7px);
+  box-shadow: 0px 0px var(--green-shadow);
 
 }
