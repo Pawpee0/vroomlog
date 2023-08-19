@@ -15,8 +15,8 @@ export default function LoginForm (){
 
 function Footer (){
   return (
-    <div className='flexRow' style={{'justifyContent': 'space-between', 'width': '100%'}}>
-      <p>Forgot Password?</p>
+    <div className='flexRow' style={{'justifyContent': 'space-between', 'width': '100%' , 'margin': '0.3em'}}>
+      <a href="google.com">Forgot Password?</a>
       <Submit/>
     </div>
   )
