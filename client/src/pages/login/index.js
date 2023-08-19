@@ -19,15 +19,19 @@ function Form () {
   var [loginScreen, setLoginScreen] = useState(true);
   var loginStyle = useRef({});
   var signUpStyle = useRef({'opacity': '0.2'});
+  var slideDirection = useRef('');
 
   var setForm = (bool)=>{
     if (!bool) {
       loginStyle.current = {'opacity': '0.2'};
       signUpStyle.current = {};
+      slideDirection.current = 'slideRight';
 
     } else {
       signUpStyle.current = {'opacity': '0.2'};
       loginStyle.current = {};
+      slideDirection.current = 'slideLeft';
+
     }
 
     setLoginScreen(bool);
@@ -36,6 +40,7 @@ function Form () {
   return (
     <div className='center card flexColumn' style={{"width":"92vw", 'maxWidth': '330px'}}>
       <Header setForm={setForm} loginStyle={loginStyle.current} signUpStyle={signUpStyle.current}/>
+      <Slider slideDirection={slideDirection.current}/>
       {loginScreen ? (
         <LoginForm/>
       ) : (
@@ -54,3 +59,18 @@ function Header({setForm, loginStyle = {}, signUpStyle = {}}){
   );
 }
 
+function Slider({slideDirection}){
+  var style =
+  {
+    width: '4em',
+    'height': '2px',
+    fill: 'white',
+  };
+
+  return (
+    <svg style={{width: 'calc(100% - 3em)', height: '5px', position: 'relative', bottom: '5px'}}>
+      <rect style={style} className={slideDirection}/>
+    </svg>
+
+  );
+}

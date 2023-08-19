@@ -175,7 +175,40 @@ input{
 
   color: inherit;
 
-  margin: 0.5em;
+  margin: 0.3em;
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% - 5em));
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(calc(100% - 5em));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.slideRight {
+  animation-name: slideRight;
+  animation-duration: 0.2s;
+  transform: translateX(calc(100% - 5em));
+  animation-timing-function: linear;
+}
+.slideLeft {
+  animation-name: slideLeft;
+  animation-duration: 0.2s;
+  transform: translateX(0);
+  animation-timing-function: linear;
+
+
 }
 
 .center {
