@@ -1,0 +1,216 @@
+/* https://realtimecolors.com/?colors=f0efef-060818-da071f-0a0e29-de2b40 */
+:root {
+  --text: rgb(240, 239, 239);
+  --background: rgb(6, 8, 24);
+  --primary: rgb(218, 7, 31);
+  --secondary1: rgb(10, 14, 41);
+  --accent: rgb(222, 43, 64);
+
+  --secondary2: rgba(10, 14, 41, 0.6);
+
+  --third: #3e4574;
+
+  --green: #64C489;
+
+  --one: #a581df;
+  --two:#897cde;
+  --three: #9db8e7;
+  --four: #5ca7d6;
+
+  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+p, h1, h2, h5{
+  margin:0;
+  font-weight: inherit;
+}
+
+body{
+  background-color: var(--background);
+  color: var(--text);
+  font-size: 0.77rem;
+
+  margin: 0;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width:100%;
+  min-width: 257px;
+
+
+
+}
+
+
+
+
+@media (min-width: 360px) {
+  body{
+    font-size: 1rem;
+  }
+}
+
+
+#mainHeader{
+  background-color: var(--secondary1);
+  text-align: center;
+
+  width: 100%;
+  margin-bottom: 15vh;
+
+}
+
+button {
+  background-color: var(--green);
+  border-radius: 10px;
+  padding: 0.5em;
+
+}
+
+
+/* -----------------------------------CARD-------------------------------------- */
+.card{
+  background-color: var(--secondary1);
+  border-radius: 1.5em;
+
+  min-width: 257px;
+  min-height: 257px;
+  max-width: 700px;
+  margin: 1rem;
+
+}
+.cardHeader{
+  width: calc(100% - 3em);
+
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  margin: 0.6em 1.2em;
+
+  font-weight: 500;
+}
+
+
+.cardItem{
+  --padding: 10px;
+
+  background-color: var(--third);
+  border-radius: 0.7em;
+  box-shadow: 0 1px 25px rgba(0,0,0,0.2);
+
+  width: calc(100% - 3em);
+  margin: .5em;
+  padding: var(--padding);
+
+  /* font-size: 1.5rem; */
+  /* font-size: 2vw; */
+
+  font-weight: 400;
+
+  justify-content: space-between;
+}
+
+/* -----------------------------------Table-------------------------------------- */
+
+.table {
+
+  width: 90%;
+  border-collapse: collapse;
+
+}
+
+.tableLabels {
+  width: 95%;
+
+
+  border-bottom: var(--text) 1px solid;
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+}
+
+.tableEntry {
+  width: 100%;
+
+  font-size: 0.8rem;
+  font-weight: 200;
+  padding: 0.2em;
+
+  border-bottom: rgba(255, 255, 255, 0.12) 1px solid;
+
+}
+
+
+.flexColumn{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flexRow{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+}
+
+.form {
+  width: 85%;
+}
+
+input{
+  width: 100%;
+
+  background-color: rgba(62, 69, 116, 0.44);
+  box-shadow: inset 2px 5px 10px rgba(5, 5, 5, 0.2);
+  border: var(--third) 1px solid;
+
+  border-radius: 0.5rem;
+  font-size: 1.3rem;
+  padding: 0.4em;
+
+  color: inherit;
+
+  margin: 0.3em;
+}
+
+@keyframes sliderRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(100% - 5em));
+  }
+}
+
+@keyframes sliderLeft {
+  from {
+    transform: translateX(calc(100% - 5em));
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.sliderRight {
+  animation-name: sliderRight;
+  animation-duration: 0.2s;
+  transform: translateX(calc(100% - 5em));
+  animation-timing-function: linear;
+}
+.sliderLeft {
+  animation-name: sliderLeft;
+  animation-duration: 0.2s;
+  animation-timing-function: linear;
+
+
+}
+
+.center {
+  margin: auto;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState, useRef } from 'react';
-import '../../style.css';
+import '../../styles/style.css';
 import {createRoot} from 'react-dom/client';
 
 import MainHeader from '../../components/MainHeader.jsx';
@@ -25,12 +25,12 @@ function Form () {
     if (!bool) {
       loginStyle.current = {'opacity': '0.2'};
       signUpStyle.current = {};
-      slideDirection.current = 'slideRight';
+      slideDirection.current = 'sliderRight';
 
     } else {
       signUpStyle.current = {'opacity': '0.2'};
       loginStyle.current = {};
-      slideDirection.current = 'slideLeft';
+      slideDirection.current = 'sliderLeft';
 
     }
 

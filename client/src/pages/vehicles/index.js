@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style.css';
+import '../../styles/style.css';
 import { createRoot } from 'react-dom/client';
 
 import MainHeader from '../../components/MainHeader.jsx';
