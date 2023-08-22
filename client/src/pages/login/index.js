@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState, useRef } from 'react';
+import '../../styles/inputs.css'
 import '../../styles/style.css';
 import {createRoot} from 'react-dom/client';
 

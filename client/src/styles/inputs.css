@@ -1,8 +1,9 @@
-input{
+input[type=text], input[type=password]{
   width: 100%;
 
-  background-color: rgba(62, 69, 116, 0.44);
-  box-shadow: inset 2px 5px 10px rgba(5, 5, 5, 0.2);
+  /*  rgba(62, 69, 116, 0.44)*/
+  /*  1a1f42*/
+  background-color: #1f2554;
   border: var(--third) 1px solid;
 
   border-radius: 0.5rem;
@@ -12,6 +13,18 @@ input{
   color: inherit;
 
   margin: 0.3em;
+
+  transition: background-color 0.5s, box-shadow 0.2s;
+}
+
+input:hover{
+  background-color: var(--secondary2);
+
+}
+input:focus{
+  background-color: var(--secondary1);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.663) inset;
+  outline: none;
 }
 
 button {

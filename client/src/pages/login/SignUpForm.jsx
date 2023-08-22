@@ -24,8 +24,8 @@ function Footer (){
 
 function Submit () {
   return (
-    <div className='button'>
+    <button type='button' className='submit'>
       <p>Submit</p>
-    </div>
+    </button>
   )
 }
