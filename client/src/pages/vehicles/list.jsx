@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function List (){
   return (
-    <div className='card flexColumn'style={{width: '92vw', position: 'relative', top: '10vh'}}>
+    <div className='center card flexColumn'style={{width: '92vw'}}>
       <Header/>
       <Body/>
     </div>
@@ -40,7 +40,7 @@ function Vehicle({vehicleData}){
 
 function AddVehicleButton(){
   return (
-    <div id='addVehicleButton'>
+    <div className='button'>
       <p>Add Vehicle</p>
     </div>
   )

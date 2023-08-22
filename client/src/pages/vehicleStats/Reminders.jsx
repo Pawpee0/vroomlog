@@ -5,7 +5,7 @@ export default function Reminders(){
   return (
     <div className='card'>
       <Header/>
-      <Table/>
+      <Table />
     </div>
   );
 };
