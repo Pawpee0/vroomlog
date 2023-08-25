@@ -7,5 +7,6 @@ const firebaseConfig = JSON.parse(process.env.FIREBASE_CONFIG);
 
 const app = initializeApp(firebaseConfig);
 
-module.exports = {cool: 'qwer'};
+const auth = getAuth(app);
 
+export default auth;
