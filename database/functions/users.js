@@ -5,13 +5,14 @@ const database = {};
 
 /*
 {
-  name: string
+  id: string (128)
+  username: string
 }
 */
 database.addUser = function (data){
   return new Promise(async function(fulfill, reject){
     try{
-      await connection.execute(`INSERT INTO Users (name) VALUES ("${data.name}")`)
+      await connection.execute(`INSERT INTO Users (id, username) VALUES ("${data.id}", "${data.name}")`)
       fulfill(200);
     }
     catch(err){
