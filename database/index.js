@@ -12,6 +12,7 @@ async function initializeDatabase () {
   await connection.execute(`CREATE TABLE IF NOT EXISTS Users (
     id char(128) NOT NULL,
     username text NOT NULL,
+    session text,
     PRIMARY KEY (id)
   )`);
 
