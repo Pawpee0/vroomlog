@@ -30,6 +30,10 @@ router.post('/sessionLogin', (req, res)=>{
     );
 });
 
+router.post('/sessionLogout', (req, res) => {
+  res.clearCookie('session');
+  res.redirect('/login');
+});
 
 router.use((req, res, next) => {
   if (req.cookies === undefined) {
