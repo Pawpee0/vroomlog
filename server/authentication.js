@@ -73,7 +73,6 @@ router.post('/sessionLogout', (req, res) => {
 router.use((req, res, next) => {
 
   const sessionCookie = req.cookies.session || '';
-      console.log('cookies', sessionCookie);
       // Verify the session cookie. In this case an additional check is added to detect
       // if the user's Firebase session was revoked, user deleted/disabled, etc.
       getAuth(app)
