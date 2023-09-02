@@ -8,7 +8,7 @@ const database = require('../../database/index.js');
 
 
 router.get('/vehicles/:vehicleId', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../../client/dist/vehiclesStats/vehicleStats.html'));
+  res.sendFile(path.join(__dirname, '../../client/dist/vehicleStats/vehicleStats.html'));
 });
 
 router.get('/vehicles/:vehicleId/data', (req, res)=>{
