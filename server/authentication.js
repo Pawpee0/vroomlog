@@ -31,28 +31,30 @@ router.post('/sessionLogin', (req, res)=>{
 });
 
 router.post('/sessionLogout', (req, res) => {
+  console.log('run');
   res.clearCookie('session');
   res.redirect('/login');
 });
 
-router.use((req, res, next) => {
-  if (req.cookies === undefined) {
-    res.redirect('/login');
-  } else {
-    const sessionCookie = req.cookies.session || '';
-    // Verify the session cookie. In this case an additional check is added to detect
-    // if the user's Firebase session was revoked, user deleted/disabled, etc.
-    getAuth()
-      .verifySessionCookie(sessionCookie, true /** checkRevoked */)
-      .then((decodedClaims) => {
-        next();
-      })
-      .catch((error) => {
-        // Session cookie is unavailable or invalid. Force user to login.
-        res.redirect('/login');
-      });
-  }
 
+router.use((req, res, next) => {
+
+  const sessionCookie = req.cookies.session || '';
+      console.log('cookies', sessionCookie);
+      // Verify the session cookie. In this case an additional check is added to detect
+      // if the user's Firebase session was revoked, user deleted/disabled, etc.
+      getAuth(app)
+        .verifySessionCookie(sessionCookie, true /** checkRevoked */)
+        .then((decodedClaims) => {
+          next();
+        })
+        .catch((error) => {
+          // Session cookie is unavailable or invalid. Force user to login.
+          res.redirect('/login/');
+        });
 });
+
+
+
 
 module.exports = router;
