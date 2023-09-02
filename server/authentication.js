@@ -5,6 +5,39 @@ const app = require('./firebase.js');
 const { getAuth } = require('firebase-admin/auth');
 
 const database = require('../database/functions/users.js');
+const {addUser} = require('../database/functions/users.js');
+
+
+/*
+{
+  id: string(128)
+  username: String
+}
+*/
+
+router.post(`/users/addUser`, async (req, res)=>{
+
+  //verify that the id is valid
+  getAuth(app)
+  .verifyIdToken(req.body.id)
+  .then((decodedToken)=>{
+    console.log('Valid User');
+    const uid = decodedToken.uid;
+
+    //add the user to our database
+    console.log(uid);
+
+    addUser({id: decodedToken.uid, username: req.body.username})
+    .then((response)=>{
+      res.sendStatus(response);
+    })
+    .catch((err)=>{
+      res.send(err);
+    })
+  })
+  .catch((err)=>{res.send(err)});
+});
+
 
 router.post('/sessionLogin', (req, res)=>{
   // Get the ID token passed and the CSRF token.

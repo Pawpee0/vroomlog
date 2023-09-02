@@ -5,22 +5,11 @@ const path = require('path');
 const database = require('../../database/functions/users.js');
 const {addVehicle, getUsersVehicles} = require('../../database/functions/vehicles.js');
 
-/*
-{
-  name: String
-}
-*/
 
-//       user/addUser
-router.post(`/addUser`, async (req, res)=>{
-  try{
-    var response = await database.addUser(req.body);
-    res.send(response);
-  }
-  catch(err){
-    res.send(err);
-  }
-});
+const {getAuth} = require('firebase-admin/auth');
+const {app} = require('../firebase.js');
+
+
 
 
 /*
