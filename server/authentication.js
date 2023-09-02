@@ -78,6 +78,7 @@ router.use((req, res, next) => {
       getAuth(app)
         .verifySessionCookie(sessionCookie, true /** checkRevoked */)
         .then((decodedClaims) => {
+          req.body.id_Users = decodedClaims.uid;
           next();
         })
         .catch((error) => {
