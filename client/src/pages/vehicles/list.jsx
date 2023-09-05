@@ -1,12 +1,31 @@
 import React from 'react';
+import {useEffect, useState} from 'react';
+
+import axios from 'axios';
 
 export default function List ({onShow}){
+
+  var [vehicleList, setVehicleList] = useState([]);
+
+  useEffect(()=>{
+    console.log('running');
+    axios.get('/user/vehicles/list')
+    .then((response)=>{
+      setVehicleList(response.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  },[]);
+
   return (
     <div className='center card flexColumn'style={{width: '92vw'}}>
       <Header onShow={onShow}/>
-      <Body/>
+      <Body vehicleList={vehicleList}/>
     </div>
   );
+
+
 };
 
 
@@ -19,12 +38,14 @@ function Header({onShow}){
   )
 }
 
-function Body(){
+function Body({vehicleList}){
   return (
     <div className='flexColumn'>
-      <Vehicle vehicleData={{make: 'Nissan', model: 'Altima', year: 2012}}/>
-      <Vehicle vehicleData={{make: 'Yamaha', model: 'R3', year: 2015}}/>
-      <Vehicle vehicleData={{make: 'Ford', model: 'F-350', year: 2014}}/>
+      {vehicleList.map((vehicle)=>{
+        return (
+          <Vehicle vehicleData={vehicle}/>
+        )
+      })}
     </div>
   )
 }
