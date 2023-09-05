@@ -17,7 +17,7 @@ const root = createRoot(document.getElementById('app'));
 
 function App (){
 
-  var [showAddVehicleModal, setShowAddVehicleModal] = useState(false);
+  var [showAddVehicleModal, setShowAddVehicleModal] = useState(true);
 
   onAuthStateChanged(auth, (user)=>{
     if (user) {
