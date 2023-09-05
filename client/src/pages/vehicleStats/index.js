@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../style.css';
+import '../../styles/style.css';
 import {createRoot} from 'react-dom/client';
 
 import MainHeader from '../../components/MainHeader.jsx';
@@ -10,7 +10,7 @@ const root = createRoot(document.getElementById('app'));
 
 root.render(
   <MainHeader>
-    <div className='flexRow center' style={{'maxWidth': '700px', 'width': '100%', 'justifyContent': 'space-around'}}>
+    <div className='flexRow center' style={{'maxWidth': '700px', 'width': '100%', 'justifyContent': 'space-around', 'flexWrap':'wrap'}}>
       <Miles/>
       <Reminders/>
     </div>

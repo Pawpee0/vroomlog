@@ -10,20 +10,16 @@ const connection = mysql.createConnection({
 async function initializeDatabase () {
 
   await connection.execute(`CREATE TABLE IF NOT EXISTS Users (
-    id int NOT NULL AUTO_INCREMENT,
-    name text NOT NULL,
+    id char(128) NOT NULL,
+    username text NOT NULL,
+    session text,
     PRIMARY KEY (id)
   )`);
 
-  await connection.execute(`CREATE TABLE IF NOT EXISTS Users (
-    id int NOT NULL AUTO_INCREMENT,
-    name text NOT NULL,
-    PRIMARY KEY (id)
-  )`);
 
   await connection.execute(`CREATE TABLE IF NOT EXISTS Vehicles (
     id int NOT NULL AUTO_INCREMENT,
-    id_Users int NOT NULL,
+    id_Users char(128) NOT NULL,
     year int NOT NULL,
     make text NOT NULL,
     model text NOT NULL,

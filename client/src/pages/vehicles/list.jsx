@@ -1,30 +1,51 @@
 import React from 'react';
+import {useEffect, useState} from 'react';
 
-export default function List (){
+import axios from 'axios';
+
+export default function List ({onShow}){
+
+  var [vehicleList, setVehicleList] = useState([]);
+
+  useEffect(()=>{
+    console.log('running');
+    axios.get('/user/vehicles/list')
+    .then((response)=>{
+      setVehicleList(response.data);
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  },[]);
+
   return (
-    <div className='card flexColumn'style={{width: '92vw', position: 'relative', top: '10vh'}}>
-      <Header/>
-      <Body/>
+    <div className='center card flexColumn'style={{width: '92vw'}}>
+      <Header onShow={onShow}/>
+      <Body vehicleList={vehicleList}/>
     </div>
   );
+
+
 };
 
 
-function Header(){
+function Header({onShow}){
   return (
     <div className='cardHeader flexRow'>
       <h2>My Vehicles</h2>
-      <AddVehicleButton/>
+      <AddVehicleButton onShow={onShow}/>
     </div>
   )
 }
 
-function Body(){
+function Body({vehicleList}){
   return (
     <div className='flexColumn'>
-      <Vehicle vehicleData={{make: 'Nissan', model: 'Altima', year: 2012}}/>
-      <Vehicle vehicleData={{make: 'Yamaha', model: 'R3', year: 2015}}/>
-      <Vehicle vehicleData={{make: 'Ford', model: 'F-350', year: 2014}}/>
+      {vehicleList.map((vehicle)=>{
+        return (
+          <Vehicle vehicleData={vehicle}/>
+        )
+      })}
     </div>
   )
 }
@@ -38,9 +59,9 @@ function Vehicle({vehicleData}){
   )
 }
 
-function AddVehicleButton(){
+function AddVehicleButton({onShow}){
   return (
-    <div id='addVehicleButton'>
+    <div className='button' onClick={onShow}>
       <p>Add Vehicle</p>
     </div>
   )

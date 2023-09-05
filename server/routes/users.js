@@ -5,22 +5,11 @@ const path = require('path');
 const database = require('../../database/functions/users.js');
 const {addVehicle, getUsersVehicles} = require('../../database/functions/vehicles.js');
 
-/*
-{
-  name: String
-}
-*/
 
-//       user/addUser
-router.post(`/addUser`, async (req, res)=>{
-  try{
-    var response = await database.addUser(req.body);
-    res.send(response);
-  }
-  catch(err){
-    res.send(err);
-  }
-});
+const {getAuth} = require('firebase-admin/auth');
+const {app} = require('../firebase.js');
+
+
 
 
 /*
@@ -31,9 +20,9 @@ req.body = {
   color
 }
 */
-router.post('/:userId/vehicles/list', async(req, res)=>{
+router.post('/vehicles/list', async(req, res)=>{
   try{
-    var response = await addVehicle({id_Users: req.params.userId, ...req.body});
+    var response = await addVehicle(req.body);
     res.send(response);
   }
   catch(err) {
@@ -41,9 +30,9 @@ router.post('/:userId/vehicles/list', async(req, res)=>{
   }
 });
 
-router.get('/:userId/vehicles/list', async(req, res)=>{
+router.get('/vehicles/list', async(req, res)=>{
   try{
-    var response = await getUsersVehicles(req.params.userId)
+    var response = await getUsersVehicles(req.body.id_Users)
     res.send(response);
   }
   catch(err) {
