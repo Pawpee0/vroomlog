@@ -4,7 +4,7 @@ const database = {};
 
 database.getUsersVehicles = function (id_Users){
   return new Promise(function(fulfill, reject){
-    connection.execute(`SELECT * FROM Vehicles WHERE id_Users = ${id_Users}`, function(err, results, fields){
+    connection.execute(`SELECT * FROM Vehicles WHERE id_Users = "${id_Users}"`, function(err, results, fields){
 
       if (err) {
         reject(err);
