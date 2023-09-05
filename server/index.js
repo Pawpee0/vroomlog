@@ -30,7 +30,7 @@ app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
 
 
-app.use('/users', users);
+app.use('/user', users);
 app.use('/', miles);
 app.use('/', vehicleData);
 app.use('/', parts);
