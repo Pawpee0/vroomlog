@@ -74,6 +74,7 @@ body{
   background-color: var(--secondary1);
   border-radius: 1.5em;
 
+  box-shadow:7px 3px 0px rgba(0,0,0,0.2);
   min-width: 257px;
   min-height: 257px;
   max-width: 700px;
@@ -97,7 +98,7 @@ body{
 
   background-color: var(--third);
   border-radius: 0.7em;
-  box-shadow: 0 1px 25px rgba(0,0,0,0.2);
+  box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 
   width: calc(100% - 3em);
   margin: .5em;
