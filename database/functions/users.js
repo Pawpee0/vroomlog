@@ -22,5 +22,18 @@ database.addUser = function (data){
   });
 }
 
+// database.addSession = function (id, session){
+//   return new Promise(async function (fulfill, reject){
+//     try {
+//       //add session to user in database
+//       var response = await connection.execute(`UPDATE Users SET session = "${session}" WHERE Users.id = "${id}"`);
+//       fulfill(200);
+//     }
+//     catch(err){
+//       reject(err);
+//     }
+//   });
+// }
+
 
 module.exports = database;

@@ -21,7 +21,6 @@ req.body = {
 }
 */
 router.post('/vehicles/list', async(req, res)=>{
-  console.log('got request');
   try{
     var response = await addVehicle(req.body);
     res.send(response);
@@ -31,9 +30,9 @@ router.post('/vehicles/list', async(req, res)=>{
   }
 });
 
-router.get('/:userId/vehicles/list', async(req, res)=>{
+router.get('/vehicles/list', async(req, res)=>{
   try{
-    var response = await getUsersVehicles(req.params.userId)
+    var response = await getUsersVehicles(req.body.id_Users)
     res.send(response);
   }
   catch(err) {
