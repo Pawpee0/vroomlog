@@ -21,6 +21,7 @@ req.body = {
 }
 */
 router.post('/vehicles/list', async(req, res)=>{
+  console.log('got request');
   try{
     var response = await addVehicle(req.body);
     res.send(response);

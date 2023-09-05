@@ -27,7 +27,7 @@ database.getUsersVehicles = function (id_Users){
 database.addVehicle = function (body) {
   return new Promise(function(fulfill, reject){
     connection.execute(`INSERT INTO Vehicles (id_Users, year, make, model, color)
-    VALUES (${body.id_Users},${body.year}, "${body.make}", "${body.model}", "${body.color}")`, function(err, results, fields){
+    VALUES ("${body.id_Users}",${body.year}, "${body.make}", "${body.model}", "${body.color}")`, function(err, results, fields){
 
       if (err) {
         reject(err);
