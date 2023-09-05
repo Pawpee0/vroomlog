@@ -1,20 +1,20 @@
 import React from 'react';
 
-export default function List (){
+export default function List ({onShow}){
   return (
     <div className='center card flexColumn'style={{width: '92vw'}}>
-      <Header/>
+      <Header onShow={onShow}/>
       <Body/>
     </div>
   );
 };
 
 
-function Header(){
+function Header({onShow}){
   return (
     <div className='cardHeader flexRow'>
       <h2>My Vehicles</h2>
-      <AddVehicleButton/>
+      <AddVehicleButton onShow={onShow}/>
     </div>
   )
 }
@@ -38,9 +38,9 @@ function Vehicle({vehicleData}){
   )
 }
 
-function AddVehicleButton(){
+function AddVehicleButton({onShow}){
   return (
-    <div className='button'>
+    <div className='button' onClick={onShow}>
       <p>Add Vehicle</p>
     </div>
   )

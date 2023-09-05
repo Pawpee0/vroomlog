@@ -1,62 +1,63 @@
 import React from 'react';
 
-import { useState} from 'react';
+import { useState, useRef} from 'react';
 
-import { Box, Paper, Stack, Typography, Button, Dialog, TextField} from '@mui/material';
-
+import TextInput from '../../components/miniComponents/TextInput.jsx';
+import ModalWindow from '../../components/miniComponents/ModalWindow.jsx';
 import axios from 'axios';
 
-export default function addVehicle({open, onClose}){
+export default function AddVehicle({open, onClose}){
 
-  var [year, setYear] = useState(0);
-  var [make, setMake] = useState('');
-  var [model, setModel] = useState('');
+
+
+  var newVehicleData = useRef({});
+
 
   var submitForm = ()=>{
 
-    axios.post('/vehicleList',{
-      year: year,
-      make: make,
-      model: model
-    })
+    axios.post('/user/vehicles/list',{...newVehicleData.current})
     .then((response)=>{
       location.reload();
     });
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth='lg'>
-      <Paper sx={{'height': '50vh', 'width':'50vw'}}>
-
-
+    <ModalWindow onClose={onClose}>
       <Header/>
-      <Form year={year}setYear={setYear} setMake={setMake} setModel={setModel} submitForm={submitForm}/>
+      <Body newVehicleData={newVehicleData}/>
+      <Footer submitForm={submitForm}/>
+    </ModalWindow>
 
-
-
-      </Paper>
-    </Dialog>
   )
 };
 
-function Header(){
+
+function Header (){
   return (
-    <Box sx={{backgroundColor: '#181818', maxWidth: '100%', padding:'15px'}}>
-      <Typography variant='h5'>Add New Vehicle</Typography>
-    </Box>
+    <div className='cardHeader flexRow'>
+      <h2>Add Vehicle</h2>
+    </div>
   )
-}
+};
 
-function Form ({setYear, setMake, setModel, submitForm}){
-
-
+function Body ({newVehicleData}){
   return (
-    <Stack direction="column" alignItems='center' spacing={2} sx={{margin: '20px'}}>
-        <TextField label="Year" type='number' onChange={(e)=>{setYear(e.target.value)}}></TextField>
-        <TextField label="Make" onChange={(e)=>{setMake(e.target.value)}}></TextField>
-        <TextField label="Model" onChange={(e)=>{setModel(e.target.value)}}></TextField>
+    <form className='center flexColumn form'>
+      <TextInput type='number' placeholder='Year' onChange={(e)=>{newVehicleData.current.year = e.target.value}}/>
+      <TextInput placeholder='Make' onChange={(e)=>{newVehicleData.current.make = e.target.value}}/>
+      <TextInput placeholder='Model' onChange={(e)=>{newVehicleData.current.model = e.target.value}}/>
+      <TextInput placeholder='Color' onChange={(e)=>{newVehicleData.current.color = e.target.value}}/>
 
-        <Button variant='contained' color='success' onClick={submitForm}>Submit</Button>
-      </Stack>
+    </form>
+  )
+};
+
+function Footer({submitForm}){
+  return (
+    <div className='center flexRow'>
+      <button type='button' className='button' onClick={submitForm}>
+        <p>Submit</p>
+      </button>
+    </div>
   )
 }
