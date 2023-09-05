@@ -39,20 +39,25 @@ function Header({onShow}){
 }
 
 function Body({vehicleList}){
+
   return (
     <div className='flexColumn'>
-      {vehicleList.map((vehicle)=>{
+      {vehicleList.map((vehicle, key)=>{
         return (
-          <Vehicle vehicleData={vehicle}/>
+          <Vehicle vehicleData={vehicle} key={key}/>
         )
       })}
     </div>
   )
 }
 
+function redirect (id_Vehicle){
+  window.location.href=`${window.location.href}${id_Vehicle}`;
+}
+
 function Vehicle({vehicleData}){
   return (
-    <div className='flexRow cardItem'>
+    <div className='flexRow cardItem' onClick={()=>{redirect(vehicleData.id)}}>
       <p>{vehicleData.make} {vehicleData.model}</p>
       <p>{vehicleData.year}</p>
     </div>
