@@ -27,7 +27,6 @@ module.exports = {
     ]
   },
   entry: {
-    vehicleHistory: './client/src/pages/vehicleHistory/index.js',
     vehicles: './client/src/pages/vehicles/index.js',
     vehicleStats: './client/src/pages/vehicleStats/index.js',
     login: './client/src/pages/login/index.js'
