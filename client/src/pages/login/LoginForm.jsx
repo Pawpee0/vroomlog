@@ -34,7 +34,7 @@ function Footer ({loginData}){
 
 function Submit ({loginData}) {
   return (
-    <button type='button' className='submit' onClick={()=>{Login(loginData.current.Email, loginData.current.Password);}}>
+    <button type='button' className='green' onClick={()=>{Login(loginData.current.Email, loginData.current.Password);}}>
       <p>Submit</p>
     </button>
   )
