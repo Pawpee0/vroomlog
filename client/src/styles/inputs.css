@@ -4,7 +4,10 @@ input[type=text], input[type=password], input[type=email], input[type=number]{
   /*  rgba(62, 69, 116, 0.44)*/
   /*  1a1f42*/
   background-color: #1f2554;
+  box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
+
   border: var(--third) 1px solid;
+
 
   border-radius: 0.5rem;
   font-size: 1.3rem;

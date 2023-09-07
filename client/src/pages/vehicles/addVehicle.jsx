@@ -3,30 +3,50 @@ import React from 'react';
 import { useState, useRef} from 'react';
 
 import TextInput from '../../components/miniComponents/TextInput.jsx';
-import ModalWindow from '../../components/miniComponents/ModalWindow.jsx';
+import ModalWindow from '../../components/ModalWindow.jsx';
+import ErrorBar from '../../components/ErrorBar.jsx';
 import axios from 'axios';
 
 export default function AddVehicle({open, onClose}){
 
-
-
   var newVehicleData = useRef({});
+  var error = useRef('');
+  var [showError, setShowError] = useState(false);
+
 
 
   var submitForm = ()=>{
 
-    axios.post('/user/vehicles/list',{...newVehicleData.current})
-    .then((response)=>{
-      location.reload();
-    });
+    //check the input data
+    //setShowError(false);
+    error.current = '';
+    if (newVehicleData.current.model == null){error.current = ('Please enter a model');}
+    else if (newVehicleData.current.make == null){error.current = ('Please enter a make');}
+    else if (newVehicleData.current.year == null){error.current = ('Please enter a valid year');}
+    else {setShowError(false)};
+
+    if (error.current === '') {
+      axios.post('/user/vehicles/list', {...newVehicleData.current})
+      .then((response)=>{
+        location.reload();
+      });
+    } else {
+      setShowError(error.current);
+    }
   };
 
   return (
+    <>
     <ModalWindow onClose={onClose}>
       <Header/>
       <Body newVehicleData={newVehicleData}/>
       <Footer submitForm={submitForm}/>
+
+      {showError && <ErrorBar><p>{error.current}</p></ErrorBar>}
+
     </ModalWindow>
+    </>
+
 
   )
 };
@@ -54,7 +74,7 @@ function Body ({newVehicleData}){
 
 function Footer({submitForm}){
   return (
-    <div className='center flexRow'>
+    <div className='center flexRow' style={{margin: '0.5rem 0rem 1.1rem 0rem'}}>
       <button type='button' className='button' onClick={submitForm}>
         <p>Submit</p>
       </button>
