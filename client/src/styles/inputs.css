@@ -66,3 +66,14 @@ button.green:active {
 
 }
 
+#monthSelector{
+  background-color: inherit;
+  color:inherit;
+  border: 0;
+  outline: none;
+  font-size: 1.5rem;
+}
+
+#monthsSelector > option{
+  font-size: 0.4rem;
+}

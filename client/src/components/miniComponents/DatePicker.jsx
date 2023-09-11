@@ -1,21 +1,24 @@
 import React from 'react';
 
+import {useState, useRef, useEffect} from 'react';
+
 import ModalWindow from '../ModalWindow.jsx';
 import TextInput from './TextInput.jsx';
 
-export default function DatePicker (){
+export default function DatePicker ({onChange}){
+  var [date, setDate] = useState(new Date());
+
+
   return (
     <>
     <TextInput type={'text'} placeholder={'mm/dd/yyyy'} readonly={true}/>
-    <Calendar/>
+    <Calendar month={date.getMonth() + 1} year={date.getFullYear()}/>
     </>
   );
 }
 
-function Calendar (){
+function Calendar ({month, year}){
 
-  var month = 'September';
-  var year = '2023';
   return (
     <ModalWindow>
       <Header month={month} year={year}/>
@@ -25,13 +28,29 @@ function Calendar (){
 };
 
 function Header({month, year}){
+  var monthsArr = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
   return (
     <div className='cardHeader flexRow'>
-      <h2>{month}</h2>
+      <select id='monthSelector'>
+        {monthsArr.map((name, key)=>{
+          if (key === month - 1) {
+            return (
+              <option value={name} selected>{name}</option>
+            )
+          } else {
+            return (
+              <option value={name}>{name}</option>
+            )
+          }
+        })}
+      </select>
       <h2>{year}</h2>
     </div>
   )
 }
+
+
 
 function Body ({month, year}){
   //get the first day of the year
@@ -50,11 +69,10 @@ function Body ({month, year}){
         break;
       }
       if (weekNum === 0 && day < firstDay) {
-        week.push(<th></th>);
+        week.push(<td></td>);
       } else {
-        week.push(<th className='calendarDate'>{dayNum}</th>);
+        week.push(<td className='calendarDate'>{dayNum}</td>);
         dayNum++;
-        console.log(dayNum)
 
       }
 

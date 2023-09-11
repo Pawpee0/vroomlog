@@ -142,7 +142,7 @@ body{
 
 }
 
-/* -----------------------------------Table-------------------------------------- */
+/* -----------------------------------Calendar-------------------------------------- */
 
 .calendar {
 
@@ -167,7 +167,7 @@ body{
 .calendarDate {
   padding:0.5em;
   border-radius: 1em;
-
+  text-align: center;
   transition: background-color 0.5s;
 }
 
@@ -175,7 +175,15 @@ body{
 .calendarDate:hover{
   background-color: var(--third);
 }
+/* -----------------------------------Dropdown-------------------------------------- */
 
+.dropdown{
+  position: absolute;
+  background-color: var(--secondary1);
+  list-style-type: none;
+  margin: 0;
+  padding:0;
+}
 
 /*----------------------------------------Modal Window-------------------------------------------- */
 
