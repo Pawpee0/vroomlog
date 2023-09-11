@@ -13,19 +13,22 @@ export default function DatePicker (){
 }
 
 function Calendar (){
+
+  var month = 'September';
+  var year = '2023';
   return (
     <ModalWindow>
-      <Header/>
-      <Body month={'march'} year={'2004'}/>
+      <Header month={month} year={year}/>
+      <Body month={month} year={year}/>
     </ModalWindow>
   )
 };
 
-function Header(){
+function Header({month, year}){
   return (
     <div className='cardHeader flexRow'>
-      <h2>April</h2>
-      <h2>2004</h2>
+      <h2>{month}</h2>
+      <h2>{year}</h2>
     </div>
   )
 }
@@ -49,7 +52,7 @@ function Body ({month, year}){
       if (weekNum === 0 && day < firstDay) {
         week.push(<th></th>);
       } else {
-        week.push(<th>{dayNum}</th>);
+        week.push(<th className='calendarDate'>{dayNum}</th>);
         dayNum++;
         console.log(dayNum)
 

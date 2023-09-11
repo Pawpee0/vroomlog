@@ -23,7 +23,7 @@
 
 }
 
-p, h1, h2, h5{
+p, h1, h2, h5, th{
   margin:0;
   font-weight: inherit;
 }
@@ -141,6 +141,41 @@ body{
   border-bottom: rgba(255, 255, 255, 0.12) 1px solid;
 
 }
+
+/* -----------------------------------Table-------------------------------------- */
+
+.calendar {
+
+  width: 90%;
+  border-collapse: collapse;
+
+  border-spacing: 0.5em;
+}
+
+.calendarDays {
+  width: 95%;
+
+
+  border-bottom: var(--text) 1px solid;
+
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+
+  opacity: .50;
+}
+
+.calendarDate {
+  padding:0.5em;
+  border-radius: 1em;
+
+  transition: background-color 0.5s;
+}
+
+
+.calendarDate:hover{
+  background-color: var(--third);
+}
+
 
 /*----------------------------------------Modal Window-------------------------------------------- */
 
