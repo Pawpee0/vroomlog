@@ -1,28 +1,45 @@
 import React from 'react';
+import {useRef} from 'react';
 
-import { useState} from 'react';
-
-import { Box, Paper, Stack, Typography, Button, Dialog, TextField} from '@mui/material';
-import {LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-
+import ModalWindow from './ModalWindow.jsx';
 
 import axios from 'axios';
 
-export default function AddMiles({carId, open, onClose}){
+export default function AddMiles ({id_Vehicles, setCloseState}){
 
-  var [mileage, setMileage] = useState(0);
-  var [dateOccured, setDateOccured] = useState('');
+  return (
+    <ModalWindow setCloseState={setCloseState}>
+      <Header/>
+      <Body id_Vehicles={id_Vehicles}/>
+    </ModalWindow>
+  );
+};
 
-  var submitForm = ()=>{
-    axios.post(`/vehicles/${carId}/data/miles`,{
-      carId: carId,
-      mileage: mileage,
-      dateAdded: new Date().toISOString(),
-      dateOccured: dateOccured
-    })
+function Header (){
+  return (
+    <div className='cardHeader'>
+      <h2>Add Miles</h2>
+    </div>
+  )
+};
+
+function Body ({id_Vehicles}){
+
+  var MileageEntry = useRef({
+    id_Vehicles: id_Vehicles,
+    dateAdded: new Date().toISOString()
+  });
+
+  var updateMileageEntry = (e)=>{
+    MileageEntry.current[e.target.name] = e.target.value;
+  }
+
+  var submitMileage = ()=>{
+    MileageEntry.current.dateOccured = MileageEntry.current.dateOccured.concat('T00:00:00Z');
+    console.log(MileageEntry.current);
+    axios.post(`/vehicles/${id_Vehicles}/data/miles`, MileageEntry.current)
     .then((response)=>{
-      location.reload();
+      console.log(response);
     })
     .catch((err)=>{
       console.log(err);
@@ -30,41 +47,13 @@ export default function AddMiles({carId, open, onClose}){
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth='lg'>
-      <Paper sx={{'height': '50vh', 'width':'50vw'}}>
-
-
-      <Header/>
-      <Form setMileage={setMileage} setDateOccured={setDateOccured} submitForm={submitForm}/>
-
-
-
-      </Paper>
-    </Dialog>
-  )
-};
-
-function Header(){
-  return (
-    <Box sx={{backgroundColor: '#181818', maxWidth: '100%', padding:'15px'}}>
-      <Typography variant='h5'>Add Miles</Typography>
-    </Box>
+    <form className='flexColumn form'>
+      <input name='dateOccured' type='date' max={new Date().toISOString().slice(0,-14)} onChange={updateMileageEntry}></input>
+      <input name='mileage' type='number' placeholder='Miles Traveled' min={1} onChange={updateMileageEntry}></input>
+      <button type='button' className='green' onClick={submitMileage}>Submit</button>
+    </form>
   )
 }
 
-function Form ({setMileage, setDateOccured, submitForm}){
 
 
-  return (
-    <Stack direction="column" alignItems='center' spacing={2} sx={{margin: '20px'}}>
-        <TextField label="Miles" type='number' onChange={(e)=>{setMileage(e.target.value)}}></TextField>
-
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DatePicker label="Date Traveled" onChange={(value)=>{setDateOccured(new Date(value.$d).toISOString())}}/>
-
-        </LocalizationProvider>
-
-        <Button variant='contained' color='success' onClick={submitForm}>Submit</Button>
-      </Stack>
-  )
-}
