@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/style.css';
+import '../../styles/inputs.css';
 import {createRoot} from 'react-dom/client';
 
 import MainHeader from '../../components/MainHeader.jsx';
