@@ -66,8 +66,8 @@ function Vehicle({vehicleData}){
 
 function AddVehicleButton({onShow}){
   return (
-    <div className='button' onClick={onShow}>
+    <button type='button' className='green' onClick={onShow}>
       <p>Add Vehicle</p>
-    </div>
+    </button>
   )
 }

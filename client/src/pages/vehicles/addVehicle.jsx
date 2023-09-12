@@ -7,7 +7,7 @@ import ModalWindow from '../../components/ModalWindow.jsx';
 import ErrorBar from '../../components/ErrorBar.jsx';
 import axios from 'axios';
 
-export default function AddVehicle({open, onClose}){
+export default function AddVehicle({ setCloseState}){
 
   var newVehicleData = useRef({});
   var error = useRef('');
@@ -37,7 +37,7 @@ export default function AddVehicle({open, onClose}){
 
   return (
     <>
-    <ModalWindow onClose={onClose}>
+    <ModalWindow setCloseState={setCloseState}>
       <Header/>
       <Body newVehicleData={newVehicleData}/>
       <Footer submitForm={submitForm}/>

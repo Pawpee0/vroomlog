@@ -17,7 +17,7 @@ const root = createRoot(document.getElementById('app'));
 
 function App (){
 
-  var [showAddVehicleModal, setShowAddVehicleModal] = useState(true);
+  var [showAddVehicleModal, setShowAddVehicleModal] = useState(false);
 
   onAuthStateChanged(auth, (user)=>{
     if (user) {
@@ -29,7 +29,7 @@ function App (){
   return (
     <MainHeader>
      <List onShow={(e)=>{setShowAddVehicleModal(true)}}/>
-     {showAddVehicleModal && <AddVehicle onClose={(e)=>{if(e.target === document.getElementById("modalBase")){setShowAddVehicleModal(false)} }}/>}
+     {showAddVehicleModal && <AddVehicle setCloseState={setShowAddVehicleModal}/>}
     </MainHeader>
 
   )
