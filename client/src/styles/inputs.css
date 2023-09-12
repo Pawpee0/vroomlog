@@ -1,4 +1,4 @@
-input[type=text], input[type=password], input[type=email], input[type=number]{
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=date]{
   width: 100%;
 
   /*  rgba(62, 69, 116, 0.44)*/
