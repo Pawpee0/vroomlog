@@ -22,7 +22,8 @@ database.getMileageEntriesByVehicleId = function (id_Vehicles) {
   dateOccured: date
 }
 */
-database.addMileageEntry = function (data){
+database.addMileageEntry = function (inputData){
+  console.log('running');
   return new Promise (function(fulfill, reject){
     connection.execute(`INSERT INTO MileageEntries (id_Vehicles, mileage, dateAdded, dateOccured)
     VALUES (${inputData.id_Vehicles}, ${inputData.mileage}, "${inputData.dateAdded}", "${inputData.dateOccured}")`, function(err, results, fields){

@@ -23,13 +23,14 @@ router.get('/vehicles/:vehicleId/data/miles', (req, res)=>{
   dateOccured: Date ISO string
 }
 */
-router.post('vehicles/:vehicleId/data/miles', (req, res)=>{
+router.post('/vehicles/:idVehicles/data/miles', (req, res)=>{
   //format the dates
   req.body.dateAdded = formatDateTime(req.body.dateAdded);
   req.body.dateOccured = formatDateTime(req.body.dateOccured);
 
   //add entry to database
-  database.addMileageEntry({id_Vehicles: req.params.vehicleId, ...req.body})
+  console.log(req.body);
+  database.addMileageEntry(req.body)
   .then((response)=>{
     res.send(response);
   })
