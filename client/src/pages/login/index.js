@@ -5,7 +5,7 @@ import '../../styles/style.css';
 import {createRoot} from 'react-dom/client';
 
 import MainHeader from '../../components/MainHeader.jsx';
-import LoginForm from './LogInForm.jsx';
+import LoginForm from './LoginForm.jsx';
 import SignUpForm from './SignUpForm.jsx';
 
 const root = createRoot(document.getElementById('app'));
