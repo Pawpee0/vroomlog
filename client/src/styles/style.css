@@ -61,7 +61,7 @@ body{
   text-align: center;
 
   /* width: 100vw; */
-  margin-bottom: 15vh;
+  margin-bottom: 10vh;
   padding: 0.5em
 
 }
@@ -92,6 +92,9 @@ body{
   font-weight: 500;
 }
 
+.cardBody{
+  width: calc(100% - 3em);
+}
 
 .cardItem{
   --padding: 10px;
@@ -100,7 +103,7 @@ body{
   border-radius: 0.7em;
   box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 
-  width: calc(100% - 3em);
+  width: calc(100%);
   margin: .5em;
   padding: var(--padding);
 
@@ -213,7 +216,6 @@ body{
 }
 
 .flexColumn{
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -230,7 +232,11 @@ body{
   width: 85%;
 }
 
+/*-------------------------------------Line Graph---------------------------------------------------*/
 
+.linegraph {
+  background-color: var(--third);
+}
 
 @keyframes sliderRight {
   from {

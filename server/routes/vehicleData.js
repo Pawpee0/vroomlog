@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require('path');
 
 
-const database = require('../../database/index.js');
+const database = require('../../database/functions/vehicles.js');
 
 
 
@@ -11,9 +11,9 @@ router.get('/vehicles/:vehicleId', (req, res)=>{
   res.sendFile(path.join(__dirname, '../../client/dist/vehicleStats/vehicleStats.html'));
 });
 
-router.get('/vehicles/:vehicleId/data', (req, res)=>{
+router.get('/vehicles/:id_Vehicles/data', (req, res)=>{
 
-  database.getVehicleDataById(req.params.vehicleId)
+  database.getVehicleDataById(req.params.id_Vehicles)
   .then((results)=>{
     res.send(results[0]);
   });

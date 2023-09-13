@@ -18,9 +18,10 @@ export default function LineGraph({xAxis, yAxis, width, height}){
     for (var x = 0; x < xAxis.length; x++) {
       console.log((xAxis[x]/xMax)/width);
       ctx.lineTo((xAxis[x]/xMax)*width, height - (yAxis[x]/yMax)*height);
+      ctx.lineWidth = 3;
       ctx.stroke();
     }
-  },[]);
+  },[xAxis, yAxis]);
   return (
     <canvas id='mileageGraph' className='linegraph' width={width} height={height}>
 

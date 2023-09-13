@@ -41,7 +41,7 @@ function Header({onShow}){
 function Body({vehicleList}){
 
   return (
-    <div className='flexColumn'>
+    <div className='flexColumn cardBody'>
       {vehicleList.map((vehicle, key)=>{
         return (
           <Vehicle vehicleData={vehicle} key={key}/>
