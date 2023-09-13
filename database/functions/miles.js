@@ -4,7 +4,7 @@ const database = {};
 
 database.getMileageEntriesByVehicleId = function (id_Vehicles) {
   return new Promise (function(fulfill, reject){
-    connection.execute(`SELECT * FROM MileageEntries WHERE id_Vehicles = ${id_Vehicles}`, function(err, results, fields){
+    connection.execute(`SELECT * FROM MileageEntries WHERE id_Vehicles = ${id_Vehicles} ORDER BY dateOccured`, function(err, results, fields){
       if (err) {
         reject (err);
       } else {
