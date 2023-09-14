@@ -63,7 +63,7 @@ function Login (email, password){
       })
       .then((response)=>{{
         console.log(response);
-        window.location.replace('http://localhost:3000/vehicles');
+        window.location.replace(`${window.location.origin}/vehicles`);
       }});
     })
   })
