@@ -53,7 +53,7 @@ router.post('/sessionLogin', (req, res)=>{
     .then(
       (sessionCookie) => {
         // Set cookie policy for session cookie.
-        const options = { maxAge: expiresIn, httpOnly: true, secure: true, domain:'vroomlog.com' };
+        const options = { maxAge: expiresIn, httpOnly: true, secure: true };
         res.cookie('session', sessionCookie, options);
         res.end(JSON.stringify({ status: 'success' }));
       },
