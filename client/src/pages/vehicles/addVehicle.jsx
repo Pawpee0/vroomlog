@@ -75,7 +75,7 @@ function Body ({newVehicleData}){
 function Footer({submitForm}){
   return (
     <div className='center flexRow' style={{margin: '0.5rem 0rem 1.1rem 0rem'}}>
-      <button type='button' className='button' onClick={submitForm}>
+      <button type='button' className='green' onClick={submitForm}>
         <p>Submit</p>
       </button>
     </div>
