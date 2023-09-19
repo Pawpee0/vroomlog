@@ -237,6 +237,10 @@ body{
 .linegraph {
   background-color: var(--third);
 }
+.linegraphLine {
+  stroke-width: 2;
+  stroke: var(--text);
+}
 
 @keyframes sliderRight {
   from {
