@@ -235,11 +235,21 @@ body{
 /*-------------------------------------Line Graph---------------------------------------------------*/
 
 .linegraph {
-  background-color: var(--third);
+  fill: var(--third);
+  margin: 0.5em;
+
 }
 .linegraphLine {
   stroke-width: 2;
   stroke: var(--text);
+}
+.graphValue {
+  fill: var(--text);
+  font-size: 0.6rem;
+}
+.referenceLine {
+  stroke-width: 1;
+  stroke: rgba(240, 248, 255, 0.242);
 }
 
 @keyframes sliderRight {
