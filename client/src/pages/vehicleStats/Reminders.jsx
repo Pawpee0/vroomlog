@@ -5,7 +5,7 @@ export default function Reminders(){
   return (
     <div className='card'>
       <Header/>
-      <Table />
+      <Table labels={['Name', 'Miles', 'Date']} data={[{Name:'Oil Change',Miles: '115453', Date:'4/30/04'}]}/>
     </div>
   );
 };
