@@ -45,6 +45,8 @@ async function initializeDatabase () {
     id int NOT NULL AUTO_INCREMENT,
     id_Vehicles int NOT NULL,
     mileage int,
+    description text,
+
     dateAdded datetime NOT NULL,
     dateOccured date NOT NULL,
 
