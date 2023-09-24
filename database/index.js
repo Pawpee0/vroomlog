@@ -44,8 +44,9 @@ async function initializeDatabase () {
   await connection.execute(`CREATE TABLE IF NOT EXISTS MaintenanceEntries (
     id int NOT NULL AUTO_INCREMENT,
     id_Vehicles int NOT NULL,
-    mileage int,
+    name text NOT NULL,
     description text,
+    mileage int,
 
     dateAdded datetime NOT NULL,
     dateOccured date NOT NULL,
