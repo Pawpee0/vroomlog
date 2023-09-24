@@ -11,7 +11,7 @@ const database = {};
 }
 */
 database.addMaintenanceEntry = function(data){
-  return new Promise(function (fulfill, reject){
+  return new Promise(async function (fulfill, reject){
     try {
       var response = await connection.execute(`INSERT INTO MaintenanceEntries (id_Vehicles, mileage, dateAdded, dateOccured)
       VALUES (${data.id_Vehicles}, ${data.mileage}, "${data.dateAdded}", "${data.dateOccured}")`);
@@ -25,13 +25,14 @@ database.addMaintenanceEntry = function(data){
 
 database.getMaintenanceEntriesByVehicleId = function(id_Vehicles) {
   return new Promise(function (fulfill, reject){
-    try {
-      var response = await connection.execute(`SELECT * FROM MaintenanceEntries WHERE id_Vehicles = ${id_Vehicles}`);
+    connection.execute(`SELECT * FROM MaintenanceEntries WHERE id_Vehicles = ${id_Vehicles}`)
+    .then((response)=>{
       fulfill(response);
-    }
-    catch(err) {
+    })
+    .catch((err)=>{
       reject(err);
-    }
+    });
+
   });
 }
 
