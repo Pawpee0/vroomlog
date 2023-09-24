@@ -1,33 +1,50 @@
 import React from 'react';
 
-export default function Table (){
+
+/*
+labels = [strings]
+data = [
+  {label: data}
+]
+*/
+
+export default function Table ({labels = [], data = []}){
   return (
     <table className='table center'>
-      <Labels />
-      <Reminder data={{name: 'Oil'}}/>
-      <Reminder data={{name: 'Brake Pads'}}/>
-      <Reminder data={{name: 'Tires'}}/>
+      <Labels labels={labels}/>
+      <Data labels={labels} data={data}/>
 
     </table>
   )
 }
 
-function Labels ({label}){
+function Labels ({labels}){
   return (
     <tr className='tableLabels'>
-      <th style={{'width':'50%', 'text-align': 'left'}}>Name</th>
-      <th>Miles</th>
-      <th>Date</th>
+      {labels.map((value)=>{
+        return (
+          <th>{value}</th>
+        )
+      })}
     </tr>
   )
 }
 
-function Reminder ({data}){
-  return (
-    <tr className='tableEntry' >
-      <td>{data.name}</td>
-      <td>134542</td>
-      <td>4/14/23</td>
-    </tr>
-  )
+function Data ({labels, data}){
+
+   return (
+    <>
+    {data.map((row)=>{
+      return (
+        <tr className='tableEntry'>
+          {labels.map((label)=>{
+            return (
+              <td>{row[label]}</td>
+            )
+          })}
+        </tr>
+      )
+    })}
+    </>
+   )
 }
