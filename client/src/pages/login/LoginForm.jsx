@@ -13,13 +13,11 @@ export default function LoginForm (){
   var loginData = useRef({});
 
   return (
-    <div id='LoginForm' className='form'>
-      <form className='flexColumn'>
-        <TextInput placeholder={'Email'} type={'email'} onChange={(e)=>{loginData.current.Email = e.target.value}}/>
+    <form id='LoginForm' className='flexColumn'>
+      <TextInput placeholder={'Email'} type={'email'} onChange={(e)=>{loginData.current.Email = e.target.value}}/>
         <TextInput placeholder={'Password'} type={'password'} onChange={(e)=>{loginData.current.Password = e.target.value}}/>
         <Footer loginData={loginData}/>
-      </form>
-    </div>
+    </form>
   )
 };
 

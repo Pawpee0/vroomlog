@@ -12,16 +12,14 @@ export default function SignUpForm (){
   var signUpData = useRef({});
 
   return (
-    <div id='SignUpForm' className='form'>
-      <form className='flexColumn'>
-        <TextInput placeholder={'Username'} onChange={(e)=>{signUpData.current.Username = e.target.value}}/>
+    <form id='SignUpForm' className='flexColumn'>
+      <TextInput placeholder={'Username'} onChange={(e)=>{signUpData.current.Username = e.target.value}}/>
         <TextInput placeholder={'Email'} type={'email'} onChange={(e)=>{signUpData.current.Email = e.target.value}}/>
         <TextInput placeholder={'Password'} type={'password'} onChange={(e)=>{signUpData.current.Password = e.target.value}}/>
         <TextInput placeholder={'Confirm Password'} type={'password'} onChange={(e)=>{signUpData.current.ConfirmPassword = e.target.value}}/>
 
         <Footer signUpData={signUpData}/>
-      </form>
-    </div>
+    </form>
   )
 };
 
@@ -90,7 +88,7 @@ function Submit ({signUpData}) {
   }
 
   return (
-    <button type='button' className='submit' onClick={signUp}>
+    <button type='button' className='green' onClick={signUp}>
       <p>Submit</p>
     </button>
   )
