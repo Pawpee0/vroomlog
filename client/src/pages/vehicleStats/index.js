@@ -5,6 +5,8 @@ import '../../styles/inputs.css';
 import {createRoot} from 'react-dom/client';
 
 import MainHeader from '../../components/MainHeader.jsx';
+
+import Maintenance from './Maintenance.jsx';
 import Miles from './Miles.jsx';
 import Reminders from './Reminders.jsx';
 
@@ -38,7 +40,8 @@ function App (){
       <h1 style={{textAlign: 'center'}}>{basicVehicleData.make} {basicVehicleData.model}</h1>
       <div className='flexRow center' style={{'maxWidth': '700px', 'width': '100%', 'justifyContent': 'space-around', 'flexWrap':'wrap'}}>
         <Miles id_Vehicles={id_Vehicles}/>
-        <Reminders/>
+        <Reminders id_Vehicles={id_Vehicles}/>
+        <Maintenance id_Vehicles={id_Vehicles}/>
       </div>
     </MainHeader>
   );
