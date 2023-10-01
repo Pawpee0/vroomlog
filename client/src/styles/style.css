@@ -96,6 +96,10 @@ body{
   width: calc(100% - 3em);
 }
 
+.cardFooter {
+  margin:1em;
+}
+
 .cardItem{
   --padding: 10px;
 
@@ -197,12 +201,12 @@ body{
   width: 100vw;
   top: 0;
   left: 0;
+
+  display: grid;
+  place-items: center;
 }
 
 .modalWindow{
-  margin: auto;
-  position: relative;
-  top: 30%;
 }
 
 .errorBar{
@@ -228,7 +232,7 @@ body{
 
 }
 
-.form {
+form {
   width: 85%;
 }
 

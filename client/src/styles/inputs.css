@@ -1,6 +1,6 @@
-input[type=text], input[type=password], input[type=email], input[type=number], input[type=date]{
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=date], textarea{
   width: 100%;
-
+  resize: none;
   /*  rgba(62, 69, 116, 0.44)*/
   /*  1a1f42*/
   background-color: #1f2554;
@@ -20,11 +20,11 @@ input[type=text], input[type=password], input[type=email], input[type=number], i
   transition: background-color 0.5s, box-shadow 0.2s;
 }
 
-input:hover{
+input:hover, textarea:hover{
   background-color: var(--secondary2);
 
 }
-input:focus{
+input:focus, textarea:focus{
   background-color: var(--secondary1);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.663) inset;
   outline: none;
