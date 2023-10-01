@@ -13,8 +13,8 @@ const database = {};
 database.addMaintenanceEntry = function(data){
   return new Promise(async function (fulfill, reject){
     try {
-      var response = await connection.execute(`INSERT INTO MaintenanceEntries (id_Vehicles, mileage, dateAdded, dateOccured)
-      VALUES (${data.id_Vehicles}, ${data.mileage}, "${data.dateAdded}", "${data.dateOccured}")`);
+      var response = await connection.execute(`INSERT INTO MaintenanceEntries (id_Vehicles, name, description, mileage, dateAdded, dateOccured)
+      VALUES (${data.id_Vehicles}, "${data.name}", "${data.description}", ${data.mileage}, "${data.dateAdded}", "${data.dateOccured}")`);
       fulfill(response);
     }
     catch (err) {
