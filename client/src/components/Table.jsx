@@ -2,7 +2,7 @@ import React from 'react';
 
 
 /*
-labels = [strings]
+labels = [{title:string, key: string}]
 data = [
   {label: data}
 ]
@@ -23,7 +23,7 @@ function Labels ({labels}){
     <tr className='tableLabels'>
       {labels.map((value)=>{
         return (
-          <th>{value}</th>
+          <th>{value.title}</th>
         )
       })}
     </tr>
