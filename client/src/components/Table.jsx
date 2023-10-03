@@ -39,7 +39,7 @@ function Data ({labels, data}){
         <tr className='tableEntry'>
           {labels.map((label)=>{
             return (
-              <td>{row[label]}</td>
+              <td>{row[label.key]}</td>
             )
           })}
         </tr>
