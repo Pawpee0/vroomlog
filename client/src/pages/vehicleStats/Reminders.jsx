@@ -2,10 +2,16 @@ import React from 'react';
 import Table from '../../components/Table.jsx'
 
 export default function Reminders(){
+
+  var labels = [
+    {title: 'Name', key:'name'},
+    {title: 'Miles', key:'miles'},
+    {title: 'Date', key:'date'}
+  ];
   return (
     <div className='card'>
       <Header/>
-      <Table labels={['Name', 'Miles', 'Date']} data={[{Name:'Oil Change',Miles: '115453', Date:'4/30/04'}]}/>
+      <Table labels={labels} data={[{name:'Oil Change',miles: '115453', date:'4/30/04'}]}/>
     </div>
   );
 };

@@ -1,13 +1,17 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 import AddMaintenance from '../../components/AddMaintenance.jsx';
+import Table from '../../components/Table.jsx';
+
+import axios from 'axios';
 
 export default function Maintenance ({id_Vehicles}){
 
   return (
     <div className='card'>
       <Header id_Vehicles={id_Vehicles}/>
+      <Body id_Vehicles={id_Vehicles}/>
     </div>
   );
 };
@@ -27,5 +31,25 @@ function Header ({id_Vehicles}){
   )
 }
 
-function Body (){
+function Body ({id_Vehicles}){
+
+  var [maintenanceData, setMaintenanceData] = useState([]);
+  var labels = [
+    {title: 'Name', key:'name'},
+    {title: 'Miles', key:'mileage'},
+    {title: 'Date', key:'dateOccured'}
+  ];
+
+  useEffect(()=>{
+    axios.get(`/vehicles/${id_Vehicles}/data/maintenance`)
+    .then((data)=>{
+      setMaintenanceData(data.data);
+    })
+    .catch((err)=>{
+      console.log(err)
+    });
+  },[]);
+  return (
+    <Table labels={labels} data={maintenanceData}/>
+  )
 }
