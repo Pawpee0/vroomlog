@@ -43,7 +43,11 @@ function Body ({id_Vehicles}){
   useEffect(()=>{
     axios.get(`/vehicles/${id_Vehicles}/data/maintenance`)
     .then((data)=>{
+      for (var x = 0; x < data.data.length; x++) {
+        data.data[x].dateOccured = new Date (data.data[x].dateOccured)
+      }
       setMaintenanceData(data.data);
+
     })
     .catch((err)=>{
       console.log(err)
