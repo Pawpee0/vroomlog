@@ -1,10 +1,15 @@
 const express = require('express');
+const https = require('https');
+const http = require('http');
 const app = express();
 const port = 3000;
+
+
+
+const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
-const path = require('path');
 
 const auth = require('./authentication.js');
 const users = require('./routes/users.js');
@@ -59,7 +64,14 @@ app.post('/vehicleList', (req, res)=>{
   });
 });
 
+// const options = {
+//   key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
+//   cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem'),
+// };
 
-app.listen(port, ()=>{
-  console.log('server running')
-});
+http.createServer( app).listen(3000);
+//https.createServer(options, app).listen(port);
+
+// app.listen(port, ()=>{
+//   console.log('server running')
+// });
