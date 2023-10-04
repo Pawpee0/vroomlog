@@ -38,6 +38,11 @@ function Data ({labels, data}){
       return (
         <tr className='tableEntry'>
           {labels.map((label)=>{
+            if (row[label.key] instanceof Date) {
+              return (
+                <td>{`${row[label.key].getMonth() + 1}/${row[label.key].getDate()}/${row[label.key].getFullYear().toString().slice(-2)}`}</td>
+              )
+            }
             return (
               <td>{row[label.key]}</td>
             )
