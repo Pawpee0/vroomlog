@@ -25,7 +25,7 @@ database.addMaintenanceEntry = function(data){
 
 database.getMaintenanceEntriesByVehicleId = function(id_Vehicles) {
   return new Promise(function (fulfill, reject){
-    connection.execute(`SELECT * FROM MaintenanceEntries WHERE id_Vehicles = ${id_Vehicles}`, (err, results, fields)=>{
+    connection.execute(`SELECT * FROM MaintenanceEntries WHERE id_Vehicles = ${id_Vehicles} ORDER BY dateOccured DESC`, (err, results, fields)=>{
       if (err) {
         reject(err);
       } else {

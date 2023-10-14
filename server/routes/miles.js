@@ -30,7 +30,7 @@ router.post('/vehicles/:id_Vehicles/data/miles', async (req, res)=>{
   req.body.dateOccured = formatDateTime(req.body.dateOccured);
 
   //add entry to database
-  miles.addMileageEntry(id_Vehicles, req.body)
+  miles.addMileageEntry(req.params.id_Vehicles, req.body)
   .then((response)=>{
     res.send(response);
   })
