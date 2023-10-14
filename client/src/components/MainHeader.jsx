@@ -16,10 +16,15 @@ export default function MainHeader ({children}){
       console.log(error);
     })
   };
+
+  var redirectToHome = ()=>{
+    window.location.pathname ='/vehicles';
+  }
+
   return (
     <>
       <header id="mainHeader" className='flexRow'>
-        <button type='button'>Home</button>
+        <button type='button' onClick={redirectToHome}>Home</button>
         <h1>VroomLog</h1>
         <button type='button' onClick={submitSignOut}>Sign Out</button>
       </header>
