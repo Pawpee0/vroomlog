@@ -11,8 +11,13 @@ data = [
 export default function Table ({labels = [], data = []}){
   return (
     <table className='table center'>
-      <Labels labels={labels}/>
-      <Data labels={labels} data={data}/>
+      <thead>
+        <Labels labels={labels}/>
+      </thead>
+      <tbody>
+        <Data labels={labels} data={data}/>
+      </tbody>
+
 
     </table>
   )
@@ -21,9 +26,9 @@ export default function Table ({labels = [], data = []}){
 function Labels ({labels}){
   return (
     <tr className='tableLabels'>
-      {labels.map((value)=>{
+      {labels.map((value, key)=>{
         return (
-          <th>{value.title}</th>
+          <th key={key}>{value.title}</th>
         )
       })}
     </tr>
@@ -34,17 +39,17 @@ function Data ({labels, data}){
 
    return (
     <>
-    {data.map((row)=>{
+    {data.map((row, key)=>{
       return (
-        <tr className='tableEntry'>
-          {labels.map((label)=>{
+        <tr className='tableEntry' key={key}>
+          {labels.map((label, key)=>{
             if (row[label.key] instanceof Date) {
               return (
-                <td>{`${row[label.key].getMonth() + 1}/${row[label.key].getDate()}/${row[label.key].getFullYear().toString().slice(-2)}`}</td>
+                <td key={key}>{`${row[label.key].getMonth() + 1}/${row[label.key].getDate()}/${row[label.key].getFullYear().toString().slice(-2)}`}</td>
               )
             }
             return (
-              <td>{row[label.key]}</td>
+              <td key={key}>{row[label.key]}</td>
             )
           })}
         </tr>

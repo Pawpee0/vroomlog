@@ -40,7 +40,7 @@ function Body ({updateData}){
   return (
     <form className='flexColumn'>
       <input name='name' type='text' placeholder='Name' onChange={updateData}></input>
-      <textarea name='description' placeholder='Description' maxlength='250' rows='6' onChange={updateData}></textarea>
+      <textarea name='description' placeholder='Description' maxLength='250' rows='6' onChange={updateData}></textarea>
       <input name='mileage' type='text' placeholder='Miles' onChange={updateData}></input>
       <input name='dateOccured' type='date' placeholder='Date Occured' onChange={updateData}></input>
     </form>

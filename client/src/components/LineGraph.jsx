@@ -24,9 +24,8 @@ function Text ({xAxis, yAxis, width, height}){
   var step = (nextMilestone(yAxis[yAxis.length - 1]) - firstMilestone(yAxis[0])) / 4;
 
   for (var x = nextMilestone(yAxis[yAxis.length - 1]); x > firstMilestone(yAxis[0]); x-= step){
-    console.log(x, getPosY(x));
-    values.push(<text className='graphValue' x={0} y={height - getPosY(x) + 10}>{`${x/1000}K`}</text>);
-    referenceLines.push(<line className='referenceLine' x1={20} x2={width + 20} y1={height - getPosY(x) + 6} y2={height - getPosY(x) + 6}/>)
+    values.push(<text className='graphValue' x={0} y={height - getPosY(x) + 10} key={x}>{`${x/1000}K`}</text>);
+    referenceLines.push(<line className='referenceLine' x1={20} x2={width + 20} y1={height - getPosY(x) + 6} y2={height - getPosY(x) + 6} key={x}/>)
   }
 
   return (
@@ -55,7 +54,7 @@ function Graph ({xAxis, yAxis, width, height, x, y}){
       x2 = getPosX(xAxis[x]);
       y2 = height - getPosY(yAxis[x]);
 
-      tempLines.push(<line x1={x1} y1={y1} x2={x2} y2={y2} className='linegraphLine'/>);
+      tempLines.push(<line x1={x1} y1={y1} x2={x2} y2={y2} className='linegraphLine' key={x}/>);
       x1 = x2;
       y1 = y2;
 
