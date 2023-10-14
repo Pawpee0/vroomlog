@@ -17,18 +17,17 @@ const root = createRoot(document.getElementById('app'));
 
 function App (){
 
-  var [basicVehicleData, setBasicVehicleData] = useState({});
+  var [vehicleData, setVehicleData] = useState({});
   var id_Vehicles = window.location.href.charAt(window.location.href.length - 1);
 
   useEffect(()=>{
     async function fetchData (){
       try {
         var response = await axios.get(`/vehicles/${id_Vehicles}/data`);
-        setBasicVehicleData(response.data);
+        setVehicleData(response.data);
       }
       catch(err) {
         console.log(err);
-        window.location.reload();
       }
     }
 
@@ -37,11 +36,11 @@ function App (){
 
   return (
     <MainHeader>
-      <h1 style={{textAlign: 'center'}}>{basicVehicleData.make} {basicVehicleData.model}</h1>
+      <h1 style={{textAlign: 'center'}}>{vehicleData.make} {vehicleData.model}</h1>
       <div className='flexRow center' style={{'maxWidth': '700px', 'width': '100%', 'justifyContent': 'space-around', 'flexWrap':'wrap'}}>
-        <Miles id_Vehicles={id_Vehicles}/>
+        <Miles id_Vehicles={id_Vehicles} mileageData={vehicleData.mileageEntries}/>
         <Reminders id_Vehicles={id_Vehicles}/>
-        <Maintenance id_Vehicles={id_Vehicles}/>
+        <Maintenance id_Vehicles={id_Vehicles} maintenanceData={vehicleData.maintenanceEntries}/>
       </div>
     </MainHeader>
   );

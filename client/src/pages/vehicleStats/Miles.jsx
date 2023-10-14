@@ -3,15 +3,13 @@ import {useState, useEffect} from 'react';
 import AddMiles from '../../components/AddMiles.jsx';
 import LineGraph from '../../components/LineGraph.jsx';
 
-import axios from 'axios';
-
-export default function Miles ({id_Vehicles}){
+export default function Miles ({id_Vehicles, mileageData}){
 
   var [showAddMiles, setShowAddMiles] = useState(false);
   return (
     <div className='card flexColumn'>
       <Header setShowAddMiles={setShowAddMiles}/>
-      <Body/>
+      <Body mileageData={mileageData}/>
       {showAddMiles && <AddMiles id_Vehicles={id_Vehicles} setCloseState={setShowAddMiles}/>}
     </div>
   )
@@ -34,29 +32,18 @@ function AddMilesButton ({setShowAddMiles}){
   )
 };
 
-function Body (){
+function Body ({mileageData = []}){
 
-  var [mileData, setMileData] = useState({miles: [], dates: []});
+  var mileData = {
+    miles: [],
+    dates: []
+  }
 
-  useEffect(()=>{
-    async function fetchData (){
-      try {
-        var response = await axios.get(`${window.location.href}/data/miles`);
-        var xTemp = [];
-        var yTemp = [];
+  for (var x = 0; x < mileageData.length; x++) {
+    mileData.miles.push(mileageData[x].mileage);
+    mileData.dates.push(Date.parse(mileageData[x].dateOccured));
+  }
 
-        for (var x = 0; x < response.data.length; x++) {
-          xTemp.push(response.data[x].mileage);
-          yTemp.push(Date.parse(response.data[x].dateOccured));
-        }
-        setMileData({miles: [...xTemp], dates: [...yTemp]});
-      }
-      catch(err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  },[]);
 
   return (
     <div className='cardBody flexColumn'>
