@@ -29,25 +29,37 @@ input:focus, textarea:focus{
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.663) inset;
   outline: none;
 }
+
 /*------------------------------------Button--------------------------------------*/
 button {
   border-radius: 10px;
   padding: 0.3em;
   font-size: inherit;
   font-family: inherit;
-
   border: 0;
+
+  background-color: var(--accent);
+  color: var(--text);
+  box-shadow: 0px 7px var(--accent-shadow);
 
   transition: transform 0.1s, box-shadow 0.1s;
 }
 
 button:hover {
+
+  box-shadow: 0px 4px var(--accent-shadow);
+  background-color: rgb(66, 72, 117);
+
   transform: translateY(3px);
 }
 
 button:active {
+
+  box-shadow: 0px 0px var(--accent-shadow);
+
   transform: translateY(7px);
 }
+
 
 button.green {
   background-color: var(--green);
@@ -63,8 +75,11 @@ button.green:hover {
 
 button.green:active {
   box-shadow: 0px 0px var(--green-shadow);
-
 }
+
+
+
+
 
 #monthSelector{
   background-color: inherit;

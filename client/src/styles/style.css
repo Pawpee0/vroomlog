@@ -1,10 +1,11 @@
 /* https://realtimecolors.com/?colors=f0efef-060818-da071f-0a0e29-de2b40 */
 :root {
-  --text: rgb(240, 239, 239);
+  --text: rgb(222, 225, 253);
   --background: rgb(6, 8, 24);
-  --primary: rgb(218, 7, 31);
+  --primary: rgb(72, 6, 177);
   --secondary1: rgb(10, 14, 41);
-  --accent: rgb(222, 43, 64);
+  --accent: rgb(86, 93, 149);
+  --accent-shadow: rgb(52, 50, 92);
 
   --secondary2: rgba(10, 14, 41, 0.6);
 
@@ -59,6 +60,7 @@ body{
 #mainHeader{
   background-color: var(--secondary1);
   text-align: center;
+  justify-content: space-between;
 
   /* width: 100vw; */
   margin-bottom: 10vh;
@@ -209,6 +211,26 @@ body{
 .modalWindow{
 }
 
+/*-------------------------------------Line Graph---------------------------------------------------*/
+
+.linegraph {
+  fill: var(--accent);
+  margin: 0.5em;
+
+}
+.linegraphLine {
+  stroke-width: 3;
+  stroke: var(--text);
+}
+.graphValue {
+  fill: var(--text);
+  font-size: 0.6rem;
+}
+.referenceLine {
+  stroke-width: 1;
+  stroke: rgba(240, 248, 255, 0.242);
+}
+
 .errorBar{
   background-color: var(--accent);
   border-radius: 1em;
@@ -236,25 +258,7 @@ form {
   width: 85%;
 }
 
-/*-------------------------------------Line Graph---------------------------------------------------*/
 
-.linegraph {
-  fill: var(--third);
-  margin: 0.5em;
-
-}
-.linegraphLine {
-  stroke-width: 2;
-  stroke: var(--text);
-}
-.graphValue {
-  fill: var(--text);
-  font-size: 0.6rem;
-}
-.referenceLine {
-  stroke-width: 1;
-  stroke: rgba(240, 248, 255, 0.242);
-}
 
 @keyframes sliderRight {
   from {

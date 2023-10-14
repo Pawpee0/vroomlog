@@ -19,10 +19,9 @@ export default function MainHeader ({children}){
   return (
     <>
       <header id="mainHeader" className='flexRow'>
+        <button type='button'>Home</button>
         <h1>VroomLog</h1>
-        <button type='button' onClick={submitSignOut}>
-          <p>Sign Out</p>
-        </button>
+        <button type='button' onClick={submitSignOut}>Sign Out</button>
       </header>
 
       {children}

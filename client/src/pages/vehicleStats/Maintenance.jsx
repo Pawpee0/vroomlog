@@ -16,7 +16,7 @@ export default function Maintenance ({id_Vehicles, maintenanceData}){
 
 
 function Header ({id_Vehicles}){
-  var [showModule, setShowModule] = useState(true);
+  var [showModule, setShowModule] = useState(false);
   return (
     <>
       <div className='cardHeader flexRow'>
