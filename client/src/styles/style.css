@@ -5,8 +5,20 @@
   --primary: rgb(72, 6, 177);
   --primary-shadow: rgb(46 16 95);
   --secondary1: rgb(10, 14, 41);
-  --accent: rgb(86, 93, 149);
-  --accent-shadow: rgb(52, 50, 92);
+  /* --accent: rgb(86, 93, 149);
+  78, 93, 202
+   --accent-shadow: rgb(52, 50, 92);
+  --accent: rgb(107, 109, 133);
+  --accent-shadow: rgb(61 62 78);
+  --accent: rgb(230, 100, 25);
+  --accent-shadow: rgb(139 58 12);
+  */
+
+  --accent: rgb(78, 90, 183);
+  --accent-shadow: rgb(41 51 125);
+
+
+
 
   --secondary2: rgba(10, 14, 41, 0.6);
 
@@ -94,6 +106,7 @@ body{
 
   font-weight: 500;
 }
+
 
 .cardBody{
   width: calc(100% - 3em);

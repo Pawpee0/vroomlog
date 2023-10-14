@@ -21,7 +21,7 @@ function Header ({id_Vehicles}){
     <>
       <div className='cardHeader flexRow'>
         <h2>Maintenance</h2>
-        <button className="green" onClick={()=>{setShowModule(true)}}>+</button>
+        <button className="primary" onClick={()=>{setShowModule(true)}}>+</button>
       </div>
       {showModule && <AddMaintenance id_Vehicles={id_Vehicles} setCloseState={setShowModule}/>}
     </>

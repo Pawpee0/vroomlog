@@ -26,7 +26,7 @@ function Header ({setShowAddMiles}){
 
 function AddMilesButton ({setShowAddMiles}){
   return (
-    <button type='button' className='green' onClick={()=>{setShowAddMiles(true)}}>
+    <button type='button' className='primary' onClick={()=>{setShowAddMiles(true)}}>
       <p>Add Miles</p>
     </button>
   )

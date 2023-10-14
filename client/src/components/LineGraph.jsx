@@ -10,8 +10,8 @@ export default function LineGraph({xAxis, yAxis, width, height}){
 
   return (
     <svg width={width} height={height}>
-      <Graph xAxis={xAxis} yAxis={yAxis} width={graphWidth} height={graphHeight} x={width - graphWidth} y={0}/>
       <Text xAxis={xAxis} yAxis={yAxis} width={graphWidth} height={graphHeight}/>
+      <Graph xAxis={xAxis} yAxis={yAxis} width={graphWidth} height={graphHeight} x={width - graphWidth} y={0}/>
     </svg>
   );
 };

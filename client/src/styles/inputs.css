@@ -48,7 +48,7 @@ button {
 button:hover {
 
   box-shadow: 0px 4px var(--accent-shadow);
-  background-color: rgb(66, 72, 117);
+  background-color: rgb(80, 91, 171);
 
   transform: translateY(3px);
 }
