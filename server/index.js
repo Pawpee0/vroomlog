@@ -36,8 +36,8 @@ app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
 
 app.use('/user', users);
-app.use('/', miles);
 app.use('/', vehicleData);
+app.use('/', miles);
 app.use('/', parts);
 app.use('/', maintenance);
 

@@ -9,6 +9,16 @@ const maintenance = require('../../database/functions/maintenance.js');
 
 
 
+router.use('/vehicles/:id_Vehicles', async (req, res, next) => {
+  //confirm that the owner is making this request
+  var vehicleData = await vehicles.getVehicleDataById(req.params.id_Vehicles);
+  if (vehicleData[0].id_Users === req.body.id_Users ) {
+    next();
+  } else {
+    res.send('invalid user');
+  }
+})
+
 router.get('/vehicles/:vehicleId', (req, res)=>{
   res.sendFile(path.join(__dirname, '../../client/dist/vehicleStats/vehicleStats.html'));
 });
