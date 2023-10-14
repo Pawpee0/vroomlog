@@ -27,7 +27,7 @@ function Body ({id_Vehicles}){
 
   var MileageEntry = useRef({
     id_Vehicles: id_Vehicles,
-    dateAdded: new Date().toISOString()
+    dateAdded: new Date()
   });
 
   var updateMileageEntry = (e)=>{
@@ -35,7 +35,7 @@ function Body ({id_Vehicles}){
   }
 
   var submitMileage = ()=>{
-    MileageEntry.current.dateOccured = MileageEntry.current.dateOccured.concat('T00:00:00Z');
+    //MileageEntry.current.dateOccured = MileageEntry.current.dateOccured.concat('T00:00:00Z');
     console.log(MileageEntry.current);
     axios.post(`/vehicles/${id_Vehicles}/data/miles`, MileageEntry.current)
     .then((response)=>{

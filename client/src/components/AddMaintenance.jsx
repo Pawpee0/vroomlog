@@ -42,7 +42,7 @@ function Body ({updateData}){
       <input name='name' type='text' placeholder='Name' onChange={updateData}></input>
       <textarea name='description' placeholder='Description' maxLength='250' rows='6' onChange={updateData}></textarea>
       <input name='mileage' type='text' placeholder='Miles' onChange={updateData}></input>
-      <input name='dateOccured' type='date' placeholder='Date Occured' onChange={updateData}></input>
+      <input name='dateOccured' type='date' placeholder='Date Occured' max={new Date().toISOString().slice(0,-14)}onChange={updateData}></input>
     </form>
   )
 }
