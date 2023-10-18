@@ -17,6 +17,8 @@ export default function AddMaintenance ({id_Vehicles, setCloseState}){
     var response = await axios.post(`/vehicles/${id_Vehicles}/data/maintenance`, data.current);
 
     console.log(response);
+    setCloseState(false);
+    location.reload();
   };
 
   return (

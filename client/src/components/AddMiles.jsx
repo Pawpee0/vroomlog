@@ -40,6 +40,8 @@ function Body ({id_Vehicles}){
     axios.post(`/vehicles/${id_Vehicles}/data/miles`, MileageEntry.current)
     .then((response)=>{
       console.log(response);
+      setCloseState(false);
+      location.reload();
     })
     .catch((err)=>{
       console.log(err);
