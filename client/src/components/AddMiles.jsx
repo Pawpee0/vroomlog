@@ -10,7 +10,7 @@ export default function AddMiles ({id_Vehicles, setCloseState}){
   return (
     <ModalWindow setCloseState={setCloseState}>
       <Header/>
-      <Body id_Vehicles={id_Vehicles}/>
+      <Body id_Vehicles={id_Vehicles} setCloseState={setCloseState}/>
     </ModalWindow>
   );
 };
@@ -23,7 +23,7 @@ function Header (){
   )
 };
 
-function Body ({id_Vehicles}){
+function Body ({id_Vehicles, setCloseState}){
 
   var MileageEntry = useRef({
     id_Vehicles: id_Vehicles,
@@ -41,7 +41,7 @@ function Body ({id_Vehicles}){
     .then((response)=>{
       console.log(response);
       setCloseState(false);
-      location.reload();
+      document.location.reload();
     })
     .catch((err)=>{
       console.log(err);

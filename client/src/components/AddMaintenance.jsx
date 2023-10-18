@@ -18,7 +18,7 @@ export default function AddMaintenance ({id_Vehicles, setCloseState}){
 
     console.log(response);
     setCloseState(false);
-    location.reload();
+    window.location.reload();
   };
 
   return (
