@@ -63,10 +63,10 @@ function Header (){
 function Body ({newVehicleData}){
   return (
     <form className='center flexColumn form'>
-      <TextInput type='number' placeholder='Year' onChange={(e)=>{newVehicleData.current.year = e.target.value}}/>
-      <TextInput placeholder='Make' onChange={(e)=>{newVehicleData.current.make = e.target.value}}/>
-      <TextInput placeholder='Model' onChange={(e)=>{newVehicleData.current.model = e.target.value}}/>
-      <TextInput placeholder='Color' onChange={(e)=>{newVehicleData.current.color = e.target.value}}/>
+      <input type='number' pattern="[0-9]*" placeholder='Year' onChange={(e)=>{newVehicleData.current.year = e.target.value}}></input>
+      <input type='text' placeholder='Make' onChange={(e)=>{newVehicleData.current.make = e.target.value}}></input>
+      <input type='text' placeholder='Model' onChange={(e)=>{newVehicleData.current.model = e.target.value}}></input>
+      <input type='text' placeholder='Color' onChange={(e)=>{newVehicleData.current.color = e.target.value}}></input>
 
     </form>
   )
