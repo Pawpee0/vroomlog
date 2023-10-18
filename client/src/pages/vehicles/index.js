@@ -2,8 +2,9 @@ import React from 'react';
 import { useState} from 'react';
 import { createRoot } from 'react-dom/client';
 
-import '../../styles/style.css';
 import '../../styles/inputs.css';
+import '../../styles/components.css';
+import '../../styles/style.css';
 
 import auth from '../../firebase.js';
 import {onAuthStateChanged} from 'firebase/auth';

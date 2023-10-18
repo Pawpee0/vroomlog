@@ -7,7 +7,7 @@ import Table from '../../components/Table.jsx';
 export default function Maintenance ({id_Vehicles, maintenanceData}){
 
   return (
-    <div className='card'>
+    <div className='card widget'>
       <Header id_Vehicles={id_Vehicles}/>
       <Body id_Vehicles={id_Vehicles} maintenanceData={maintenanceData}/>
     </div>

@@ -56,11 +56,7 @@ body{
   width:100%;
   min-width: 257px;
 
-
-
 }
-
-
 
 
 @media (min-width: 360px) {
@@ -84,87 +80,9 @@ body{
 
 
 
-/* -----------------------------------CARD-------------------------------------- */
-.card{
-  background-color: var(--secondary1);
-  border-radius: 1.5em;
-
-  box-shadow:7px 3px 0px rgba(0,0,0,0.2);
-  min-width: 257px;
-  min-height: 257px;
-  max-width: 700px;
-  margin: 1rem;
-
-}
-.cardHeader{
-  width: calc(100% - 3em);
-
-  flex-wrap: wrap;
-  justify-content: space-between;
-
-  margin: 0.6em 1.2em;
-
-  font-weight: 500;
-}
 
 
-.cardBody{
-  width: calc(100% - 3em);
-}
 
-.cardFooter {
-  margin:1em;
-}
-
-.cardItem{
-  --padding: 10px;
-
-  background-color: var(--third);
-  border-radius: 0.7em;
-  box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
-
-  width: calc(100%);
-  margin: .5em;
-  padding: var(--padding);
-
-  /* font-size: 1.5rem; */
-  /* font-size: 2vw; */
-
-  font-weight: 400;
-
-  justify-content: space-between;
-}
-
-/* -----------------------------------Table-------------------------------------- */
-
-.table {
-
-  width: 90%;
-  border-collapse: collapse;
-
-}
-
-.tableLabels {
-  width: 95%;
-
-
-  /* border-bottom: var(--text) 1px solid; */
-  border-bottom: var(--accent) 2px solid;
-
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-}
-
-.tableEntry {
-  width: 100%;
-
-  font-size: 0.8rem;
-  font-weight: 200;
-  padding: 0.2em;
-
-  border-bottom: rgba(255, 255, 255, 0.12) 1px solid;
-
-}
 
 /* -----------------------------------Calendar-------------------------------------- */
 
@@ -209,53 +127,6 @@ body{
   padding:0;
 }
 
-/*----------------------------------------Modal Window-------------------------------------------- */
-
-.modalBase{
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  height: 100vh;
-  width: 100vw;
-  top: 0;
-  left: 0;
-
-  display: grid;
-  place-items: center;
-}
-
-.modalWindow{
-}
-
-/*-------------------------------------Line Graph---------------------------------------------------*/
-
-.linegraph {
-  fill: rgba(0,0,0,0);
-  margin: 0.5em;
-
-}
-.linegraphLine {
-  stroke-width: 4;
-  stroke-linecap: round;
-  stroke: var(--primary);
-}
-.graphValue {
-  fill: var(--text);
-  font-size: 0.6rem;
-}
-.referenceLine {
-  stroke-width: 1;
-  stroke: var(--accent);
-}
-
-.errorBar{
-  background-color: var(--accent);
-  border-radius: 1em;
-  box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
-
-  padding:0.5em;
-  margin:0.5em;
-
-}
 
 .flexColumn{
   display: flex;
@@ -309,5 +180,5 @@ form {
 }
 
 .center {
-  margin: auto;
+  margin: auto !important;
 }

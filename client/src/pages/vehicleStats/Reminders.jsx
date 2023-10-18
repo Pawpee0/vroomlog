@@ -9,7 +9,7 @@ export default function Reminders(){
     {title: 'Date', key:'date'}
   ];
   return (
-    <div className='card'>
+    <div className='card widget'>
       <Header/>
       <Table labels={labels} data={[{name:'Oil Change',miles: '115453', date:'4/30/04'}]}/>
     </div>

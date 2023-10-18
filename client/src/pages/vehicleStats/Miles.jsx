@@ -7,7 +7,7 @@ export default function Miles ({id_Vehicles, mileageData}){
 
   var [showAddMiles, setShowAddMiles] = useState(false);
   return (
-    <div className='card flexColumn'>
+    <div className='card flexColumn widget'>
       <Header setShowAddMiles={setShowAddMiles}/>
       <Body mileageData={mileageData}/>
       {showAddMiles && <AddMiles id_Vehicles={id_Vehicles} setCloseState={setShowAddMiles}/>}
