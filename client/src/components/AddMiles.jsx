@@ -48,8 +48,8 @@ function Body ({id_Vehicles}){
 
   return (
     <form className='flexColumn form'>
-      <input name='dateOccured' type='date' max={new Date().toISOString().slice(0,-14)} onChange={updateMileageEntry}></input>
-      <input name='mileage' type='number' placeholder='Current Miles' min={1} onChange={updateMileageEntry}></input>
+      <input name='dateOccured' type='date' placeholder='Date' max={new Date().toISOString().slice(0,-14)} onChange={updateMileageEntry}></input>
+      <input name='mileage' type='number' pattern="[0-9]*" placeholder='Current Miles' min={1} onChange={updateMileageEntry}></input>
       <button type='button' className='green' onClick={submitMileage}>Submit</button>
     </form>
   )

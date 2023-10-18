@@ -41,8 +41,8 @@ function Body ({updateData}){
     <form className='flexColumn'>
       <input name='name' type='text' placeholder='Name' onChange={updateData}></input>
       <textarea name='description' placeholder='Description' maxLength='250' rows='6' onChange={updateData}></textarea>
-      <input name='mileage' type='number' placeholder='Miles' onChange={updateData}></input>
-      <input name='dateOccured' type='date' placeholder='Date Occured' max={new Date().toISOString().slice(0,-14)}onChange={updateData}></input>
+      <input name='mileage' type='number' pattern="[0-9]*" placeholder='Miles' onChange={updateData}></input>
+      <input name='dateOccured' type='date' placeholder='Date' placeholder='Date Occured' max={new Date().toISOString().slice(0,-14)}onChange={updateData}></input>
     </form>
   )
 }
