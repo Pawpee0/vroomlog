@@ -12,8 +12,7 @@ export default function AddVehicle({ setCloseState}){
   var newVehicleData = useRef({});
   var error = useRef('');
   var [showError, setShowError] = useState(false);
-
-
+  var spamProtection = false;
 
   var submitForm = ()=>{
 
@@ -26,10 +25,13 @@ export default function AddVehicle({ setCloseState}){
     else {setShowError(false)};
 
     if (error.current === '') {
-      axios.post('/user/vehicles/list', {...newVehicleData.current})
-      .then((response)=>{
-        location.reload();
-      });
+      if (!spamProtection) {
+        spamProtection = true;
+        axios.post('/user/vehicles/list', {...newVehicleData.current})
+        .then((response)=>{
+          location.reload();
+        });
+      }
     } else {
       setShowError(error.current);
     }

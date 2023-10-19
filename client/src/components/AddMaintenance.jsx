@@ -27,8 +27,10 @@ function Header (){
 function Body ({id_Vehicles, setCloseState}){
 
   var [error, setError] = useState('');
+  var spamProtection = false;
 
   var postData = async ()=>{
+
     //collect the data
     var MaintenanceEntry = {
       id_Vehicles: id_Vehicles,
@@ -42,9 +44,13 @@ function Body ({id_Vehicles, setCloseState}){
     //validate data
     if (!MaintenanceEntry.name) {
       setError('Please name the maintenance done');
-    } else if (!MaintenanceEntry.mileage || !MaintenanceEntry.dateOccured || new Date(MaintenanceEntry.dateOccured) > new Date()) {
-      setError('Please enter a valid mileage or valid date when the work was done');
-    } else {
+    } else if (!MaintenanceEntry.mileage || !MaintenanceEntry.dateOccured) {
+      setError('Please enter a mileage or date when the work was done');
+    } else if (MaintenanceEntry.dateOccured && (new Date(MaintenanceEntry.dateOccured) > new Date())){
+      setError('Please enter a valid date for when the work was done');
+    } else if (!spamProtection){
+      spamProtection = true;
+      setError('');
       try {
         await axios.post(`/vehicles/${id_Vehicles}/data/maintenance`, MaintenanceEntry);
         setCloseState(false);

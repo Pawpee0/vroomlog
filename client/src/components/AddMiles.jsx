@@ -27,6 +27,7 @@ function Header (){
 function Body ({id_Vehicles, setCloseState}){
 
   var [error, setError] = useState('');
+  var spamProtection = false;
 
   var submitMileage = ()=>{
     //get data
@@ -42,7 +43,8 @@ function Body ({id_Vehicles, setCloseState}){
       setError('Please enter mileage');
     } else if (!MileageEntry.dateOccured || new Date(MileageEntry.dateOccured) > new Date()){
       setError('Please enter a valid date');
-    } else {
+    } else if (!spamProtection){
+      spamProtection = true;
       setError('');
 
       //post data
