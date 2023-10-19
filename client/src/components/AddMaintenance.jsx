@@ -1,31 +1,17 @@
 import React from 'react';
-import {useRef} from 'react';
+import {useState, useRef} from 'react';
+
 import ModalWindow from './ModalWindow.jsx';
+import ErrorBar from './ErrorBar.jsx';
 
 import axios from 'axios';
 
 export default function AddMaintenance ({id_Vehicles, setCloseState}){
 
-  var data = useRef({id_Vehicles: id_Vehicles});
-
-  var updateData = (e)=>{
-    data.current[e.target.name] = e.target.value;
-  }
-
-  var postData = async ()=>{
-    data.current.dateAdded = new Date;
-    var response = await axios.post(`/vehicles/${id_Vehicles}/data/maintenance`, data.current);
-
-    console.log(response);
-    setCloseState(false);
-    window.location.reload();
-  };
-
   return (
     <ModalWindow setCloseState={setCloseState}>
       <Header/>
-      <Body updateData={updateData}/>
-      <Footer postData={postData}/>
+      <Body id_Vehicles={id_Vehicles} setCloseState={setCloseState}/>
     </ModalWindow>
   )
 }
@@ -38,23 +24,48 @@ function Header (){
   )
 }
 
-function Body ({updateData}){
+function Body ({id_Vehicles, setCloseState}){
+
+  var [error, setError] = useState('');
+
+  var postData = async ()=>{
+    //collect the data
+    var MaintenanceEntry = {
+      id_Vehicles: id_Vehicles,
+      dateAdded: new Date(),
+      name: document.getElementById('nameInput').value,
+      description: document.getElementById('descriptionInput').value,
+      mileage: document.getElementById('mileageInput').value,
+      dateOccured: document.getElementById('dateOccuredInput').value,
+    }
+
+    //validate data
+    if (!MaintenanceEntry.name) {
+      setError('Please name the maintenance done');
+    } else if (!MaintenanceEntry.mileage || !MaintenanceEntry.dateOccured) {
+      setError('Please enter the mileage or date when the work was done');
+    } else {
+      var response = await axios.post(`/vehicles/${id_Vehicles}/data/maintenance`, MaintenanceEntry);
+      setCloseState(false);
+      window.location.reload();
+    }
+
+  };
+
+
+
   return (
-    <form className='flexColumn'>
-      <input name='name' type='text' placeholder='Name' onChange={updateData} autoComplete='off'></input>
-      <textarea name='description' placeholder='Description' maxLength='250' rows='6' onChange={updateData} autoComplete='off'></textarea>
-      <input name='mileage' type='number' pattern="[0-9]*" placeholder='Miles' onChange={updateData} autoComplete='off'></input>
-      <input name='dateOccured' type='date' placeholder='Date' placeholder='Date Occured' max={new Date().toISOString().slice(0,-14)}onChange={updateData}></input>
+    <>
+    <form className='cardBody flexColumn'>
+      <input id='nameInput' name='name' type='text' placeholder='Name' autoComplete='off'></input>
+      <textarea id='descriptionInput' name='description' placeholder='Description' maxLength='250' rows='6' autoComplete='off'></textarea>
+      <input id='mileageInput' name='mileage' type='number' pattern="[0-9]*" placeholder='Miles' autoComplete='off'></input>
+      <input id='dateOccuredInput' name='dateOccured' type='date' placeholder='Date' placeholder='Date Occured' max={new Date().toISOString().slice(0,-14)}></input>
+      <button type='button' className='green' onClick={postData}>Submit</button>
     </form>
+    {error && <ErrorBar>{error}</ErrorBar>}
+    </>
+
   )
 }
-
-function Footer ({postData}){
-  return (
-    <div className='cardFooter'>
-      <button className='green' onClick={postData}>Submit</button>
-    </div>
-  )
-}
-
 
