@@ -34,6 +34,7 @@ input:focus, textarea:focus{
 button {
   border-radius: 10px;
   padding: 0.3em;
+  margin: 0.3em;
   font-size: inherit;
   font-family: inherit;
   border: 0;
