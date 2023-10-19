@@ -15,16 +15,21 @@ const database = require('../../database/functions/maintenance.js');
 */
 router.post('/vehicles/:id_Vehicles/data/maintenance', (req, res)=>{
 
-  req.body.dateAdded = formatDateTime(req.body.dateAdded);
-  req.body.dateOccured = formatDateTime(req.body.dateOccured);
+  if (new Date(req.body.dateOccured) > new Date()) {
+    res.status(400).send('Your date is invalid');
+  } else {
+    req.body.dateAdded = formatDateTime(req.body.dateAdded);
+    req.body.dateOccured = formatDateTime(req.body.dateOccured);
 
-  database.addMaintenanceEntry(req.body)
-  .then((response)=>{
-    res.send(response);
-  })
-  .catch((err)=>{
-    res.send(err);
-  });
+    database.addMaintenanceEntry(req.body)
+    .then((response)=>{
+      res.send(response);
+    })
+    .catch((err)=>{
+      res.send(err);
+    });
+
+  }
 });
 
 router.get('/vehicles/:id_Vehicles/data/maintenance', (req, res)=>{

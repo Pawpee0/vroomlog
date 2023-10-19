@@ -42,12 +42,17 @@ function Body ({id_Vehicles, setCloseState}){
     //validate data
     if (!MaintenanceEntry.name) {
       setError('Please name the maintenance done');
-    } else if (!MaintenanceEntry.mileage || !MaintenanceEntry.dateOccured) {
-      setError('Please enter the mileage or date when the work was done');
+    } else if (!MaintenanceEntry.mileage || !MaintenanceEntry.dateOccured || new Date(MaintenanceEntry.dateOccured) > new Date()) {
+      setError('Please enter a valid mileage or valid date when the work was done');
     } else {
-      var response = await axios.post(`/vehicles/${id_Vehicles}/data/maintenance`, MaintenanceEntry);
-      setCloseState(false);
-      window.location.reload();
+      try {
+        await axios.post(`/vehicles/${id_Vehicles}/data/maintenance`, MaintenanceEntry);
+        setCloseState(false);
+        window.location.reload();
+      }
+      catch(err) {
+        setError(err.response.data);
+      }
     }
 
   };
