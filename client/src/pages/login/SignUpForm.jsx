@@ -13,10 +13,10 @@ export default function SignUpForm (){
 
   return (
     <form id='SignUpForm' className='flexColumn'>
-      <TextInput placeholder={'Username'} onChange={(e)=>{signUpData.current.Username = e.target.value}}/>
-        <TextInput placeholder={'Email'} type={'email'} onChange={(e)=>{signUpData.current.Email = e.target.value}}/>
-        <TextInput placeholder={'Password'} type={'password'} onChange={(e)=>{signUpData.current.Password = e.target.value}}/>
-        <TextInput placeholder={'Confirm Password'} type={'password'} onChange={(e)=>{signUpData.current.ConfirmPassword = e.target.value}}/>
+      <input name='username'placeholder={'Username'} onChange={(e)=>{signUpData.current.Username = e.target.value}}></input>
+      <input name='email' placeholder={'Email'} type={'email'} onChange={(e)=>{signUpData.current.Email = e.target.value}}></input>
+      <input name='new-password' placeholder={'Password'} type={'password'} onChange={(e)=>{signUpData.current.Password = e.target.value}}></input>
+      <input name='new-password' placeholder={'Confirm Password'} type={'password'} onChange={(e)=>{signUpData.current.ConfirmPassword = e.target.value}}></input>
 
         <Footer signUpData={signUpData}/>
     </form>

@@ -14,9 +14,9 @@ export default function LoginForm (){
 
   return (
     <form id='LoginForm' className='flexColumn'>
-      <TextInput placeholder={'Email'} type={'email'} onChange={(e)=>{loginData.current.Email = e.target.value}}/>
-        <TextInput placeholder={'Password'} type={'password'} onChange={(e)=>{loginData.current.Password = e.target.value}}/>
-        <Footer loginData={loginData}/>
+      <input name='email' placeholder={'Email'} type={'email'} onChange={(e)=>{loginData.current.Email = e.target.value}}></input>
+      <input name='current-password' placeholder={'Password'} type={'password'} onChange={(e)=>{loginData.current.Password = e.target.value}}></input>
+      <Footer loginData={loginData}/>
     </form>
   )
 };
