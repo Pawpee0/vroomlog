@@ -40,8 +40,8 @@ function Body ({id_Vehicles, setCloseState}){
     //validate data
     if (!MileageEntry.mileage){
       setError('Please enter mileage');
-    } else if (!MileageEntry.dateOccured){
-      setError('Please enter a date');
+    } else if (!MileageEntry.dateOccured || new Date(MileageEntry.dateOccured) > new Date()){
+      setError('Please enter a valid date');
     } else {
       setError('');
 
@@ -52,6 +52,7 @@ function Body ({id_Vehicles, setCloseState}){
         document.location.reload();
       })
       .catch((err)=>{
+        setError(err.response.data);
         console.log(err);
       });
 

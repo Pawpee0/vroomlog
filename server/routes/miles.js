@@ -25,18 +25,25 @@ router.get('/vehicles/:vehicleId/data/miles', (req, res)=>{
 }
 */
 router.post('/vehicles/:id_Vehicles/data/miles', async (req, res)=>{
-  //format the dates
-  req.body.dateAdded = formatDateTime(req.body.dateAdded);
-  req.body.dateOccured = formatDateTime(req.body.dateOccured);
 
-  //add entry to database
-  miles.addMileageEntry(req.params.id_Vehicles, req.body)
-  .then((response)=>{
-    res.send(response);
-  })
-  .catch((err)=>{
-    res.send(err);
-  });
+  if (new Date(req.body.dateOccured) > new Date()) {
+    res.status(400).send('Your date is invalid');
+  } else {
+    //format the dates
+    req.body.dateAdded = formatDateTime(req.body.dateAdded);
+    req.body.dateOccured = formatDateTime(req.body.dateOccured);
+
+
+    //add entry to database
+    miles.addMileageEntry(req.params.id_Vehicles, req.body)
+    .then((response)=>{
+      res.status(200).send('Data was successfully saved');
+    })
+    .catch((err)=>{
+      res.send(err);
+    });
+  }
+
 
 
 });
