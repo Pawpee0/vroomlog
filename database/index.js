@@ -38,7 +38,8 @@ async function initializeDatabase () {
     dateOccured date NOT NULL,
 
     PRIMARY KEY (id),
-    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id)
+    FOREIGN KEY (id_Vehicles) REFERENCES Vehicles(id),
+    CHECK (mileage > 0)
   )`);
 
   await connection.execute(`CREATE TABLE IF NOT EXISTS MaintenanceEntries (
