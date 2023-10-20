@@ -11,7 +11,10 @@ export default function MainHeader ({children}){
     signOut(auth).then(()=>{
       //success
       console.log('success');
-      axios.post('/sessionLogout', {});
+      axios.get('/sessionLogout')
+      .then(()=>{
+        window.location.pathname = '/login';
+      });
     }).catch((error)=>{
       console.log(error);
     })

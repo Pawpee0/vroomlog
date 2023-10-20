@@ -63,7 +63,7 @@ router.post('/sessionLogin', (req, res)=>{
     );
 });
 
-router.post('/sessionLogout', (req, res) => {
+router.get('/sessionLogout', (req, res) => {
   console.log('run');
   res.clearCookie('session');
   res.redirect('/login');
