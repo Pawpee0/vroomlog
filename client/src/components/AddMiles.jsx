@@ -39,9 +39,9 @@ function Body ({id_Vehicles, setCloseState}){
     }
 
     //validate data
-    if (!MileageEntry.mileage){
-      setError('Please enter mileage');
-    } else if (!MileageEntry.dateOccured || new Date(MileageEntry.dateOccured) > new Date()){
+    if (!MileageEntry.mileage || MileageEntry.mileage < 1){
+      setError('Please enter a valid mileage');
+    }else if (!MileageEntry.dateOccured || new Date(MileageEntry.dateOccured) > new Date()){
       setError('Please enter a valid date');
     } else if (!spamProtection){
       spamProtection = true;

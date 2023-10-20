@@ -39,7 +39,7 @@ router.post('/vehicles/:id_Vehicles/data/miles', async (req, res)=>{
       res.status(200).send('Data was successfully saved');
     })
     .catch((err)=>{
-      res.send(err);
+      res.status(400).send('Invalid data');
     });
 
   }
