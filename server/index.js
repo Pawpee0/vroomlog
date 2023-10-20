@@ -4,7 +4,7 @@ const http = require('http');
 const app = express();
 const port = 3000;
 
-
+const fs = require('node:fs');
 
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -64,13 +64,28 @@ app.post('/vehicleList', (req, res)=>{
   });
 });
 
-// const options = {
-//   key: fs.readFileSync('test/fixtures/keys/agent2-key.pem'),
-//   cert: fs.readFileSync('test/fixtures/keys/agent2-cert.pem'),
-// };
+if (false) {
+  const options = {
+    key: fs.readFileSync('file'),
+    cert: fs.readFileSync('file'),
+  };
 
-http.createServer( app).listen(3000);
-//https.createServer(options, app).listen(port);
+  const redirect = express();
+
+  redirect.use((req, res, next)=>{
+    res.redirect(`https://${req.hostname}:443`)
+  })
+
+  http.createServer( redirect).listen(3000);
+
+  https.createServer(options, app).listen(8080);
+
+} else {
+  http.createServer( app).listen(3000);
+}
+
+
+
 
 // app.listen(port, ()=>{
 //   console.log('server running')
