@@ -1,9 +1,16 @@
-input[type=text], input[type=password], input[type=email], input[type=number], input[type=date], input[type=tel], textarea{
+
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=date],
+input[type=tel],
+textarea{
   width: 100%;
   resize: none;
   /*  rgba(62, 69, 116, 0.44)*/
   /*  1a1f42*/
-  background-color: #1f2554;
+  background-color: #1f2554 !important;
   box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 
   border: var(--third) 1px solid;
@@ -29,6 +36,8 @@ input:focus, textarea:focus{
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.663) inset;
   outline: none;
 }
+
+
 
 /*------------------------------------Button--------------------------------------*/
 button {
