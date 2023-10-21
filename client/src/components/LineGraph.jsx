@@ -8,7 +8,7 @@ export default function LineGraph({xAxis, yAxis, width, height}){
 
 
   return (
-    <svg style={{width: width, height: height}} viewBox='none'>
+    <svg className='linegraph' style={{width: width, height: height}} viewBox='none'>
       <Text xAxis={xAxis} yAxis={yAxis} />
       <Graph xAxis={xAxis} yAxis={yAxis} width={'90%'} height={'90%'}/>
     </svg>

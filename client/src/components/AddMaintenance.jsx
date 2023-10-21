@@ -71,8 +71,10 @@ function Body ({id_Vehicles, setCloseState}){
       <textarea id='descriptionInput' name='description' placeholder='Description' maxLength='250' rows='6' autoComplete='off'></textarea>
       <input id='mileageInput' name='mileage' type='number' pattern="[0-9]*" placeholder='Miles' autoComplete='off'></input>
       <input id='dateOccuredInput' name='dateOccured' type='date' placeholder='Date' placeholder='Date Occured' max={new Date().toISOString().slice(0,-14)}></input>
-      <button type='button' className='green' onClick={postData}>Submit</button>
     </form>
+    <div className='cardFooter'>
+      <button type='button' className='green' onClick={postData}>Submit</button>
+    </div>
     {error && <ErrorBar>{error}</ErrorBar>}
     </>
 

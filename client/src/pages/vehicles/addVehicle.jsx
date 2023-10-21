@@ -64,7 +64,7 @@ function Header (){
 
 function Body ({newVehicleData}){
   return (
-    <form className='center flexColumn form'>
+    <form className='flexColumn cardBody'>
       <input type='number' pattern="[0-9]*" placeholder='Year' onChange={(e)=>{newVehicleData.current.year = e.target.value}}></input>
       <input type='text' placeholder='Make' onChange={(e)=>{newVehicleData.current.make = e.target.value}}></input>
       <input type='text' placeholder='Model' onChange={(e)=>{newVehicleData.current.model = e.target.value}}></input>
@@ -76,7 +76,7 @@ function Body ({newVehicleData}){
 
 function Footer({submitForm}){
   return (
-    <div className='center flexRow' style={{margin: '0.5rem 0rem 1.1rem 0rem'}}>
+    <div className='flexRow' style={{margin: '0.5rem 0rem 1.1rem 0rem'}}>
       <button type='button' className='green' onClick={submitForm}>
         <p>Submit</p>
       </button>

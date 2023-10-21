@@ -63,11 +63,13 @@ function Body ({id_Vehicles, setCloseState}){
 
   return (
     <>
-    <form className='flexColumn form'>
+    <form className='cardBody flexColumn'>
       <input id='dateOccuredInput'name='dateOccured' type='date' placeholder='Date' max={new Date().toISOString().slice(0,-14)} ></input>
       <input id='mileageInput' name='mileage' type='number' pattern="[0-9]" placeholder='Current Miles' min={1} autoComplete='off' required></input>
-      <button type='button' className='green' onClick={submitMileage}>Submit</button>
     </form>
+    <div className='cardFooter'>
+      <button type='button' className='green' onClick={submitMileage}>Submit</button>
+    </div>
     {error && <ErrorBar>{error}</ErrorBar>}
     </>
 
