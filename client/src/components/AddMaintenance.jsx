@@ -37,16 +37,14 @@ function Body ({id_Vehicles, setCloseState}){
       dateAdded: new Date(),
       name: document.getElementById('nameInput').value,
       description: document.getElementById('descriptionInput').value,
-      mileage: document.getElementById('mileageInput').value,
+      mileage: document.getElementById('mileageInput').value ? document.getElementById('mileageInput').value : null,
       dateOccured: document.getElementById('dateOccuredInput').value,
     }
 
     //validate data
     if (!MaintenanceEntry.name) {
       setError('Please name the maintenance done');
-    } else if (!MaintenanceEntry.mileage || !MaintenanceEntry.dateOccured) {
-      setError('Please enter a mileage or date when the work was done');
-    } else if (MaintenanceEntry.dateOccured && (new Date(MaintenanceEntry.dateOccured) > new Date())){
+    } else if (!MaintenanceEntry.dateOccured || (new Date(MaintenanceEntry.dateOccured) > new Date())){
       setError('Please enter a valid date for when the work was done');
     } else if (!spamProtection){
       spamProtection = true;
@@ -57,7 +55,8 @@ function Body ({id_Vehicles, setCloseState}){
         window.location.reload();
       }
       catch(err) {
-        setError(err.response.data);
+        console.log(err);
+        //setError(err.response.data);
       }
     }
 

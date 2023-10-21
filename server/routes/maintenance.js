@@ -26,7 +26,7 @@ router.post('/vehicles/:id_Vehicles/data/maintenance', (req, res)=>{
       res.send(response);
     })
     .catch((err)=>{
-      res.send(err);
+      res.status(400).send(err);
     });
 
   }
