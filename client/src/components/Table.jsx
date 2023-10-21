@@ -48,6 +48,11 @@ function Data ({labels, data}){
                 <td key={key}>{`${row[label.key].getMonth() + 1}/${row[label.key].getDate()}/${row[label.key].getFullYear().toString().slice(-2)}`}</td>
               )
             }
+            if (row[label.key].length > 15) {
+              return (
+                <td key={key}>{row[label.key].substring(0, 16)}...</td>
+              )
+            }
             return (
               <td key={key}>{row[label.key]}</td>
             )

@@ -19,7 +19,7 @@ export default function List ({onShow}){
   },[]);
 
   return (
-    <div className='center card flexColumn'style={{width: '92vw'}}>
+    <div className='center card'style={{width: '92vw'}}>
       <Header onShow={onShow}/>
       <Body vehicleList={vehicleList}/>
     </div>
@@ -41,7 +41,7 @@ function Header({onShow}){
 function Body({vehicleList}){
 
   return (
-    <div className='flexColumn cardBody'>
+    <div className='cardBody'>
       {vehicleList.map((vehicle, key)=>{
         return (
           <Vehicle vehicleData={vehicle} key={key}/>
