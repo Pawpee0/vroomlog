@@ -8,12 +8,10 @@ input[type=tel],
 textarea{
   width: 100%;
   resize: none;
-  /*  rgba(62, 69, 116, 0.44)*/
-  /*  1a1f42*/
-  background-color: #1f2554 !important;
+  background-color: #1f2554;
   box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 
-  border: var(--third) 1px solid;
+  border: var(--third) 2px solid;
 
 
   border-radius: 0.5rem;
@@ -24,11 +22,12 @@ textarea{
 
   margin: 0.3em;
 
-  transition: background-color 0.5s, box-shadow 0.2s;
+  transition: background-color 0.5s, box-shadow 0.5s;
 }
 
 input:hover, textarea:hover{
   background-color: var(--secondary2);
+  transition: background-color 0.5s, box-shadow 0.5s;
 
 }
 input:focus, textarea:focus{
