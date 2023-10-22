@@ -29,7 +29,8 @@ module.exports = {
   entry: {
     vehicles: './client/src/pages/vehicles/index.js',
     vehicleStats: './client/src/pages/vehicleStats/index.js',
-    login: './client/src/pages/login/index.js'
+    login: './client/src/pages/login/index.js',
+    vehicleMiles: './client/src/pages/vehicleMiles/index.js'
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -48,6 +49,12 @@ module.exports = {
       title: 'VroomLog',
       filename: 'login/index.html',
       chunks:['login'],
+      template:'./client/src/index.html',
+    }),
+    new HtmlWebpackPlugin({
+      title: 'VroomLog',
+      filename: 'vehicleMiles/vehicleMiles.html',
+      chunks:['vehicleMiles'],
       template:'./client/src/index.html',
     }),
     new Dotenv({
