@@ -20,7 +20,7 @@ router.use('/vehicles/:id_Vehicles', async (req, res, next) => {
 })
 
 router.get('/vehicles/:vehicleId', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../../client/dist/vehicleStats/vehicleStats.html'));
+  res.sendFile(path.join(__dirname, '../../client/dist/private/vehicleStats/vehicleStats.html'));
 });
 
 router.get('/vehicles/:id_Vehicles/data', async (req, res)=>{

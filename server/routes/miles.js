@@ -1,10 +1,16 @@
 const express = require('express');
 const router = express.Router();
+const path = require('path');
+
 
 const miles = require('../../database/functions/miles.js');
 const vehicles = require('../../database/functions/vehicles.js');
 
 const {formatDateTime} = require('../helperFunctions.js');
+
+router.get('/vehicles/:vehicleId/miles', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../../client/dist/private/vehicleMiles/vehicleMiles.html'));
+});
 
 router.get('/vehicles/:vehicleId/data/miles', (req, res)=>{
   miles.getMileageEntriesByVehicleId(req.params.vehicleId)
