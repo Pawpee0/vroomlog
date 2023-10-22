@@ -10,6 +10,7 @@ export default function Miles ({id_Vehicles, mileageData}){
     <div className='card flexColumn widget'>
       <Header setShowAddMiles={setShowAddMiles}/>
       <Body mileageData={mileageData}/>
+      <Footer id_Vehicles={id_Vehicles}/>
       {showAddMiles && <AddMiles id_Vehicles={id_Vehicles} setCloseState={setShowAddMiles}/>}
     </div>
   )
@@ -48,6 +49,24 @@ function Body ({mileageData = []}){
   return (
     <div className='cardBody flexColumn'>
       <LineGraph width={209} height={150} xAxis={mileData.dates} yAxis={mileData.miles}/>
+    </div>
+  )
+};
+
+function Footer ({id_Vehicles}){
+
+  var spamProtection = false;
+
+  var redirect = ()=>{
+    if (!spamProtection) {
+      spamProtection = true;
+      window.location.pathname = `/vehicles/${id_Vehicles}/miles`
+    }
+  }
+
+  return (
+    <div className='cardFooter'>
+      <button type='button' onClick={redirect}>View More</button>
     </div>
   )
 };
