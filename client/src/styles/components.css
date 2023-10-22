@@ -86,6 +86,10 @@
   font-weight: 400;
 }
 
+.tableLabels > th {
+  max-width: 33%;
+}
+
 .tableEntry {
   width: 100%;
 

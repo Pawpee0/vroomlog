@@ -41,14 +41,19 @@ function Body ({id_Vehicles, setCloseState}){
       dateOccured: document.getElementById('dateOccuredInput').value,
     }
 
+    document.getElementById('nameInput').className = '';
+    document.getElementById('dateOccuredInput').className = '';
+    setError('');
+
     //validate data
     if (!MaintenanceEntry.name) {
+      document.getElementById('nameInput').className = 'error';
       setError('Please name the maintenance done');
-    } else if (!MaintenanceEntry.dateOccured || (new Date(MaintenanceEntry.dateOccured) > new Date())){
+    } if (!MaintenanceEntry.dateOccured || (new Date(MaintenanceEntry.dateOccured) > new Date())){
+      document.getElementById('dateOccuredInput').className = 'error';
       setError('Please enter a valid date for when the work was done');
-    } else if (!spamProtection){
+    } else if (error === '' && !spamProtection){
       spamProtection = true;
-      setError('');
       try {
         await axios.post(`/vehicles/${id_Vehicles}/data/maintenance`, MaintenanceEntry);
         setCloseState(false);

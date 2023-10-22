@@ -36,6 +36,11 @@ input:focus, textarea:focus{
   outline: none;
 }
 
+input.error {
+  border: var(--error) 2px solid;
+
+}
+
 
 
 /*------------------------------------Button--------------------------------------*/
@@ -47,8 +52,6 @@ button {
   font-family: inherit;
   border: 0;
 
-  min-width: 39px;
-  min-height: 39px;
 
   background-color: var(--accent);
   color: var(--text);

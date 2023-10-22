@@ -38,14 +38,20 @@ function Body ({id_Vehicles, setCloseState}){
       mileage: document.getElementById('mileageInput').value
     }
 
+    //reset errors
+    document.getElementById('mileageInput').className = '';
+    document.getElementById('dateOccuredInput').className = '';
+    setError('');
+
     //validate data
     if (!MileageEntry.mileage || MileageEntry.mileage < 1){
+      document.getElementById('mileageInput').className = 'error';
       setError('Please enter a valid mileage');
-    }else if (!MileageEntry.dateOccured || new Date(MileageEntry.dateOccured) > new Date()){
+    }if (!MileageEntry.dateOccured || new Date(MileageEntry.dateOccured) > new Date()){
+      document.getElementById('dateOccuredInput').className = 'error';
       setError('Please enter a valid date');
-    } else if (!spamProtection){
+    } else if (error === '' && !spamProtection){
       spamProtection = true;
-      setError('');
 
       //post data
       axios.post(`/vehicles/${id_Vehicles}/data/miles`, MileageEntry)
