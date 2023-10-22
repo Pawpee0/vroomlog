@@ -6,14 +6,12 @@ input[type=number],
 input[type=date],
 input[type=tel],
 textarea{
-  width: 100%;
   resize: none;
-  /*  rgba(62, 69, 116, 0.44)*/
-  /*  1a1f42*/
-  background-color: #1f2554 !important;
+  background-color: #1f2554;
   box-shadow: 5px 5px 3px rgba(0,0,0,0.2);
 
-  border: var(--third) 1px solid;
+  border: var(--third) 2px solid;
+
 
 
   border-radius: 0.5rem;
@@ -22,13 +20,14 @@ textarea{
 
   color: inherit;
 
-  margin: 0.3em;
+  /* margin: 0.3em; */
 
-  transition: background-color 0.5s, box-shadow 0.2s;
+  transition: background-color 0.5s, box-shadow 0.5s;
 }
 
 input:hover, textarea:hover{
   background-color: var(--secondary2);
+  transition: background-color 0.5s, box-shadow 0.5s;
 
 }
 input:focus, textarea:focus{
@@ -37,16 +36,22 @@ input:focus, textarea:focus{
   outline: none;
 }
 
+input.error {
+  border: var(--error) 2px solid;
+
+}
+
 
 
 /*------------------------------------Button--------------------------------------*/
 button {
   border-radius: 10px;
-  padding: 0.3em;
+  padding: 0.25em 0.5em;
   margin: 0.3em;
   font-size: inherit;
   font-family: inherit;
   border: 0;
+
 
   background-color: var(--accent);
   color: var(--text);

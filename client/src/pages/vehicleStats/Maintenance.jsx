@@ -19,7 +19,7 @@ function Header ({id_Vehicles}){
   var [showModule, setShowModule] = useState(false);
   return (
     <>
-      <div className='cardHeader flexRow'>
+      <div className='cardHeader'>
         <h2>Maintenance</h2>
         <button className="primary" onClick={()=>{setShowModule(true)}}>+</button>
       </div>

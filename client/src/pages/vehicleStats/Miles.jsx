@@ -17,7 +17,7 @@ export default function Miles ({id_Vehicles, mileageData}){
 
 function Header ({setShowAddMiles}){
   return (
-    <div className='cardHeader flexRow' >
+    <div className='cardHeader' >
       <h2>Miles</h2>
       <AddMilesButton setShowAddMiles={setShowAddMiles}/>
     </div>
@@ -27,7 +27,7 @@ function Header ({setShowAddMiles}){
 function AddMilesButton ({setShowAddMiles}){
   return (
     <button type='button' className='primary' onClick={()=>{setShowAddMiles(true)}}>
-      <p>Add Miles</p>
+      Add Miles
     </button>
   )
 };

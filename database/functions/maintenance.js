@@ -12,14 +12,16 @@ const database = {};
 */
 database.addMaintenanceEntry = function(data){
   return new Promise(async function (fulfill, reject){
-    try {
-      var response = await connection.execute(`INSERT INTO MaintenanceEntries (id_Vehicles, name, description, mileage, dateAdded, dateOccured)
-      VALUES (${data.id_Vehicles}, "${data.name}", "${data.description}", ${data.mileage}, "${data.dateAdded}", "${data.dateOccured}")`);
-      fulfill(response);
-    }
-    catch (err) {
-      reject (err);
-    }
+    connection.execute(`INSERT INTO MaintenanceEntries (id_Vehicles, name, description, mileage, dateAdded, dateOccured)
+      VALUES (${data.id_Vehicles}, "${data.name}", "${data.description}", ?, "${data.dateAdded}", "${data.dateOccured}")`,
+      [data.mileage],
+      (err, results, fields)=>{
+        if (err) {
+          reject(err);
+        } else {
+          fulfill(results);
+        }
+      })
   });
 };
 

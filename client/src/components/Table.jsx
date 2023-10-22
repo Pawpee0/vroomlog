@@ -10,7 +10,7 @@ data = [
 
 export default function Table ({labels = [], data = []}){
   return (
-    <table className='table center'>
+    <table className='table'>
       <thead>
         <Labels labels={labels}/>
       </thead>
@@ -46,6 +46,11 @@ function Data ({labels, data}){
             if (row[label.key] instanceof Date) {
               return (
                 <td key={key}>{`${row[label.key].getMonth() + 1}/${row[label.key].getDate()}/${row[label.key].getFullYear().toString().slice(-2)}`}</td>
+              )
+            }
+            if (row[label.key].length > 13) {
+              return (
+                <td key={key}>{row[label.key].substring(0, 14)}...</td>
               )
             }
             return (

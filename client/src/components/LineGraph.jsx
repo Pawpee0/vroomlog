@@ -8,7 +8,7 @@ export default function LineGraph({xAxis, yAxis, width, height}){
 
 
   return (
-    <svg style={{width: width, height: height}} viewBox='none'>
+    <svg className='linegraph' style={{width: width, height: height}} viewBox='none'>
       <Text xAxis={xAxis} yAxis={yAxis} />
       <Graph xAxis={xAxis} yAxis={yAxis} width={'90%'} height={'90%'}/>
     </svg>
@@ -24,7 +24,7 @@ function Text ({xAxis, yAxis,}){
 
   var step = (nextMilestone(yAxis[yAxis.length - 1]) - firstMilestone(yAxis[0])) / 4;
 
-  for (var x = nextMilestone(yAxis[yAxis.length - 1]); x > firstMilestone(yAxis[0]); x-= step){
+  for (var x = nextMilestone(yAxis[yAxis.length - 1]); x >= firstMilestone(yAxis[0]); x-= step){
     var y = (105 - ((x - firstMilestone(yAxis[0]))/(nextMilestone(yAxis[yAxis.length - 1]) - firstMilestone(yAxis[0])) * 100)) * .90;
     console.log(x, y);
     values.push(<text className='graphValue' x={0} y={`${y}%`} key={x}>{`${x/1000}K`}</text>);
