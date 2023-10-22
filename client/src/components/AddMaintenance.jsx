@@ -41,6 +41,7 @@ function Body ({id_Vehicles, setCloseState}){
       dateOccured: document.getElementById('dateOccuredInput').value,
     }
 
+    //reset errors
     document.getElementById('nameInput').className = '';
     document.getElementById('dateOccuredInput').className = '';
     setError('');
@@ -74,7 +75,7 @@ function Body ({id_Vehicles, setCloseState}){
     <form className='cardBody flexColumn'>
       <input id='nameInput' name='name' type='text' placeholder='Name' autoComplete='off'></input>
       <textarea id='descriptionInput' name='description' placeholder='Description' maxLength='250' rows='6' autoComplete='off'></textarea>
-      <input id='mileageInput' name='mileage' type='number' pattern="[0-9]*" placeholder='Miles' autoComplete='off'></input>
+      <input id='mileageInput' name='mileage' type='number' pattern="[0-9]*" placeholder='Miles' autoComplete='off' min='1'></input>
       <input id='dateOccuredInput' name='dateOccured' type='date' placeholder='Date' placeholder='Date Occured' max={new Date().toISOString().slice(0,-14)}></input>
     </form>
     <div className='cardFooter'>

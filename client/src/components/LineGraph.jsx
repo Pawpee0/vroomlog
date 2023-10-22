@@ -24,7 +24,7 @@ function Text ({xAxis, yAxis,}){
 
   var step = (nextMilestone(yAxis[yAxis.length - 1]) - firstMilestone(yAxis[0])) / 4;
 
-  for (var x = nextMilestone(yAxis[yAxis.length - 1]); x > firstMilestone(yAxis[0]); x-= step){
+  for (var x = nextMilestone(yAxis[yAxis.length - 1]); x >= firstMilestone(yAxis[0]); x-= step){
     var y = (105 - ((x - firstMilestone(yAxis[0]))/(nextMilestone(yAxis[yAxis.length - 1]) - firstMilestone(yAxis[0])) * 100)) * .90;
     console.log(x, y);
     values.push(<text className='graphValue' x={0} y={`${y}%`} key={x}>{`${x/1000}K`}</text>);
