@@ -12,14 +12,23 @@ router.get('/vehicles/:vehicleId/miles', (req, res)=>{
   res.sendFile(path.join(__dirname, '../../client/dist/private/vehicleMiles/vehicleMiles.html'));
 });
 
-router.get('/vehicles/:vehicleId/data/miles', (req, res)=>{
-  miles.getMileageEntriesByVehicleId(req.params.vehicleId)
-  .then((results)=>{
-    res.send(results);
+router.get('/vehicles/:id_Vehicles/data/miles', async (req, res)=>{
+
+  var id_Vehicles = req.params.id_Vehicles
+
+  Promise.all([
+    vehicles.getVehicleDataById(id_Vehicles),
+    miles.getMileageEntriesByVehicleId(id_Vehicles),
+  ])
+  .then((values)=>{
+    res.send({
+      ...values[0][0],
+      mileageEntries: values[1],
+    })
   })
   .catch((err)=>{
-    res.send(err);
-  });
+    res.status(400).send('error');
+  })
 });
 
 

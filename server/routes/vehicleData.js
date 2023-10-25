@@ -11,12 +11,19 @@ const maintenance = require('../../database/functions/maintenance.js');
 
 router.use('/vehicles/:id_Vehicles', async (req, res, next) => {
   //confirm that the owner is making this request
-  var vehicleData = await vehicles.getVehicleDataById(req.params.id_Vehicles);
-  if (vehicleData[0].id_Users === req.body.id_Users ) {
-    next();
-  } else {
-    res.send('invalid user');
+
+  try {
+    var vehicleData = await vehicles.getVehicleDataById(req.params.id_Vehicles);
+    if (vehicleData[0].id_Users === req.body.id_Users ) {
+      next();
+    } else {
+      res.status(400).send('invalid user');
+    }
   }
+  catch(err){
+    res.status(400).send('vehicle not found');
+  }
+
 })
 
 router.get('/vehicles/:vehicleId', (req, res)=>{
@@ -38,6 +45,9 @@ router.get('/vehicles/:id_Vehicles/data', async (req, res)=>{
       mileageEntries: values[1],
       maintenanceEntries: values[2]
     })
+  })
+  .catch((err)=>{
+    res.status(400).send(err);
   })
 
 });

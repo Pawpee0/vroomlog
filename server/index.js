@@ -28,6 +28,7 @@ app.use(cookieParser());
 app.use((req, res, next)=>{console.log(req.originalUrl); next()})
 
 app.use('/login', express.static(path.join(__dirname, '../client/dist/login')))
+app.use('/bundles', express.static(path.join(__dirname, '../client/dist/bundles')))
 app.use('/', auth);
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
 
