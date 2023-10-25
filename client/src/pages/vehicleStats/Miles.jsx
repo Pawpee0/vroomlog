@@ -48,7 +48,7 @@ function Body ({mileageData = []}){
 
   return (
     <div className='cardBody flexColumn'>
-      <LineGraph width={209} height={150} xAxis={mileData.dates} yAxis={mileData.miles}/>
+      <LineGraph width={'100%'} height={'90%'} xAxis={mileData.dates} yAxis={mileData.miles}/>
     </div>
   )
 };
