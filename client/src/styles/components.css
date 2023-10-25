@@ -123,13 +123,12 @@
 
 }
 .linegraphLine {
-  stroke-width: 4;
   stroke-linecap: round;
   stroke: var(--primary);
 }
 .graphValue {
   fill: var(--text);
-  font-size: 0.6rem;
+  font-size: 0.25rem;
 }
 .referenceLine {
   stroke-width: 1;

@@ -52,6 +52,9 @@ body{
   color: var(--text);
   font-size: 0.77rem;
 
+
+}
+#app{
   margin: 0;
 
   position: absolute;
@@ -60,7 +63,6 @@ body{
 
   width:100%;
   min-width: 257px;
-
 }
 
 
