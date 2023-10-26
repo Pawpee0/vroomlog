@@ -18,9 +18,6 @@ router.post('/vehicles/:id_Vehicles/data/maintenance', (req, res)=>{
   if (new Date(req.body.dateOccured) > new Date()) {
     res.status(400).send('Your date is invalid');
   } else {
-    req.body.dateAdded = formatDateTime(req.body.dateAdded);
-    req.body.dateOccured = formatDateTime(req.body.dateOccured);
-
     database.addMaintenanceEntry(req.body)
     .then((response)=>{
       res.send(response);

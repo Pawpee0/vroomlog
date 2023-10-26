@@ -44,10 +44,6 @@ router.post('/vehicles/:id_Vehicles/data/miles', async (req, res)=>{
   if (new Date(req.body.dateOccured) > new Date()) {
     res.status(400).send('Your date is invalid');
   } else {
-    //format the dates
-    req.body.dateAdded = formatDateTime(req.body.dateAdded);
-    req.body.dateOccured = formatDateTime(req.body.dateOccured);
-
     //add entry to database
     miles.addMileageEntry(req.params.id_Vehicles, req.body)
     .then((response)=>{
