@@ -52,11 +52,11 @@ router.get('/vehicles/:id_Vehicles/data', async (req, res)=>{
 
 });
 
-router.delete('/vehicles/:vehicleId/delete', (req, res)=>{
-  vehicles.deleteVehicle(req.params.vehicleId)
-  .then(()=>{
-    res.send('success');
-  });
-});
+// router.delete('/vehicles/:vehicleId/delete', (req, res)=>{
+//   vehicles.deleteVehicle(req.params.vehicleId)
+//   .then(()=>{
+//     res.send('success');
+//   });
+// });
 
 module.exports = router;

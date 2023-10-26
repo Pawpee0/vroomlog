@@ -15,18 +15,16 @@ const {addUser} = require('../database/functions/users.js');
 }
 */
 
+//adds a user to our database
 router.post(`/users/addUser`, async (req, res)=>{
 
   //verify that the id is valid
   getAuth(app)
   .verifyIdToken(req.body.id)
   .then((decodedToken)=>{
-    console.log('Valid User');
     const uid = decodedToken.uid;
 
     //add the user to our database
-    console.log(uid);
-
     addUser({id: decodedToken.uid, username: req.body.username})
     .then((response)=>{
       res.sendStatus(response);
@@ -38,7 +36,7 @@ router.post(`/users/addUser`, async (req, res)=>{
   .catch((err)=>{res.send(err)});
 });
 
-
+//gets a session cookie token
 router.post('/sessionLogin', (req, res)=>{
   // Get the ID token passed and the CSRF token.
   const idToken = req.body.idToken.toString();
@@ -63,13 +61,13 @@ router.post('/sessionLogin', (req, res)=>{
     );
 });
 
+//deletes cookie
 router.get('/sessionLogout', (req, res) => {
-  console.log('run');
   res.clearCookie('session');
   res.redirect('/login');
 });
 
-
+//verify if the request is from a computer that is logged in
 router.use((req, res, next) => {
 
   const sessionCookie = req.cookies.session || '';
@@ -86,6 +84,7 @@ router.use((req, res, next) => {
           res.redirect('/login/');
         });
 });
+
 
 
 
