@@ -16,7 +16,6 @@ export default function App (){
     axios.get(`/vehicles/${id_Vehicles}/data/miles`)
     .then((response)=>{
       setVehicleData(response.data);
-      console.log(response);
     })
     .catch((err)=>{
 
@@ -43,7 +42,6 @@ function MilesGraph ({mileageEntries = []}){
     dateData.push(Date.parse(mileageEntries[x].dateOccured));
   }
 
-  console.log(milesData);
   return (
     <div className='card center'>
       <div className='cardHeader'>
