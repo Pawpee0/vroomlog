@@ -27,11 +27,17 @@ app.use(bodyParser.json())
 app.use(cookieParser());
 app.use((req, res, next)=>{console.log(req.originalUrl); next()})
 
-app.use('/login', express.static(path.join(__dirname, '../client/dist/login')))
+//send login page files to anyone
+app.get('/login', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../client/dist/login/index.html'));
+})
+app.get('/bundles/login.bundle.js', (req, res)=>{
+  res.sendFile(path.join(__dirname, '../client/dist/bundles/login.bundle.js'));
+});
+
+//if they request anything other than the login files, they have to be a user
 app.use('/', auth);
 app.use('/', express.static(path.join(__dirname, '../client/dist')));
-
-
 
 
 
@@ -41,28 +47,6 @@ app.use('/', miles);
 app.use('/', parts);
 app.use('/', maintenance);
 
-
-app.get('/vehicleList', (req, res)=>{
-  database.getVehiclesList()
-  .then((results)=>{
-    res.send(results);
-  });
-});
-
-/*
-{
-  year: int,
-  make: text,
-  model: text
-}
-*/
-
-app.post('/vehicleList', (req, res)=>{
-  database.addVehicle(req.body)
-  .then(()=>{
-    res.send('success');
-  });
-});
 
 if (false) {
   const options = {

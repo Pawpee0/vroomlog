@@ -18,7 +18,7 @@ const root = createRoot(document.getElementById('app'));
 export default function App (){
 
   var [vehicleData, setVehicleData] = useState({});
-  var id_Vehicles = window.location.href.charAt(window.location.href.length - 1);
+  var id_Vehicles = window.location.pathname.split('/')[2];
 
   useEffect(()=>{
     async function fetchData (){

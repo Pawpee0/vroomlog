@@ -29,35 +29,18 @@ module.exports = {
   entry: {
     vehicles: './client/src/pages/vehicles/index.js',
     vehicleStats: './client/src/pages/vehicleStats/index.js',
-    login: './client/src/pages/login/index.js'
+    login: './client/src/pages/login/index.js',
+    vehicleMiles: './client/src/pages/vehicleMiles/index.js'
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      title: 'VroomLog',
-      filename: 'vehicles/index.html',
-      chunks:['vehicles'],
-      template:'./client/src/index.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'VroomLog',
-      filename: 'vehicleStats/vehicleStats.html',
-      chunks:['vehicleStats'],
-      template:'./client/src/index.html',
-    }),
-    new HtmlWebpackPlugin({
-      title: 'VroomLog',
-      filename: 'login/index.html',
-      chunks:['login'],
-      template:'./client/src/index.html',
-    }),
     new Dotenv({
       path: './.env',
     })
   ],
   output: {
-    filename: '[name]/[name].js',
-    path: path.resolve(__dirname, 'client/dist'),
-    clean: true
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'client/dist/bundles'),
+    clean:true
   },
 
 };

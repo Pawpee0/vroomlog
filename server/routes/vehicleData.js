@@ -11,16 +11,23 @@ const maintenance = require('../../database/functions/maintenance.js');
 
 router.use('/vehicles/:id_Vehicles', async (req, res, next) => {
   //confirm that the owner is making this request
-  var vehicleData = await vehicles.getVehicleDataById(req.params.id_Vehicles);
-  if (vehicleData[0].id_Users === req.body.id_Users ) {
-    next();
-  } else {
-    res.send('invalid user');
+
+  try {
+    var vehicleData = await vehicles.getVehicleDataById(req.params.id_Vehicles);
+    if (vehicleData[0].id_Users === req.body.id_Users ) {
+      next();
+    } else {
+      res.status(400).send('invalid user');
+    }
   }
+  catch(err){
+    res.status(400).send('vehicle not found');
+  }
+
 })
 
 router.get('/vehicles/:vehicleId', (req, res)=>{
-  res.sendFile(path.join(__dirname, '../../client/dist/vehicleStats/vehicleStats.html'));
+  res.sendFile(path.join(__dirname, '../../client/dist/private/vehicleStats/vehicleStats.html'));
 });
 
 router.get('/vehicles/:id_Vehicles/data', async (req, res)=>{
@@ -39,14 +46,17 @@ router.get('/vehicles/:id_Vehicles/data', async (req, res)=>{
       maintenanceEntries: values[2]
     })
   })
+  .catch((err)=>{
+    res.status(400).send(err);
+  })
 
 });
 
-router.delete('/vehicles/:vehicleId/delete', (req, res)=>{
-  vehicles.deleteVehicle(req.params.vehicleId)
-  .then(()=>{
-    res.send('success');
-  });
-});
+// router.delete('/vehicles/:vehicleId/delete', (req, res)=>{
+//   vehicles.deleteVehicle(req.params.vehicleId)
+//   .then(()=>{
+//     res.send('success');
+//   });
+// });
 
 module.exports = router;
