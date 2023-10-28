@@ -102,6 +102,8 @@
   font-family: 'Inter', sans-serif;
   font-weight: 500;
 
+  position: sticky;
+  top:0;
 
   background-color: var(--secondary1);
 }
@@ -133,6 +135,8 @@
 
   display: grid;
   place-items: center;
+
+  z-index: 2;
 }
 .modalWindow{
   max-width: 330px;
