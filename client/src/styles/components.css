@@ -100,16 +100,15 @@
   border-bottom: var(--accent) 2px solid;
 
   font-family: 'Inter', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
 
-  position: sticky;
-  top:0;
 
   background-color: var(--secondary1);
 }
 
 .tableLabels > th {
   max-width: 33%;
+  text-align: start;
 }
 
 .tableEntry {
