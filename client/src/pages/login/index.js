@@ -71,7 +71,7 @@ function Slider({slideDirection}){
   };
 
   return (
-    <svg style={{width: 'calc(100% - 3em)', height: '5px', position: 'relative', bottom: '5px'}}>
+    <svg style={{width: '100%', height: '5px', position: 'relative', bottom: '5px'}}>
       <rect style={style} className={slideDirection}/>
     </svg>
 
