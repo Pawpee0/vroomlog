@@ -44,14 +44,25 @@ router.post('/vehicles/:id_Vehicles/data/miles', async (req, res)=>{
   if (new Date(req.body.dateOccured) > new Date()) {
     res.status(400).send('Your date is invalid');
   } else {
-    //add entry to database
-    miles.addMileageEntry(req.params.id_Vehicles, req.body)
+    //check if entry is valid
+    miles.isValidMileage(req.params.id_Vehicles, req.body.dateOccured, req.body.mileage)
     .then((response)=>{
-      res.status(200).send('Data was successfully saved');
+      if (response) {
+        //add entry to database
+          miles.addMileageEntry(req.params.id_Vehicles, req.body)
+          .then((response)=>{
+            res.status(200).send('Data was successfully saved');
+          })
+          .catch((err)=>{
+            res.status(400).send('Invalid data');
+          });
+      }
     })
     .catch((err)=>{
-      res.status(400).send('Invalid data');
-    });
+      res.status(400).send(err);
+    })
+
+
 
   }
 });
