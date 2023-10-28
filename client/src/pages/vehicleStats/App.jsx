@@ -37,7 +37,7 @@ export default function App (){
   return (
     <MainHeader>
       <h1 style={{textAlign: 'center'}}>{vehicleData.make} {vehicleData.model}</h1>
-      <div className='flexRow center' style={{'maxWidth': '1000px', 'width': '100%', 'justifyContent': 'space-around', 'flexWrap':'wrap'}}>
+      <div className='flexRow center widgetContainer' >
         <Miles id_Vehicles={id_Vehicles} mileageData={vehicleData.mileageEntries}/>
         <Reminders id_Vehicles={id_Vehicles}/>
         <Maintenance id_Vehicles={id_Vehicles} maintenanceData={vehicleData.maintenanceEntries}/>
