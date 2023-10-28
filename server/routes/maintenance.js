@@ -18,6 +18,10 @@ router.post('/vehicles/:id_Vehicles/data/maintenance', (req, res)=>{
   if (new Date(req.body.dateOccured) > new Date()) {
     res.status(400).send('Your date is invalid');
   } else {
+    //check if the mileage is possible
+
+
+    //add the mileage to the database
     database.addMaintenanceEntry(req.body)
     .then((response)=>{
       res.send(response);
