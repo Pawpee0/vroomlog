@@ -12,8 +12,8 @@ export default function SignUpForm (){
   var signUpData = useRef({});
 
   return (
-    <form id='SignUpForm' className='flexColumn'>
-      <input name='username'placeholder={'Username'} onChange={(e)=>{signUpData.current.Username = e.target.value}}></input>
+    <form id='SignUpForm' className='flexColumn cardBody'>
+      <input name='username'placeholder={'Username'} type='text' onChange={(e)=>{signUpData.current.Username = e.target.value}}></input>
       <input name='email' placeholder={'Email'} type={'email'} onChange={(e)=>{signUpData.current.Email = e.target.value}}></input>
       <input name='new-password' placeholder={'Password'} type={'password'} onChange={(e)=>{signUpData.current.Password = e.target.value}}></input>
       <input name='new-password' placeholder={'Confirm Password'} type={'password'} onChange={(e)=>{signUpData.current.ConfirmPassword = e.target.value}}></input>
