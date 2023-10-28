@@ -101,6 +101,11 @@
 
   font-family: 'Inter', sans-serif;
   font-weight: 400;
+
+  position: sticky;
+  top:0;
+
+  background-color: var(--secondary1);
 }
 
 .tableLabels > th {
