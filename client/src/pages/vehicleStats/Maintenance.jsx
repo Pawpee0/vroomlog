@@ -31,7 +31,7 @@ function Header ({id_Vehicles}){
 
 function Body ({id_Vehicles, maintenanceData = []}){
 
-  for (var x = 0; x < maintenanceData.length; x++) {
+  for (var x = 0; x < maintenanceData.length || x > 6; x++) {
     maintenanceData[x].dateOccured = new Date(maintenanceData[x].dateOccured);
     maintenanceData[x].dateAdded = new Date(maintenanceData[x].dateAdded);
   }
