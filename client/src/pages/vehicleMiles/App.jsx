@@ -6,13 +6,14 @@ import axios from 'axios';
 import MainHeader from '../../components/MainHeader.jsx';
 import LineGraph from '../../components/LineGraph.jsx';
 import Table from '../../components/Table.jsx';
+import AddMiles from '../../components/AddMiles.jsx'
 
 export default function App (){
 
   var [vehicleData, setVehicleData] = useState({});
+  var id_Vehicles = window.location.pathname.split('/')[2];
 
   useEffect(()=>{
-    var id_Vehicles = window.location.pathname.split('/')[2];
 
     axios.get(`/vehicles/${id_Vehicles}/data/miles`)
     .then((response)=>{
@@ -29,7 +30,10 @@ export default function App (){
         <h1 style={{textAlign: "center"}}>{vehicleData.make} {vehicleData.model}</h1>
         <div className='flexRow center statsContainer'>
           <MilesGraph mileageEntries={vehicleData.mileageEntries}/>
-          <MilesTable mileageEntries={vehicleData.mileageEntries}/>
+          <div className='flexColumn widget'>
+            <MilesTable mileageEntries={vehicleData.mileageEntries}/>
+            <AddMiles id_Vehicles={id_Vehicles}/>
+          </div>
         </div>
       </MainHeader>
     </div>
