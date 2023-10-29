@@ -56,6 +56,8 @@ router.post('/vehicles/:id_Vehicles/data/miles', async (req, res)=>{
           .catch((err)=>{
             res.status(400).send('Invalid data');
           });
+      } else {
+        res.status(400).send('Invalid mileage');
       }
     })
     .catch((err)=>{
