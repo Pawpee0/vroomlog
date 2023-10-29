@@ -8,12 +8,23 @@ import axios from 'axios';
 
 export default function AddMiles ({id_Vehicles, setCloseState}){
 
-  return (
-    <ModalWindow setCloseState={setCloseState}>
-      <Header/>
-      <Body id_Vehicles={id_Vehicles} setCloseState={setCloseState}/>
-    </ModalWindow>
-  );
+  if (setCloseState === undefined) {
+    return (
+      <div className='card'>
+        <Header/>
+        <Body id_Vehicles={id_Vehicles} setCloseState={setCloseState}/>
+      </div>
+    )
+  } else {
+    return (
+      <ModalWindow setCloseState={setCloseState}>
+        <Header/>
+        <Body id_Vehicles={id_Vehicles} setCloseState={setCloseState}/>
+      </ModalWindow>
+    );
+  }
+
+
 };
 
 function Header (){
