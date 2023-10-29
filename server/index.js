@@ -4,6 +4,8 @@ const http = require('http');
 const app = express();
 const port = 3000;
 
+require('dotenv').config();
+
 const fs = require('node:fs');
 
 const path = require('path');
@@ -48,10 +50,10 @@ app.use('/', parts);
 app.use('/', maintenance);
 
 
-if (false) {
+if (process.env.HAS_SSL === 'true') {
   const options = {
-    key: fs.readFileSync('file'),
-    cert: fs.readFileSync('file'),
+    key: fs.readFileSync(process.env.SSL_KEY),
+    cert: fs.readFileSync(process.env.SSL_CERT),
   };
 
   const redirect = express();
