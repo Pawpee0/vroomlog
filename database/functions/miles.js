@@ -13,8 +13,9 @@ const database = {};
 database.addMileageEntry = function (id_Vehicles, inputData){
   return new Promise (function(fulfill, reject){
     connection.execute(`INSERT INTO MileageEntries (id_Vehicles, mileage, dateAdded, dateOccured)
-    VALUES (${id_Vehicles}, ${inputData.mileage}, DATE("${inputData.dateAdded}"), DATE("${inputData.dateOccured}"))`, function(err, results, fields){
+    VALUES (${id_Vehicles}, ${inputData.mileage}, STR_TO_DATE("${inputData.dateAdded}","%Y-%m-%dT%T.%fZ"), DATE("${inputData.dateOccured}"))`, function(err, results, fields){
       if (err) {
+        console.log(err);
         reject(err);
       } else {
         fulfill(200);
