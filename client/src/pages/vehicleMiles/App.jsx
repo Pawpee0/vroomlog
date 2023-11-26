@@ -65,14 +65,14 @@ function MilesGraph ({mileageEntries = []}){
 
 function MilesTable ({mileageEntries=[]}){
 
-  var data = [...mileageEntries];
+  var data = mileageEntries.toReversed();
 
   var labels = [
     {title: 'Mileage', key:'mileage'},
     {title: 'Date', key: 'dateOccured'}
   ];
 
-  for (var x = 0; x < data.length; x++){
+  for (var x = 0; x<data.length; x++){
     data[x].dateOccured = new Date(data[x].dateOccured);
   }
 

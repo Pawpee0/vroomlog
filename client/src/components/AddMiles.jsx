@@ -49,10 +49,6 @@ function Body ({id_Vehicles, setCloseState}){
       mileage: document.getElementById('mileageInput').value
     }
 
-    //reset errors
-    document.getElementById('mileageInput').className = '';
-    document.getElementById('dateOccuredInput').className = '';
-    setError('');
 
     //validate data
     if (!MileageEntry.mileage || MileageEntry.mileage < 1){
@@ -61,18 +57,28 @@ function Body ({id_Vehicles, setCloseState}){
     }if (!MileageEntry.dateOccured || new Date(MileageEntry.dateOccured) > new Date()){
       document.getElementById('dateOccuredInput').className = 'error';
       setError('Please enter a valid date');
-    } else if (error === '' && !spamProtection){
+    } else {
+      //reset errors
+      document.getElementById('mileageInput').className = '';
+      document.getElementById('dateOccuredInput').className = '';
+      setError('');
+    }
+
+    //if there are no errors and no active requests, send a request
+    if (error === '' && !spamProtection){
       spamProtection = true;
 
       //post data
       axios.post(`/vehicles/${id_Vehicles}/data/miles`, MileageEntry)
       .then((response)=>{
-        setCloseState(false);
         document.location.reload();
+        spamProtection = false;
       })
       .catch((err)=>{
         setError(err.response.data);
+        spamProtection = false;
         console.log(err);
+
       });
 
     }
