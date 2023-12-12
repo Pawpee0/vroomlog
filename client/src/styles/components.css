@@ -36,7 +36,11 @@
 .cardBody{
   gap: 0.5em;
   align-items: stretch;
-  overflow: scroll;
+  overflow-y: scroll;
+  overflow-x:hidden;
+}
+.cardBody::-webkit-scrollbar{
+  width:0px;
 }
 
 .cardFooter {
